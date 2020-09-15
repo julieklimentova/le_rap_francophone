@@ -21,9 +21,7 @@ songDf <- tibble(line = 1:4, text = songText)
 
 songWords <- songDf %>%
   unnest_tokens(word, text)
-
-songWordsTokenizers <- tokenize_words(songText)
-
+# TODO: Stop words need to be removed and
 songWords %>%
   count(word, sort = TRUE) %>%
   filter(n > 1) %>%
