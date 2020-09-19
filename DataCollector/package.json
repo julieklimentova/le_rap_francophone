@@ -1,0 +1,24 @@
+{
+  "name": "datacollector",
+  "version": "1.0.0",
+  "description": "Data collector for French rap songs",
+  "main": "DataCollector.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "axios": "^0.20.0",
+    "babel-loader": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
