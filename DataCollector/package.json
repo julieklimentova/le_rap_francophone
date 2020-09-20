@@ -4,7 +4,9 @@
   "description": "Data collector for French rap songs",
   "main": "DataCollector.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "prestart": "webpack",
+    "start": "node dist/DataCollector.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "nodemon": "^2.0.4"
   }
 }
