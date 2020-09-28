@@ -2,8 +2,10 @@ library(tidyverse)
 library(tidytext)
 stopWords <- tibble(
   word = c(
+    "a",
     "à",
     "alors",
+    "and",
     "au",
     "aucuns",
     "aussi",
@@ -14,6 +16,10 @@ stopWords <- tibble(
     "bon",
     "ça",
     "car",
+    "c'",
+    "c'est",
+    "c´est",
+    "c`est",
     "ce",
     "cela",
     "ces",
@@ -22,9 +28,12 @@ stopWords <- tibble(
     "ci",
     "comme",
     "comment",
+    "couplet",
     "dans",
     "des",
     "du",
+    "de",
+    "d'",
     "dedans",
     "dehors",
     "depuis",
@@ -48,13 +57,19 @@ stopWords <- tibble(
     "eu",
     "fait",
     "faites",
+    "faut",
     "fois",
     "font",
     "hors",
+    "i",
+    "intro",
     "ici",
     "il",
     "ils",
     "je",
+    "j'",
+    "j'ai",
+    "j'suis",
     "juste",
     "la",
     "le",
@@ -70,6 +85,7 @@ stopWords <- tibble(
     "mien",
     "moins",
     "mon",
+    "moi",
     "mot",
     "même",
     "ni",
@@ -79,6 +95,8 @@ stopWords <- tibble(
     "ou",
     "où",
     "on",
+    "outro",
+    "oh",
     "par",
     "parce",
     "pas",
@@ -95,6 +113,7 @@ stopWords <- tibble(
     "quelles",
     "quels",
     "qui",
+    "refrain",
     "sa",
     "sans",
     "ses",
@@ -113,6 +132,8 @@ stopWords <- tibble(
     "tandis",
     "te",
     "t'",
+    "t'as",
+    "toi",
     "tellement",
     "tels",
     "tes",
@@ -122,12 +143,18 @@ stopWords <- tibble(
     "trop",
     "très",
     "tu",
+    "un",
+    "une",
+    "verse",
     "voient",
     "vont",
     "votre",
     "vous",
     "vu",
     "y",
+    "y'a",
+    "yeah",
+    "you",
     "NA"
   ),
   lexicon = "ranks_french"
@@ -146,11 +173,26 @@ texts_tokens <- texts %>%
 noStopWords <- texts_tokens %>%
   anti_join(stopWords, by = "word")
 
-noStopWords %>%
-  count(word, sort = TRUE) %>%
-  filter(n > 500) %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(word, n)) +
-  geom_col() +
-  xlab(NULL) +
-  coord_flip()
+wordPerFile <- texts_tokens %>%
+  count(FileName, word, sort = TRUE)
+
+totalWords <- wordPerFile %>%
+  group_by(FileName) %>%
+  summarize(total = sum(n))
+
+wordsFrequencies <- left_join(wordPerFile, totalWords)
+
+freq_by_rank <- wordsFrequencies %>%
+  group_by(FileName) %>%
+  mutate(rank = row_number(),
+         `term frequency` = n/total)
+
+
+# texts_tokens %>%
+# count(word, sort = TRUE) %>%
+# filter(n > 600) %>%
+# mutate(word = reorder(word, n)) %>%
+# ggplot(aes(word, n)) +
+# geom_col() +
+# xlab(NULL) +
+# coord_flip()
