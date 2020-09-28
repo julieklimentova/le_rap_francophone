@@ -187,6 +187,24 @@ freq_by_rank <- wordsFrequencies %>%
   mutate(rank = row_number(),
          `term frequency` = n/total)
 
+wordsWithTfIdf <- wordPerFile %>%
+  bind_tf_idf(word, FileName, n)
+
+wordsWithTfIdf <- wordsWithTfIdf %>%
+  arrange(desc(tf_idf))
+
+allWords <- texts_tokens %>%
+  select(-FileName) %>%
+  mutate(id = "all")
+
+allWords <- allWords %>%
+  count(id, word, sort = TRUE)
+
+tfIdfTotal <- allWords %>%
+    bind_tf_idf(word, id, n)
+
+tfIdfTotalDesc <- tfIdfTotal %>%
+    arrange(desc(tf_idf))
 
 # texts_tokens %>%
 # count(word, sort = TRUE) %>%
