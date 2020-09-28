@@ -197,14 +197,9 @@ allWords <- texts_tokens %>%
   select(-FileName) %>%
   mutate(id = "all")
 
-allWords <- allWords %>%
-  count(id, word, sort = TRUE)
+allWordsCounts <- allWords %>%
+  count(word, sort = TRUE)
 
-tfIdfTotal <- allWords %>%
-    bind_tf_idf(word, id, n)
-
-tfIdfTotalDesc <- tfIdfTotal %>%
-    arrange(desc(tf_idf))
 
 # texts_tokens %>%
 # count(word, sort = TRUE) %>%
