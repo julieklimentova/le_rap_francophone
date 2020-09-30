@@ -3,7 +3,13 @@
 1. Sber dat - posbirat data - wiki + genius  -> 
 2. -> plain text soubor 
 3. -> tabulka - csv - artist + year + album + id + song-name 20/7
-4. -> tidy text - word frequency + td_idf 27/7 
+4. -> tidy text - word frequency + tf_idf 27/7
+5. ?
+
+Co ted?
+1. Data se musi vycistit/vymyslet lepsi zpusob sberu
+2. NA - parsovaci chyby - zkusit jiny nastroj? Mozna nedulezite
+3.
 
 
 
