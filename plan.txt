@@ -7,7 +7,7 @@
 5. ?
 
 Co ted?
-1. Data se musi vycistit/vymyslet lepsi zpusob sberu
+1. Data se musi vycistit/vymyslet lepsi zpusob sberu - detect language + detect content
 2. NA - parsovaci chyby - zkusit jiny nastroj? Mozna nedulezite
 3.
 
