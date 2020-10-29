@@ -125,10 +125,7 @@ export class GeniusClient {
                         }
                     } else {
                     console.log(`Lyrics could not be parsed because there is no lyrics class`);
-                    return {
-                    lyrics: 'no lyrics found',
-                    releaseDate: 'no release date found',
-                    }
+                    return null;
                   }
               }
             }
@@ -137,23 +134,36 @@ export class GeniusClient {
             for (const song of textsArtistInfo.songs) {
                 const response = await axios.get(song.url, {timeout: 100000}).catch(e => console.log(e));
                 if (response.data) {
-                const songInfo = parseSongHTML(response.data);
-                if (songInfo) {
-                const {artistId, artistName} = textsArtistInfo;
-                const txtNameFull = `${song.title}`;
-                const txtNameShort = txtNameFull.substring(0, 50);
-                const txtNameRelease = `${txtNameShort}${songInfo.releaseDate}`;
-                const escapedSpecialCharactersTxtName = txtNameRelease.replace(/\W+/g, '_');
-                const newSongInfo = {...song, ...songInfo, artistId, artistName, txtName: escapedSpecialCharactersTxtName};
-                completeSongs.push(newSongInfo);
-                } else {
-                    console.log(`The lyrics content could not be parse for ${song.title}`);
+                const maxTries = 10;
+                for (let i = 0, i < maxTries, i++) {
+                    const songInfo = parseSongHTML(response.data);
+                    if (songInfo) {
+                        const {artistId, artistName} = textsArtistInfo;
+                        const txtNameFull = `${song.title}`;
+                        const txtNameShort = txtNameFull.substring(0, 50);
+                        const txtNameRelease = `${txtNameShort}${songInfo.releaseDate}`;
+                        const escapedSpecialCharactersTxtName = txtNameRelease.replace(/\W+/g, '_');
+                        const newSongInfo = {...song, ...songInfo, artistId, artistName, txtName: escapedSpecialCharactersTxtName};
+                        completeSongs.push(newSongInfo);
+                        break;
+                    } else {
+                        console.log(`The lyrics content could not be parsed for ${song.title}`);
+                    }
                 }
                 } else {
-                console.log(`There were no lyrics found for ${song.title}`);
+                    console.log(`There were no lyrics found for ${song.title}`);
                 }
             }
         }
         return completeSongs;
+        }
+
+        validateLyrics(lyrics) {
+            const checkString = 'Cliquez ici pour un meilleur aperçu';
+            const indicator = !lyrics.includes(checkString)
+            return indicator;
+        }
+
+        checkLyricsLanguage(lyrics) {
         }
 }
