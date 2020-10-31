@@ -68,14 +68,21 @@ class DataCollector {
                     artistsIds.push(artistInfo);
                 }
             } else {
-                console.log(`DataCollector: ERROR: Artist Id was not found for artist ${artist}`);
+                console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
             }
         }
         return artistsIds;
     }
 
     async getSongsPerArtist(getSongsArtistInfo) {
-        const songs = await this._geniusClient.getSongs(getSongsArtistInfo);
+        let songs = [];
+        const maxTries = 5;
+        for (let i = 0; i < maxTries; i++) {
+            songs = await this._geniusClient.getSongs(getSongsArtistInfo);
+            if (songs.length > 0) {
+                break;
+            } // else continue
+        }
         return {...getSongsArtistInfo, songs};
     }
 
@@ -98,9 +105,10 @@ class DataCollector {
 }
 
 const dataCollector = new DataCollector(wikiOptions, wordsToClean);
+const testArtists = ['Red Machine', 'Orelsan', 'Busta Flex', 'Calboy', 'Faber'];
 
 const main = async () => {
-    const artistsNames = await dataCollector.getAllArtists();
+    const artistsNames = testArtists;
     console.log('MAIN: Artists names have been received');
     const artistsInfos = await dataCollector.getAllArtistsIds(artistsNames);
     console.log('MAIN: Artists infos have been received');
@@ -130,4 +138,6 @@ const main = async () => {
 main()
     .then(() => console.log('All done, captain!'))
         .catch((e) => console.log(e));
+
+
 
