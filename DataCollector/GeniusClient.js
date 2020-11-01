@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 import LanguageDetect from 'languagedetect'
+import {JSDOM} from 'jsdom';
 
 const accessToken = 'eo5fbsDYIEv5TIgYfTVdLevK2pjKtRDk7Nej7V1gYhpx_eNvlHLji22xvdDskpAl';
 const headers = {
@@ -103,13 +104,13 @@ export class GeniusClient {
             });
         return songs;
     }
-
+    // TODO: Refactor this method when possible to reduce cyclomatic complexity
     parseSongHTML(htmlText) {
         let lyrics = '';
         let releaseDate = '';
         let $ = cheerio.load(htmlText);
         lyrics = $('.lyrics').text();
-        const dataUnits = $('.metadata_unit--table_row').text();
+        let dataUnits = $('.metadata_unit--table_row').text();
         releaseDate = dataUnits.match(/(\w+\s[0-9]+,\s[0-9]+)/g);
         lyrics = lyrics ? lyrics : $('div[initial-content-for=lyrics]').text();
         if (lyrics) {
@@ -124,8 +125,25 @@ export class GeniusClient {
                 return null;
             }
         } else {
-            console.log(`Lyrics could not be parsed because there is no lyrics class`);
-            return null;
+            const dom = new JSDOM(htmlText);
+            lyrics = dom.window.querySelector('lyrics').textContent;
+            dataUnits = dom.window.querySelector('lyrics.metadata_unit--table_row').textContent;
+            releaseDate = dataUnits.match(/(\w+\s[0-9]+,\s[0-9]+)/g);
+            if (lyrics) {
+                if (this.validateLyrics(lyrics) && this.validateLanguage(lyrics)) {
+                    console.log('GeniusClient.parseSongHTML: Lyrics found successfully');
+                    return {
+                        lyrics,
+                        releaseDate: releaseDate ? releaseDate[0] : '000000000',
+                    }
+                } else {
+                    console.log('GeniusClient.parseSongHTML: Lyrics content not valid');
+                    return null;
+                }
+            } else {
+                console.log(`Lyrics could not be parsed because there is no lyrics class`);
+                return null;
+            }
         }
     }
 
@@ -170,7 +188,7 @@ export class GeniusClient {
             return completeSongs;
         }
     }
-
+    // TODO: Create Validator class to group all the validation methods
     validateLyrics(lyrics) {
         const checkString = 'Cliquez ici pour un meilleur aperçu';
         return !lyrics.includes(checkString)
