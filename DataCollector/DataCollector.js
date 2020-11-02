@@ -105,7 +105,7 @@ class DataCollector {
 }
 
 const dataCollector = new DataCollector(wikiOptions, wordsToClean);
-const testArtists = ['Red Machine', 'Orelsan', 'Busta Flex', 'Calboy', 'Faber'];
+const testArtists = ['Orelsan'];
 
 const main = async () => {
     const artistsNames = testArtists;
