@@ -1,4 +1,5 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: {app: './DataCollector.js'},
@@ -19,10 +20,12 @@ module.exports = {
                         plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties']
                     }
                 }
+            },
+            {
+                test: /\.node$/,
+                use: 'node-loader'
             }
         ]
     },
-    externals: {
-        'isomorphic-fetch': 'fetch'
-    }
+    externals: [nodeExternals()],
 };

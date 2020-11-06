@@ -42,6 +42,9 @@ class DataCollector {
         fs.mkdir('./files', (e) => {
             console.log(e);
         })
+        fs.mkdir('./errors', (e) => {
+            console.log(e);
+        })
     }
 
     async getAllArtists() {
@@ -105,10 +108,9 @@ class DataCollector {
 }
 
 const dataCollector = new DataCollector(wikiOptions, wordsToClean);
-const testArtists = ['Orelsan'];
 
 const main = async () => {
-    const artistsNames = testArtists;
+    const artistsNames = await dataCollector.getAllArtists();
     console.log('MAIN: Artists names have been received');
     const artistsInfos = await dataCollector.getAllArtistsIds(artistsNames);
     console.log('MAIN: Artists infos have been received');
@@ -126,7 +128,7 @@ const main = async () => {
             dataCollector.writeToTxt(song);
         });
     }
-    console.log('MAIN: All songs have been retrieved' + JSON.stringify(allSongs));
+    console.log('MAIN: All songs have been retrieved');
     try {
         fs.writeFileSync('./allSongs.json', JSON.stringify(allSongs));
     } catch (e) {

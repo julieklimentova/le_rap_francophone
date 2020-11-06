@@ -106,36 +106,37 @@ export class GeniusClient {
         return songs;
     }
 
-    // TODO: Refactor this method when possible to reduce cyclomatic complexity
     parseSongHTML(htmlText, fileName) {
-        let releaseDate = '';
         let $ = cheerio.load(htmlText);
         let lyrics = $('.lyrics').text();
         let dataUnits = $('.metadata_unit--table_row').text();
-        releaseDate = dataUnits.match(/(\w+\s[0-9]+,\s[0-9]+)/g);
         if (lyrics) {
-            return this.getOutput(lyrics, releaseDate, fileName, htmlText);
+            return this.getOutput(lyrics, dataUnits, fileName, htmlText);
         } else {
             lyrics = $('div[initial-content-for=lyrics]').text();
             if (lyrics) {
-                return this.getOutput(lyrics, releaseDate, fileName, htmlText);
+                return this.getOutput(lyrics, dataUnits, fileName, htmlText);
             } else {
-                    const lyricsArray = [];
+                const lyricsArray = [];
                     $("[class*='Lyrics__Container']").each(function(i) {
                     lyricsArray[i] = $(this).html();
                     });
                     // clean up html tags
                     let lyricsNoHTML = lyricsArray.map(el => {
-                        let result = el.replace(/<.+?>/g, ' ');
+                        let result = el.replace(/<br>/g, '\n');
+                        result = result.replace(/<.+?>/g, '');
                         result = he.decode(result);
                         return result;
                     });
-
                     lyrics = lyricsNoHTML.join('\n');
-                    if (lyrics) {
-                        return this.getOutput(lyrics, releaseDate, fileName, htmlText);
+                    const dataUnitsArray = [];
+                    $("[class*='SongInfo__Credit']").each(function(i) {
+                        dataUnitsArray[i] = $(this).text();
+                    });
+                    const dataUnits = dataUnitsArray.join(' ');
+                if (lyrics) {
+                        return this.getOutput(lyrics, dataUnits, fileName, htmlText);
                     } else {
-                        // fs.mkdirSync('./errors');
                         fs.writeFileSync(`./errors/${fileName}.html`, htmlText);
                         console.log(`Lyrics could not be parsed because there is no lyrics class`);
                         return null;
@@ -148,7 +149,7 @@ export class GeniusClient {
         const completeSongs = [];
         if (textsArtistInfo.songs) {
             for (const song of textsArtistInfo.songs) {
-                const maxTriesSongUrl = 5
+                const maxTriesSongUrl = 5;
                 for (let i = 0; i < maxTriesSongUrl; i++) {
                     const response = await axios.get(song.url, {timeout: 300000}).catch(e => console.log(e));
                     if (response) {
@@ -200,9 +201,10 @@ export class GeniusClient {
         return detectedLanguage[0][0] === 'french';
     }
 
-    getOutput(lyrics, releaseDate, fileName, htmlText) {
+    getOutput(lyrics, dataUnits, fileName, htmlText) {
         if (lyrics && this.validateLyrics(lyrics) && this.validateLanguage(lyrics)) {
             console.log('GeniusClient.getOutput: Lyrics found successfully');
+            const releaseDate = dataUnits.match(/(\w+\s[0-9]+,\s[0-9]+)/g);
             return {
                 lyrics,
                 releaseDate: releaseDate ? releaseDate[0] : '000000000',
