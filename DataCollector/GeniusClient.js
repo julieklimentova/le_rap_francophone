@@ -17,20 +17,20 @@ export class GeniusClient {
     getArtistId(artist) {
         const encodedArtist = encodeURI(artist);
         const searchQuery = `/search?q=${encodedArtist}`;
-        return axios.get(`${this._baseUrl}${searchQuery}`, {headers})
+        return axios.get(`${this._baseUrl}${searchQuery}`, {timeout: 200000, headers})
             .then(response => {
                 const hits = response.data.response.hits;
                 // TODO: Possibly come up with a better filtering strategy and put into helpers/ as a method
                 const artistsSongs = hits.filter(song => {
                     const geniusName = song.result.primary_artist.name.toLowerCase().trim();
                     const wikiName = artist.toLowerCase();
-                    let isArtist = false;
-                    isArtist = geniusName.includes(wikiName) ? true : false;
+                    let isArtist = geniusName.includes(wikiName) ? true : false;
                     if (!isArtist) {
                         isArtist = wikiName.includes(geniusName) ? true : false;
                     }
                     const false_exceptions = ['luni', 'nubi', 'gambi', 'koma', 'sheek'];
                     const true_exceptions = [
+                        'Akhenaton',
                         'hamed daye',
                         `heuss l'enfoiré`,
                         'joeystarr',
@@ -82,7 +82,11 @@ export class GeniusClient {
                 }
                 return {artistId, artistName};
             })
-            .catch(e => console.log(e));
+            .catch(e => {
+                    console.log(e)
+                return null;
+                }
+            );
     }
 
     async getSongs(getSongsArtistInfo) {

@@ -5,7 +5,7 @@ module.exports = {
     entry: {app: './DataCollector.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'DataCollector.js'
+        filename: 'main.js'
     },
     target: 'async-node',
     module: {

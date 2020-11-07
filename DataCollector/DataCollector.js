@@ -45,6 +45,9 @@ class DataCollector {
         fs.mkdir('./errors', (e) => {
             console.log(e);
         })
+        fs.mkdir('./metadata', (e) => {
+            console.log(e);
+        })
     }
 
     async getAllArtists() {
@@ -64,14 +67,18 @@ class DataCollector {
     async getAllArtistsIds(artists) {
         const artistsIds = [];
         for (const artist of artists) {
-            const artistInfo = await this._geniusClient.getArtistId(artist);
-            if (artistInfo) {
-                const {artistId} = artistInfo;
-                if (artistId && artistId !== '') {
-                    artistsIds.push(artistInfo);
+            const maxTries = 3;
+            for (let i = 0; i < maxTries; i++) {
+                const artistInfo = await this._geniusClient.getArtistId(artist);
+                if (artistInfo) {
+                    const {artistId} = artistInfo;
+                    if (artistId && artistId !== '') {
+                        artistsIds.push(artistInfo);
+                        break;
+                    }
+                } else {
+                    console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
                 }
-            } else {
-                console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
             }
         }
         return artistsIds;
@@ -103,38 +110,41 @@ class DataCollector {
     }
     async writeToCsv(objects) {
         const csv = new ObjectsToCsv(objects);
-        await csv.toDisk('./songsMetadata.csv', {append: true});
+        await csv.toDisk('./metadata/songsMetadata.csv', {append: true});
     }
 }
 
-const dataCollector = new DataCollector(wikiOptions, wordsToClean);
+export const DATA_COLLECTOR = new DataCollector(wikiOptions, wordsToClean);
 
 const main = async () => {
+    // const artistsNames = ['Akhenaton']
     const artistsNames = await dataCollector.getAllArtists();
-    console.log('MAIN: Artists names have been received');
+
     const artistsInfos = await dataCollector.getAllArtistsIds(artistsNames);
+    const artistsInfosObject = JSON.stringify({artistsIds: artistsInfos});
+    fs.writeFileSync('./metadata/artistsIds.json', artistsInfosObject);
     console.log('MAIN: Artists infos have been received');
-    const artistsWithSongs = [];
-    for (const artistInfo of artistsInfos) {
-            const artistWithSong = await dataCollector.getSongsPerArtist(artistInfo);
-            artistsWithSongs.push(artistWithSong);
-    }
-    console.log('MAIN: Artists with songs have been retrieved' + JSON.stringify(artistsWithSongs));
-    const allSongs = []
-    for (const artistWithSong of artistsWithSongs) {
-        const songs = await dataCollector.getSongsTexts(artistWithSong);
-        songs.forEach((song) => {
-            allSongs.push(song);
-            dataCollector.writeToTxt(song);
-        });
-    }
-    console.log('MAIN: All songs have been retrieved');
-    try {
-        fs.writeFileSync('./allSongs.json', JSON.stringify(allSongs));
-    } catch (e) {
-        console.log(e);
-    }
-    await dataCollector.writeToCsv(allSongs);
+    // const artistsWithSongs = [];
+    // for (const artistInfo of artistsInfos) {
+    //         const artistWithSong = await dataCollector.getSongsPerArtist(artistInfo);
+    //         artistsWithSongs.push(artistWithSong);
+    // }
+    // console.log('MAIN: Artists with songs have been retrieved' + JSON.stringify(artistsWithSongs));
+    // const allSongs = []
+    // for (const artistWithSong of artistsWithSongs) {
+    //     const songs = await dataCollector.getSongsTexts(artistWithSong);
+    //     songs.forEach((song) => {
+    //         allSongs.push(song);
+    //         dataCollector.writeToTxt(song);
+    //     });
+    // }
+    // console.log('MAIN: All songs have been retrieved');
+    // try {
+    //     fs.writeFileSync('./allSongs.json', JSON.stringify(allSongs));
+    // } catch (e) {
+    //     console.log(e);
+    // }
+    // await dataCollector.writeToCsv(allSongs);
 }
 
 main()
