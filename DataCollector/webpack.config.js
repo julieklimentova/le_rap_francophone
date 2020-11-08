@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: {app: './DataCollector.js'},
+    entry: {app: './main.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'

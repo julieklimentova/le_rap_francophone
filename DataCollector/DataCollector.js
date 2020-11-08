@@ -3,37 +3,9 @@ import {GeniusClient} from './GeniusClient';
 import * as Helpers from './Helpers';
 import fs from 'fs';
 import ObjectsToCsv from 'objects-to-csv';
-
-const wikiOptions = {
-    apiUrl: 'https://fr.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=',
-    categories: [
-        'Cat%C3%A9gorie:Rappeur_fran%C3%A7ais',
-        'Cat%C3%A9gorie%3ARappeur_belge',
-        'Cat%C3%A9gorie%3AGroupe_de_hip-hop_fran%C3%A7ais',
-        'Cat%C3%A9gorie%3AGroupe_de_hip-hop_belge',
-        'Cat%C3%A9gorie%3ARappeuse_belge',
-        'Cat%C3%A9gorie%3ARappeuse_fran%C3%A7aise'
-    ],
-}
-
-const wordsToClean = [
-    '(rappeur)',
-    '(rappeuse)',
-    '(musicien)',
-    '(rap)',
-    '(chanteuse)',
-    '(chanteur)',
-    '(groupe)',
-    '(collectif)',
-    '(groupe de rap)',
-    '(artiste)',
-    '(rappeur français)',
-    '(groupe belge)'
-];
-
 const geniusBaseUrl = 'https://api.genius.com';
 
-class DataCollector {
+export class DataCollector {
     constructor(wikiOptions, wordsToClean) {
         this._wikiPediaClient = new WikipediaClient();
         this._geniusClient = new GeniusClient(geniusBaseUrl);
@@ -57,7 +29,8 @@ class DataCollector {
             const result = await this._wikiPediaClient.getArtists(apiUrl, category);
             const categoryMembers = result.query.categorymembers;
             for (const entry of categoryMembers) {
-                artists.push(entry.title);
+                const artist = this._wikiPediaClient.alterArtist(entry.title);
+                artists.push(artist);
             }
         }
         const artistsTrimmed = Helpers.cleanStrings(this._wordsToClean, artists);
@@ -73,8 +46,13 @@ class DataCollector {
                 if (artistInfo) {
                     const {artistId} = artistInfo;
                     if (artistId && artistId !== '') {
-                        artistsIds.push(artistInfo);
-                        break;
+                        const isDuplicated = artistsIds.filter(el => {
+                            return el.artistId === artistId;
+                        });
+                        if (isDuplicated.length === 0) {
+                            artistsIds.push(artistInfo);
+                            break;
+                        } // else continue
                     }
                 } else {
                     console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
@@ -114,42 +92,6 @@ class DataCollector {
     }
 }
 
-export const DATA_COLLECTOR = new DataCollector(wikiOptions, wordsToClean);
-
-const main = async () => {
-    // const artistsNames = ['Akhenaton']
-    const artistsNames = await dataCollector.getAllArtists();
-
-    const artistsInfos = await dataCollector.getAllArtistsIds(artistsNames);
-    const artistsInfosObject = JSON.stringify({artistsIds: artistsInfos});
-    fs.writeFileSync('./metadata/artistsIds.json', artistsInfosObject);
-    console.log('MAIN: Artists infos have been received');
-    // const artistsWithSongs = [];
-    // for (const artistInfo of artistsInfos) {
-    //         const artistWithSong = await dataCollector.getSongsPerArtist(artistInfo);
-    //         artistsWithSongs.push(artistWithSong);
-    // }
-    // console.log('MAIN: Artists with songs have been retrieved' + JSON.stringify(artistsWithSongs));
-    // const allSongs = []
-    // for (const artistWithSong of artistsWithSongs) {
-    //     const songs = await dataCollector.getSongsTexts(artistWithSong);
-    //     songs.forEach((song) => {
-    //         allSongs.push(song);
-    //         dataCollector.writeToTxt(song);
-    //     });
-    // }
-    // console.log('MAIN: All songs have been retrieved');
-    // try {
-    //     fs.writeFileSync('./allSongs.json', JSON.stringify(allSongs));
-    // } catch (e) {
-    //     console.log(e);
-    // }
-    // await dataCollector.writeToCsv(allSongs);
-}
-
-main()
-    .then(() => console.log('All done, captain!'))
-        .catch((e) => console.log(e));
 
 
 

@@ -74,13 +74,14 @@ export class GeniusClient {
                 });
                 let artistId = '';
                 let artistName = '';
+                let wikiName = artist;
                 if (artistsSongs.length > 0) {
                     artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
                     artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
                 } else {
                     console.log(`GeniusClient: ERROR: Cannot find artist id for ${artist}`);
                 }
-                return {artistId, artistName};
+                return {artistId, artistName, wikiName};
             })
             .catch(e => {
                     console.log(e)
