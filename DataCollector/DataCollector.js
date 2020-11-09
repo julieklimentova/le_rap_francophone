@@ -45,17 +45,16 @@ export class DataCollector {
         for (const artist of artists) {
             const maxTries = 3;
             for (let i = 0; i < maxTries; i++) {
-                const artistInfo = await this._geniusClient.getArtistId(artist);
-                if (artistInfo) {
-                    const {artistId} = artistInfo;
-                    if (artistId && artistId !== '') {
-                        const isDuplicated = artistsIds.filter(el => {
-                            return el.artistId === artistId;
-                        });
-                        if (isDuplicated.length === 0) {
-                            artistsIds.push(artistInfo);
-                            break;
-                        } // else continue
+                const artistInfos = await this._geniusClient.getArtistId(artist);
+                if (artistInfos.length > 0) {
+                    for (const artistInfo of artistInfos) {
+                        const {artistId} = artistInfo;
+                        if (artistId && artistId !== '') {
+                            const isDuplicated = Helpers.isDuplicated(artistId, artistsIds);
+                            if (isDuplicated.length === 0) {
+                                artistsIds.push(artistInfo);
+                            } // else continue
+                        }
                     }
                 } else {
                     console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);

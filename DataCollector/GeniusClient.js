@@ -3,6 +3,7 @@ import cheerio from 'cheerio';
 import LanguageDetect from 'languagedetect';
 import he from 'he';
 import fs from 'fs';
+import {isDuplicated} from "./Helpers";
 
 // TODO: Needs to be refactored - properties, etc.
 const accessToken = 'eo5fbsDYIEv5TIgYfTVdLevK2pjKtRDk7Nej7V1gYhpx_eNvlHLji22xvdDskpAl';
@@ -16,12 +17,14 @@ const exceptionIDs = [
     {incomingId: 'Akhenaton – Shurik\'n', geniusId: 'IAM'},
     {incomingId: 'Shurik\'N Chang-Ti', geniusId: 'Shurik’n'},
     {incomingId: 'Psmaker', geniusId: 'ISHA'},
-    {incomingId: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'}
+    {incomingId: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'},
+    {incomingId: 'Fiansoman', geniusId: 'Sofiane'}
 
 ];
 
 export class GeniusClient {
     exceptionIDs = exceptionIDs;
+
     constructor(baseUrl) {
         this._baseUrl = baseUrl;
     }
@@ -47,7 +50,7 @@ export class GeniusClient {
                 const artistsSongs = hits.filter(song => {
                     const geniusName = song.result.primary_artist.name.toLowerCase().trim();
                     let wikiName = this.alterArtist(artist);
-                        wikiName = wikiName.toLowerCase();
+                    wikiName = wikiName.toLowerCase();
                     let isArtist = geniusName.includes(wikiName) ? true : false;
                     if (!isArtist) {
                         isArtist = wikiName.includes(geniusName) ? true : false;
@@ -93,16 +96,23 @@ export class GeniusClient {
                     }
                     return isArtist;
                 });
-                let artistId = '';
-                let artistName = '';
                 let wikiName = artist;
+                let resultingGeniusArtists = [];
                 if (artistsSongs.length > 0) {
-                    artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
-                    artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
+                    for (const song of artistsSongs) {
+                        let artistId = '';
+                        let artistName = '';
+                        artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
+                        artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
+                        const isDuplicated = isDuplicated(artistId, resultingGeniusArtists);
+                        if (isDuplicated.length === 0) {
+                            resultingGeniusArtists.push({artistId, artistName, wikiName});
+                        }
+                    }
                 } else {
                     console.log(`GeniusClient: ERROR: Cannot find artist id for ${artist}`);
                 }
-                return {artistId, artistName, wikiName};
+                return resultingGeniusArtists;
             })
             .catch(e => {
                     console.log(e)

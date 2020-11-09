@@ -12,6 +12,7 @@ const artistsToAlter = [
     {wikiName: 'Akhenaton – Shurik\'n', alteredName: 'IAM'},
     {wikiName: 'Shurik\'n', alteredName: 'Shurik\'N Chang-Ti'},
     {wikiName: 'Disiz', alteredName: 'Disiz La Peste'},
+    {wikiName: 'Sofiane Zermani', alteredName: 'Fiansoman'},
 ];
 
 const moreArtists = [
@@ -25,7 +26,10 @@ const moreArtists = [
     'Veerus',
     'Psmaker',
     'Carpe Diem',
-    'Veust'
+    'Veust',
+    'Krisy',
+    'Heskis',
+    'Jarod'
 ];
 
 export class WikipediaClient {

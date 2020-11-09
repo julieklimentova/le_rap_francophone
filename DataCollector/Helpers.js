@@ -10,3 +10,8 @@
 export const removeDuplicates = (artists) => {
     return artists.filter((item, index) => artists.indexOf(item) === index)
 }
+export const isDuplicated  = (artistId, arrayOfIds) => {
+    return arrayOfIds.filter(el => {
+         return el.artistId === artistId;
+     });
+ };
