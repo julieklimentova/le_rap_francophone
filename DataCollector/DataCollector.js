@@ -32,6 +32,9 @@ export class DataCollector {
                 const artist = this._wikiPediaClient.alterArtist(entry.title);
                 artists.push(artist);
             }
+            for (const artist of this._wikiPediaClient.artistsToAdd) {
+                artists.push(artist);
+            }
         }
         const artistsTrimmed = Helpers.cleanStrings(this._wordsToClean, artists);
         return Helpers.removeDuplicates(artistsTrimmed);

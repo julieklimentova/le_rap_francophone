@@ -1,10 +1,36 @@
 import axios from 'axios';
 
+// TODO: Needs to be refactored - properties, etc.
+
 
 const artistsToAlter = [
-    {wikiName: 'Nakk', alteredName: 'Nakk Mendosa'}
+    {wikiName: 'Nakk', alteredName: 'Nakk Mendosa'},
+    {wikiName: 'Catégorie:Damso', alteredName: 'Damso'},
+    {wikiName: 'Ali', alteredName: 'Ali (FRA)'},
+    {wikiName: 'Loud', alteredName: 'Simone Cliche Trudeau'},
+    {wikiName: 'Akhenaton', alteredName: 'Sentenza'},
+    {wikiName: 'Akhenaton – Shurik\'n', alteredName: 'IAM'},
+    {wikiName: 'Shurik\'n', alteredName: 'Shurik\'N Chang-Ti'},
+    {wikiName: 'Disiz', alteredName: 'Disiz La Peste'},
 ];
+
+const moreArtists = [
+    'Népal',
+    'A2H',
+    'Malekal Morte',
+    'Keroué',
+    'Vidji',
+    'Espiiem',
+    'Sopico',
+    'Veerus',
+    'Psmaker',
+    'Carpe Diem',
+    'Veust'
+];
+
 export class WikipediaClient {
+    artistsToAlter = artistsToAlter;
+    artistsToAdd = moreArtists;
     getArtists(url, category) {
         return axios.get(`${url}${category}&format=json&cmlimit=500`)
             .then(categories => categories.data)
@@ -12,7 +38,7 @@ export class WikipediaClient {
     }
     alterArtist(artist) {
         let geniusArtist = artist;
-        const isToAlter = artistsToAlter.filter(el => {
+        const isToAlter = this.artistsToAlter.filter(el => {
             return el.wikiName === artist;
         });
         if (isToAlter.length > 0) {

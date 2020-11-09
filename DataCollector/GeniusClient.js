@@ -4,14 +4,37 @@ import LanguageDetect from 'languagedetect';
 import he from 'he';
 import fs from 'fs';
 
+// TODO: Needs to be refactored - properties, etc.
 const accessToken = 'eo5fbsDYIEv5TIgYfTVdLevK2pjKtRDk7Nej7V1gYhpx_eNvlHLji22xvdDskpAl';
 const headers = {
     'Authorization': `Bearer ${accessToken}`
 }
 
+const exceptionIDs = [
+    {incomingId: 'Simone Cliche Trudeau', geniusId: 'Loud'},
+    {incomingId: 'Sentenza', geniusId: 'Akhenaton'},
+    {incomingId: 'Akhenaton – Shurik\'n', geniusId: 'IAM'},
+    {incomingId: 'Shurik\'N Chang-Ti', geniusId: 'Shurik’n'},
+    {incomingId: 'Psmaker', geniusId: 'ISHA'},
+    {incomingId: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'}
+
+];
+
 export class GeniusClient {
-    constructor(baseUrl, header) {
+    exceptionIDs = exceptionIDs;
+    constructor(baseUrl) {
         this._baseUrl = baseUrl;
+    }
+
+    alterArtist(artist) {
+        let wikiName = artist;
+        const isToAlter = this.exceptionIDs.filter(el => {
+            return el.incomingId === wikiName;
+        });
+        if (isToAlter.length > 0) {
+            wikiName = isToAlter[0].geniusId;
+        }
+        return wikiName;
     }
 
     getArtistId(artist) {
@@ -23,14 +46,15 @@ export class GeniusClient {
                 // TODO: Possibly come up with a better filtering strategy and put into helpers/ as a method
                 const artistsSongs = hits.filter(song => {
                     const geniusName = song.result.primary_artist.name.toLowerCase().trim();
-                    const wikiName = artist.toLowerCase();
+                    let wikiName = this.alterArtist(artist);
+                        wikiName = wikiName.toLowerCase();
                     let isArtist = geniusName.includes(wikiName) ? true : false;
                     if (!isArtist) {
                         isArtist = wikiName.includes(geniusName) ? true : false;
                     }
                     const false_exceptions = ['luni', 'nubi', 'gambi', 'koma', 'sheek'];
+
                     const true_exceptions = [
-                        'Akhenaton',
                         'hamed daye',
                         `heuss l'enfoiré`,
                         'joeystarr',
@@ -45,7 +69,6 @@ export class GeniusClient {
                         `l'animalerie`,
                         `l'armée des 12`,
                         `l'atelier`,
-                        'bigflo et oli',
                         'djadja et dinaz',
                         `l'entourage`,
                         'less du neuf',
@@ -57,8 +80,6 @@ export class GeniusClient {
                         `mo'vez lang`,
                         `mafia k'1 fry`,
                         `l'algérino`,
-                        // for IAM
-                        `shurik'n`,
                         `d' de kabal`,
                         'bassem braiki',
                         `l'afro`,
@@ -85,7 +106,7 @@ export class GeniusClient {
             })
             .catch(e => {
                     console.log(e)
-                return null;
+                    return null;
                 }
             );
     }
@@ -123,32 +144,32 @@ export class GeniusClient {
                 return this.getOutput(lyrics, dataUnits, fileName, htmlText);
             } else {
                 const lyricsArray = [];
-                    $("[class*='Lyrics__Container']").each(function(i) {
+                $("[class*='Lyrics__Container']").each(function (i) {
                     lyricsArray[i] = $(this).html();
-                    });
-                    // clean up html tags
-                    let lyricsNoHTML = lyricsArray.map(el => {
-                        let result = el.replace(/<br>/g, '\n');
-                        result = result.replace(/<.+?>/g, '');
-                        result = he.decode(result);
-                        return result;
-                    });
-                    lyrics = lyricsNoHTML.join('\n');
-                    const dataUnitsArray = [];
-                    $("[class*='SongInfo__Credit']").each(function(i) {
-                        dataUnitsArray[i] = $(this).text();
-                    });
-                    const dataUnits = dataUnitsArray.join(' ');
+                });
+                // clean up html tags
+                let lyricsNoHTML = lyricsArray.map(el => {
+                    let result = el.replace(/<br>/g, '\n');
+                    result = result.replace(/<.+?>/g, '');
+                    result = he.decode(result);
+                    return result;
+                });
+                lyrics = lyricsNoHTML.join('\n');
+                const dataUnitsArray = [];
+                $("[class*='SongInfo__Credit']").each(function (i) {
+                    dataUnitsArray[i] = $(this).text();
+                });
+                const dataUnits = dataUnitsArray.join(' ');
                 if (lyrics) {
-                        return this.getOutput(lyrics, dataUnits, fileName, htmlText);
-                    } else {
-                        fs.writeFileSync(`./errors/${fileName}.html`, htmlText);
-                        console.log(`Lyrics could not be parsed because there is no lyrics class`);
-                        return null;
-                    }
+                    return this.getOutput(lyrics, dataUnits, fileName, htmlText);
+                } else {
+                    fs.writeFileSync(`./errors/${fileName}.html`, htmlText);
+                    console.log(`Lyrics could not be parsed because there is no lyrics class`);
+                    return null;
                 }
             }
         }
+    }
 
     async getSongsTexts(textsArtistInfo) {
         const completeSongs = [];
