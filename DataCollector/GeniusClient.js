@@ -18,8 +18,9 @@ const exceptionIDs = [
     {incomingId: 'Shurik\'N Chang-Ti', geniusId: 'Shurik’n'},
     {incomingId: 'Psmaker', geniusId: 'ISHA'},
     {incomingId: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'},
-    {incomingId: 'Fiansoman', geniusId: 'Sofiane'}
-
+    {incomingId: 'Fiansoman', geniusId: 'Sofiane'},
+    {incomingId: 'Les flammes du mal', geniusId: 'Passi'},
+    {incomingId: 'Némir', geniusId: 'Nemir'}
 ];
 
 export class GeniusClient {
@@ -28,7 +29,7 @@ export class GeniusClient {
     constructor(baseUrl) {
         this._baseUrl = baseUrl;
     }
-
+    // TODO: This method together with the wiki method could be refactored and put to helpers
     alterArtist(artist) {
         let wikiName = artist;
         const isToAlter = this.exceptionIDs.filter(el => {
@@ -65,7 +66,6 @@ export class GeniusClient {
                         `kalash l'afro`,
                         `mc jean gab'1`,
                         'neg lyrical',
-                        'némir',
                         `rim'k`,
                         `rockin' squat`,
                         `sat l'artificier`,
