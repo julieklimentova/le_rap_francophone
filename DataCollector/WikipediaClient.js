@@ -15,7 +15,8 @@ const artistsToAlter = [
     {wikiName: 'Sofiane Zermani', alteredName: 'Fiansoman'},
     {wikiName: 'Passi', alteredName: 'Les flammes du mal'},
     {wikiName: 'Brav', alteredName: 'Prolétariat'},
-    {wikiName: 'Calbo', alteredName: 'Le métier rentre'}
+    {wikiName: 'Calbo', alteredName: 'Le métier rentre'},
+    {wikiName: 'Blacko', alteredName: 'Blacko (FRA)'},
 ];
 
 const moreArtists = [
@@ -46,7 +47,12 @@ const moreArtists = [
     'Waltmann',
     'Doums',
     'Lalcko',
-    'L\'Indis'
+    'L\'Indis',
+    'Senamo',
+    'So Clock',
+    'Fonky Flav',
+    'Seyté',
+    'Taïpan'
 ];
 
 export class WikipediaClient {

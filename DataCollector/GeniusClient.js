@@ -23,7 +23,8 @@ const exceptionIDs = [
     {incomingId: 'Némir', geniusId: 'Nemir'},
     {incomingId: 'Swing Siméon', geniusId: 'Swing'},
     {incomingId: 'Prolétariat', geniusId: 'Brav'},
-    {incomingId: 'Le métier rentre', geniusId: 'Calbo'}
+    {incomingId: 'Le métier rentre', geniusId: 'Calbo'},
+    {incomingId: 'JoeyStarr', geniusId: 'Joey Starr'}
 ];
 
 export class GeniusClient {
