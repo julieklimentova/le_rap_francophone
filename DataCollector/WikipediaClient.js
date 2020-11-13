@@ -13,7 +13,9 @@ const artistsToAlter = [
     {wikiName: 'Shurik\'n', alteredName: 'Shurik\'N Chang-Ti'},
     {wikiName: 'Disiz', alteredName: 'Disiz La Peste'},
     {wikiName: 'Sofiane Zermani', alteredName: 'Fiansoman'},
-    {wikiName: 'Passi', alteredName: 'Les flammes du mal'}
+    {wikiName: 'Passi', alteredName: 'Les flammes du mal'},
+    {wikiName: 'Brav', alteredName: 'Prolétariat'},
+    {wikiName: 'Calbo', alteredName: 'Le métier rentre'}
 ];
 
 const moreArtists = [
@@ -38,7 +40,13 @@ const moreArtists = [
     'Mokless',
     'Koriass',
     'Prince Wally',
-    'Gros Mo'
+    'Gros Mo',
+    'Swing Siméon',
+    'Despo Rutti',
+    'Waltmann',
+    'Doums',
+    'Lalcko',
+    'L\'Indis'
 ];
 
 export class WikipediaClient {
