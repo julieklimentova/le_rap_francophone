@@ -17,6 +17,13 @@ const artistsToAlter = [
     {wikiName: 'Brav', alteredName: 'Prolétariat'},
     {wikiName: 'Calbo', alteredName: 'Le métier rentre'},
     {wikiName: 'Blacko', alteredName: 'Blacko (FRA)'},
+    {wikiName: 'Koma', alteredName: 'Koma (FRA)'},
+    {wikiName: 'Casey', alteredName: 'Apprends à t’taire'},
+    {wikiName: 'Vesti', alteredName: 'Tu captes'},
+    {wikiName: 'Larry', alteredName: 'Enfant compliqué'},
+    {wikiName: 'Hamed Daye', alteredName: 'Hamed Däye'},
+    {wikiName: 'Heuss l\'Enfoiré', alteredName: 'Heuss L’enfoiré'},
+    {wikiName: 'Jok\'Air', alteredName: 'Jok’Air'}
 ];
 
 const moreArtists = [
@@ -52,7 +59,36 @@ const moreArtists = [
     'So Clock',
     'Fonky Flav',
     'Seyté',
-    'Taïpan'
+    'Taïpan',
+    'Taïro',
+    'Spider ZED',
+    'Framal',
+    'Ladea',
+    'B-lel',
+    'Fayçal',
+    'Primero',
+    'Gracy Hopkins',
+    'Musical Homicide',
+    'Davodka',
+    'Ynnek',
+    'TiTo Prince',
+    'Esso Luxueux',
+    '2-Zer',
+    'Oumar',
+    'Gims',
+    'Barack adama',
+    'Escobar Macson',
+    'Casey',
+    'Vesti',
+    'Eli MC',
+    'Tonio MC',
+    'Kobo',
+    'Lesram',
+    'Makala',
+    'Tengo John',
+    'Di-Meh',
+    'Slimka',
+    'Zoonard'
 ];
 
 export class WikipediaClient {

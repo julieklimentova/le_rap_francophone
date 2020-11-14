@@ -24,7 +24,10 @@ const exceptionIDs = [
     {incomingId: 'Swing Siméon', geniusId: 'Swing'},
     {incomingId: 'Prolétariat', geniusId: 'Brav'},
     {incomingId: 'Le métier rentre', geniusId: 'Calbo'},
-    {incomingId: 'JoeyStarr', geniusId: 'Joey Starr'}
+    {incomingId: 'JoeyStarr', geniusId: 'Joey Starr'},
+    {incomingId: 'Musical Homicide', geniusId: 'luXe'},
+    {incomingId: 'Apprends à t’taire', geniusId: 'Casey'},
+    {incomingId: 'Enfant compliqué', geniusId: 'Larry'}
 ];
 
 export class GeniusClient {
@@ -63,9 +66,6 @@ export class GeniusClient {
                     const false_exceptions = ['luni', 'nubi', 'gambi', 'koma', 'sheek'];
 
                     const true_exceptions = [
-                        'hamed daye',
-                        `heuss l'enfoiré`,
-                        'joeystarr',
                         `jok'air`,
                         `kalash l'afro`,
                         `mc jean gab'1`,

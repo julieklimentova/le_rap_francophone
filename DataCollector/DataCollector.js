@@ -32,7 +32,8 @@ export class DataCollector {
                 const artist = this._wikiPediaClient.alterArtist(entry.title);
                 artists.push(artist);
             }
-            for (const artist of this._wikiPediaClient.artistsToAdd) {
+            for (const entry of this._wikiPediaClient.artistsToAdd) {
+                const artist = this._wikiPediaClient.alterArtist(entry);
                 artists.push(artist);
             }
         }
