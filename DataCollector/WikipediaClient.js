@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // TODO: Needs to be refactored - properties, etc.
-
+// TODO: Need to parametrize / make configurable usage of altering and manually found artists
 
 const artistsToAlter = [
     {wikiName: 'Nakk', alteredName: 'Nakk Mendosa'},
@@ -23,7 +23,29 @@ const artistsToAlter = [
     {wikiName: 'Larry', alteredName: 'Enfant compliqué'},
     {wikiName: 'Hamed Daye', alteredName: 'Hamed Däye'},
     {wikiName: 'Heuss l\'Enfoiré', alteredName: 'Heuss L’enfoiré'},
-    {wikiName: 'Jok\'Air', alteredName: 'Jok’Air'}
+    {wikiName: 'Jok\'Air', alteredName: 'Jok’Air'},
+    {wikiName: 'Kalash l\'Afro', alteredName: 'Kalash l’Afro'},
+    {wikiName: 'MC Jean Gab\'1', alteredName: 'MC Jean Gab’1'},
+    {wikiName: 'Neg Lyrical', alteredName: 'Neg’Lyrical'},
+    {wikiName: 'Rim\'K', alteredName: 'Rim’K'},
+    {wikiName: 'Rockin\' Squat', alteredName: 'Rockin’ Squat'},
+    {wikiName: 'Sat l\'Artificier', alteredName: 'Sat l’Artificier'},
+    {wikiName: 'L\'Animalerie', alteredName: 'L’Animalerie'},
+    {wikiName: 'L\'Armée des 12', alteredName: 'L’Armée des 12'},
+    {wikiName: 'l\'atelier', alteredName: 'L’Atelier'},
+    {wikiName: 'Djadja et Dinaz', alteredName: 'Djadja & Dinaz'},
+    {wikiName: 'L\'Entourage', alteredName: 'L’Entourage'},
+    {wikiName: 'Less du Neuf', alteredName: 'Less’ du Neuf'},
+    {wikiName: 'diam\'s', alteredName: 'Diam’s'},
+    {wikiName: '\'t Hof van Commerce', alteredName: '’T Hof Van Commerce'},
+    {wikiName: 'L\'Skadrille', alteredName: 'L’Skadrille'},
+    {wikiName: 'sexion d\'assaut', alteredName: 'Sexion d’Assaut'},
+    {wikiName: 'Nèg\' Marrons', alteredName: 'Neg’ Marrons'},
+    {wikiName: 'Mo\'vez Lang', alteredName: 'Mo’vez Lang'},
+    {wikiName: 'Mafia K\'1 Fry', alteredName: 'Mafia K’1 Fry'},
+    {wikiName: 'L\'Algérino', alteredName: 'L’Algérino'},
+    {wikiName: 'D\' de Kabal', alteredName: 'D’ de Kabal'},
+    {wikiName: 'Bassem Braïki', alteredName: 'Bassem Braiki'},
 ];
 
 const moreArtists = [

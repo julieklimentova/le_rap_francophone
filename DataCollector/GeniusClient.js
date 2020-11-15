@@ -64,39 +64,8 @@ export class GeniusClient {
                         isArtist = wikiName.includes(geniusName) ? true : false;
                     }
                     const false_exceptions = ['luni', 'nubi', 'gambi', 'koma', 'sheek'];
-
-                    const true_exceptions = [
-                        `jok'air`,
-                        `kalash l'afro`,
-                        `mc jean gab'1`,
-                        'neg lyrical',
-                        `rim'k`,
-                        `rockin' squat`,
-                        `sat l'artificier`,
-                        `l'animalerie`,
-                        `l'armée des 12`,
-                        `l'atelier`,
-                        'djadja et dinaz',
-                        `l'entourage`,
-                        'less du neuf',
-                        `diam's`,
-                        `'t hof van commerce`,
-                        `l'skadrille`,
-                        `sexion d'assaut`,
-                        `nèg' marrons`,
-                        `mo'vez lang`,
-                        `mafia k'1 fry`,
-                        `l'algérino`,
-                        `d' de kabal`,
-                        'bassem braiki',
-                        `l'afro`,
-                        `bassem braïki`
-                    ];
                     if (false_exceptions.includes(wikiName)) {
                         isArtist = false;
-                    }
-                    if (true_exceptions.includes(wikiName)) {
-                        isArtist = true;
                     }
                     return isArtist;
                 });
