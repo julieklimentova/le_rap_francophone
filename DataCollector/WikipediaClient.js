@@ -46,6 +46,9 @@ const artistsToAlter = [
     {wikiName: 'L\'Algérino', alteredName: 'L’Algérino'},
     {wikiName: 'D\' de Kabal', alteredName: 'D’ de Kabal'},
     {wikiName: 'Bassem Braïki', alteredName: 'Bassem Braiki'},
+    {wikiName: 'Big Red', alteredName: 'Deenastyle'},
+    {wikiName: 'Black M', alteredName: 'Black Mesrimes'},
+    {wikiName: 'Infinit’', alteredName: 'Cigarette 2 Haine'}
 ];
 
 const moreArtists = [
@@ -110,7 +113,8 @@ const moreArtists = [
     'Tengo John',
     'Di-Meh',
     'Slimka',
-    'Zoonard'
+    'Zoonard',
+    'Infinit’'
 ];
 
 export class WikipediaClient {
