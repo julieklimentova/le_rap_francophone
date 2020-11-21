@@ -6,7 +6,7 @@ import fs from 'fs';
 import {isDuplicated} from "./Helpers";
 
 // TODO: Needs to be refactored - properties, etc.
-const accessToken = 'eo5fbsDYIEv5TIgYfTVdLevK2pjKtRDk7Nej7V1gYhpx_eNvlHLji22xvdDskpAl';
+const accessToken = 'k5wFaR-smIgqySdPhlx70AaYYBAH3KspLSEWK_dsjfDCA9R8_zvrviDGWEYZiTRo';
 const headers = {
     'Authorization': `Bearer ${accessToken}`
 }
@@ -34,6 +34,7 @@ const exceptionIDs = [
 ];
 
 export class GeniusClient {
+    // TODO: assign in constructor, ideally make it an argument
     exceptionIDs = exceptionIDs;
 
     constructor(baseUrl) {
@@ -56,6 +57,7 @@ export class GeniusClient {
         const searchQuery = `/search?q=${encodedArtist}`;
         return axios.get(`${this._baseUrl}${searchQuery}`, {timeout: 200000, headers})
             .then(response => {
+                console.log(response.data);
                 const hits = response.data.response.hits;
                 // TODO: Possibly come up with a better filtering strategy and put into helpers/ as a method
                 const artistsSongs = hits.filter(song => {

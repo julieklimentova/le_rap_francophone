@@ -47,11 +47,15 @@ class DataExtractor {
         } catch (e) {
             console.log(e);
         }
-        FILE_WIKI_ARTISTS = null;
-        fs.readFile('./metadata/artists.json', (err, data) => {
-            if (err)  console.log(err);
-            FILE_WIKI_ARTISTS = JSON.parse(data);
-        });
+        FILE_WIKI_ARTISTS = undefined;
+        let fileWikiArtists;
+        try {
+            fileWikiArtists = fs.readFileSync('./metadata/artists.json');
+            FILE_WIKI_ARTISTS = JSON.parse(fileWikiArtists.toString());
+        } catch (e) {
+            console.log(e);
+        }
+        WIKI_ARTISTS = undefined;
         WIKI_ARTISTS = wikiArtists;
         console.log('DataExtractor.exportArtists: Artists names have been received');
     }
@@ -64,12 +68,15 @@ class DataExtractor {
         } catch (e) {
                 console.log(e);
         }
-        FILE_GENIUS_IDS = null;
-        fs.readFile('./metadata/artistsIds.json', (err, data) => {
-            if (err)  console.log(err);
-            FILE_GENIUS_IDS = JSON.parse(data);
-        });
-        GENIUS_IDS = null;
+        FILE_GENIUS_IDS = undefined;
+        let fileGeniusIds;
+        try {
+            fileGeniusIds = fs.readFileSync('./metadata/artistsIds.json')
+            FILE_GENIUS_IDS = JSON.parse(fileGeniusIds);
+        } catch (e) {
+            console.log(e);
+        }
+        GENIUS_IDS = undefined;
         GENIUS_IDS = artistsIds;
         console.log('DataExtractor.exportArtistsIDs: Artists IDs have been received');
     }
@@ -90,7 +97,7 @@ class DataExtractor {
         FILE_ARTISTS_AND_SONGS = null;
         fs.readFile('./metadata/artistsWithSongs.json', (err, data) => {
             if (err)  console.log(err);
-            FILE_ARTISTS_AND_SONGS = JSON.parse(data);
+            FILE_ARTISTS_AND_SONGS = JSON.parse(data.toString());
         });
         ARTISTS_AND_SONGS = null;
         ARTISTS_AND_SONGS = artistsWithSongs;
@@ -116,7 +123,7 @@ class DataExtractor {
         FILE_ALL_SONGS = null;
         fs.readFile('./metadata/allSongs.json', (err, data) => {
             if (err)  console.log(err);
-            FILE_ALL_SONGS = JSON.parse(data);
+            FILE_ALL_SONGS = JSON.parse(data.toString());
         });
         ALL_SONGS = null;
         ALL_SONGS = allSongs;

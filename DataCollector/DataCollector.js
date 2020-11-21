@@ -29,25 +29,27 @@ export class DataCollector {
             const result = await this._wikiPediaClient.getArtists(apiUrl, category);
             const categoryMembers = result.query.categorymembers;
             for (const entry of categoryMembers) {
-                const artist = this._wikiPediaClient.alterArtist(entry.title);
+                const artistTrimmed = Helpers.cleanStrings(this._wordsToClean, entry.title);
+                const artist = this._wikiPediaClient.alterArtist(artistTrimmed);
                 artists.push(artist);
             }
-            for (const entry of this._wikiPediaClient.artistsToAdd) {
-                const artist = this._wikiPediaClient.alterArtist(entry);
+            for (const item of this._wikiPediaClient.artistsToAdd) {
+                const artistTrimmed = Helpers.cleanStrings(this._wordsToClean, item);
+                const artist = this._wikiPediaClient.alterArtist(artistTrimmed);
                 artists.push(artist);
             }
         }
-        const artistsTrimmed = Helpers.cleanStrings(this._wordsToClean, artists);
-        return Helpers.removeDuplicates(artistsTrimmed);
+        return Helpers.removeDuplicates(artists);
     }
 
     async getAllArtistsIds(artists) {
+        console.log(artists);
         const artistsIds = [];
         for (const artist of artists) {
             const maxTries = 3;
             for (let i = 0; i < maxTries; i++) {
                 const artistInfos = await this._geniusClient.getArtistId(artist);
-                if (artistInfos.length > 0) {
+                if (artistInfos && artistInfos.length > 0) {
                     for (const artistInfo of artistInfos) {
                         const {artistId} = artistInfo;
                         if (artistId && artistId !== '') {

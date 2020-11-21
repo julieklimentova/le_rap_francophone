@@ -9,7 +9,7 @@ const artistsToAlter = [
     {wikiName: 'Ali', alteredName: 'Ali (FRA)'},
     {wikiName: 'Loud', alteredName: 'Simone Cliche Trudeau'},
     {wikiName: 'Akhenaton', alteredName: 'Sentenza'},
-    {wikiName: 'Akhenaton – Shurik\'n', alteredName: 'IAM'},
+    {wikiName: 'IAM', alteredName: 'Akhenaton – Shurik\'n'},
     {wikiName: 'Shurik\'n', alteredName: 'Shurik\'N Chang-Ti'},
     {wikiName: 'Disiz', alteredName: 'Disiz La Peste'},
     {wikiName: 'Sofiane Zermani', alteredName: 'Fiansoman'},
@@ -118,6 +118,7 @@ const moreArtists = [
 ];
 
 export class WikipediaClient {
+    // TODO: assign in constructor, ideally make it an argument
     artistsToAlter = artistsToAlter;
     artistsToAdd = moreArtists;
     getArtists(url, category) {
