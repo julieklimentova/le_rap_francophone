@@ -48,7 +48,8 @@ const artistsToAlter = [
     {wikiName: 'Bassem Braïki', alteredName: 'Bassem Braiki'},
     {wikiName: 'Big Red', alteredName: 'Deenastyle'},
     {wikiName: 'Black M', alteredName: 'Black Mesrimes'},
-    {wikiName: 'Infinit’', alteredName: 'Cigarette 2 Haine'}
+    {wikiName: 'Infinit’', alteredName: 'Cigarette 2 Haine'},
+    {wikiName: 'Ben-J', alteredName: 'Ben-J (FRA)'}
 ];
 
 const moreArtists = [

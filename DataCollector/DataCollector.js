@@ -43,7 +43,6 @@ export class DataCollector {
     }
 
     async getAllArtistsIds(artists) {
-        console.log(artists);
         const artistsIds = [];
         for (const artist of artists) {
             const maxTries = 3;
@@ -53,8 +52,8 @@ export class DataCollector {
                     for (const artistInfo of artistInfos) {
                         const {artistId} = artistInfo;
                         if (artistId && artistId !== '') {
-                            const isDuplicated = Helpers.isDuplicated(artistId, artistsIds);
-                            if (isDuplicated.length === 0) {
+                            const isArtistDuplicated = Helpers.isDuplicated(artistId, artistsIds);
+                            if (isArtistDuplicated.length === 0) {
                                 artistsIds.push(artistInfo);
                             } // else continue
                         }
@@ -91,9 +90,9 @@ export class DataCollector {
             }
         }
     }
-    async writeToCsv(objects) {
+    async writeToCsv(objects, filename) {
         const csv = new ObjectsToCsv(objects);
-        await csv.toDisk('./metadata/songsMetadata.csv', {append: true});
+        await csv.toDisk(`./metadata/${filename}.csv`, {append: true});
     }
 }
 

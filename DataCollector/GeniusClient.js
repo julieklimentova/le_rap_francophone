@@ -57,8 +57,7 @@ export class GeniusClient {
         const searchQuery = `/search?q=${encodedArtist}`;
         return axios.get(`${this._baseUrl}${searchQuery}`, {timeout: 200000, headers})
             .then(response => {
-                console.log(response.data);
-                const hits = response.data.response.hits;
+                const hits = response.data.response.hits ? response.data.response.hits : [];
                 // TODO: Possibly come up with a better filtering strategy and put into helpers/ as a method
                 const artistsSongs = hits.filter(song => {
                     const geniusName = song.result.primary_artist.name.toLowerCase().trim();
@@ -78,12 +77,10 @@ export class GeniusClient {
                 let resultingGeniusArtists = [];
                 if (artistsSongs.length > 0) {
                     for (const song of artistsSongs) {
-                        let artistId = '';
-                        let artistName = '';
-                        artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
-                        artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
-                        const isDuplicated = isDuplicated(artistId, resultingGeniusArtists);
-                        if (isDuplicated.length === 0) {
+                        const artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
+                        const artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
+                        const isArtistDuplicated = isDuplicated(artistId, resultingGeniusArtists);
+                        if (isArtistDuplicated.length === 0) {
                             resultingGeniusArtists.push({artistId, artistName, wikiName});
                         }
                     }

@@ -78,6 +78,7 @@ class DataExtractor {
         }
         GENIUS_IDS = undefined;
         GENIUS_IDS = artistsIds;
+        await DATA_COLLECTOR.writeToCsv(artistsIds, 'artistsIds');
         console.log('DataExtractor.exportArtistsIDs: Artists IDs have been received');
     }
 
@@ -128,7 +129,7 @@ class DataExtractor {
         ALL_SONGS = null;
         ALL_SONGS = allSongs;
         console.log('DataExtractor.exportAllSongs: All songs have been retrieved');
-        await DATA_COLLECTOR.writeToCsv(allSongs);
+        await DATA_COLLECTOR.writeToCsv(allSongs, 'songsMetadata');
     }
 }
 
