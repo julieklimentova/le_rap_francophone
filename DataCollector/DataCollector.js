@@ -44,10 +44,14 @@ export class DataCollector {
 
     async getAllArtistsIds(artists) {
         const artistsIds = [];
+        const notFoundArtists = [];
         for (const artist of artists) {
             const maxTries = 3;
             for (let i = 0; i < maxTries; i++) {
-                const artistInfos = await this._geniusClient.getArtistId(artist);
+                const artistsObject = await this._geniusClient.getArtistId(artist)
+                if (artistsObject) {
+                const artistInfos = artistsObject.resultingGeniusArtists;
+                notFoundArtists.push(artistsObject.notFound);
                 if (artistInfos && artistInfos.length > 0) {
                     for (const artistInfo of artistInfos) {
                         const {artistId} = artistInfo;
@@ -59,6 +63,9 @@ export class DataCollector {
                         }
                     }
                 } else {
+                    console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
+                }
+            } else {
                     console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
                 }
             }
@@ -92,7 +99,7 @@ export class DataCollector {
     }
     async writeToCsv(objects, filename) {
         const csv = new ObjectsToCsv(objects);
-        await csv.toDisk(`./metadata/${filename}.csv`, {append: true});
+        await csv.toDisk(`./metadata/${filename}.csv`, {append: true, bom: true});
     }
 }
 

@@ -4,6 +4,7 @@ import LanguageDetect from 'languagedetect';
 import he from 'he';
 import fs from 'fs';
 import {isDuplicated} from "./Helpers";
+import {FILE_GENIUS_IDS} from "./DataExtractor";
 
 // TODO: Needs to be refactored - properties, etc.
 const accessToken = 'k5wFaR-smIgqySdPhlx70AaYYBAH3KspLSEWK_dsjfDCA9R8_zvrviDGWEYZiTRo';
@@ -55,6 +56,7 @@ export class GeniusClient {
     getArtistId(artist) {
         const encodedArtist = encodeURI(artist);
         const searchQuery = `/search?q=${encodedArtist}`;
+        let notFound;
         return axios.get(`${this._baseUrl}${searchQuery}`, {timeout: 200000, headers})
             .then(response => {
                 const hits = response.data.response.hits ? response.data.response.hits : [];
@@ -86,8 +88,9 @@ export class GeniusClient {
                     }
                 } else {
                     console.log(`GeniusClient: ERROR: Cannot find artist id for ${artist}`);
+                    notFound = artist;
                 }
-                return resultingGeniusArtists;
+                return {resultingGeniusArtists: resultingGeniusArtists, notFound};
             })
             .catch(e => {
                     console.log(e)
