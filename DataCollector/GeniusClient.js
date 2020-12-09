@@ -37,7 +37,10 @@ const exceptionIDs = [
     {geniusSearchName: 'Lunikar', geniusId: 'Luni'},
     {geniusSearchName: 'Moussa Mansaly', geniusId: 'Sam’s'},
     {geniusSearchName: 'Missié GG', geniusId: 'Fuckly'},
-
+    {geniusSearchName: 'Engrenage', geniusId: 'Nubi'},
+    {geniusSearchName: 'Cafarnaüm', geniusId: 'Virus'},
+    {geniusSearchName: '7ème sens', geniusId: 'ATK'},
+    {geniusSearchName: 'Manich Mena', geniusId: 'M.A.P'}
 ];
 
 export class GeniusClient {
@@ -69,14 +72,14 @@ export class GeniusClient {
                 // TODO: Possibly come up with a better filtering strategy and put into helpers/ as a method
                 const artistsSongs = hits.filter(song => {
                     const geniusName = song.result.primary_artist.name.toLowerCase().trim();
-                    let wikiName = this.alterArtist(artist);
-                    wikiName = wikiName.toLowerCase();
-                    let isArtist = geniusName.includes(wikiName) ? true : false;
+                    let searchName = this.alterArtist(artist);
+                    searchName = searchName.toLowerCase();
+                    let isArtist = geniusName.includes(searchName) ? true : false;
                     if (!isArtist) {
-                        isArtist = wikiName.includes(geniusName) ? true : false;
+                        isArtist = searchName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['nubi', 'koma', 'sheek'];
-                    if (false_exceptions.includes(wikiName)) {
+                    const false_exceptions = ['koma', 'sheek'];
+                    if (false_exceptions.includes(searchName)) {
                         isArtist = false;
                     }
                     return isArtist;
@@ -84,6 +87,7 @@ export class GeniusClient {
                 let wikiName = artist;
                 let resultingGeniusArtists = [];
                 if (artistsSongs.length > 0) {
+                    notFound = undefined;
                     for (const song of artistsSongs) {
                         const artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
                         const artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';

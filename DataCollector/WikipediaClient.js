@@ -53,7 +53,15 @@ const artistsToAlter = [
     {wikiName: 'Utilisateur:RapFrFAN/Dakeez', geniusSearchName: 'Dakeez'},
     {wikiName: 'Féfé', geniusSearchName: 'Soldat fou'},
     {wikiName: 'Gambi', geniusSearchName: 'Gambino Jetski'},
-    {wikiName: "Luni", geniusSearchName: 'Lunikar'},
+    {wikiName: 'Luni', geniusSearchName: 'Lunikar'},
+    {wikiName: 'Nubi', geniusSearchName: 'Engrenage'},
+    {wikiName: 'Ol Kainry', geniusSearchName: 'Ol’ Kainry'},
+    {wikiName: 'Pih Poh', geniusSearchName: 'Pihpoh'},
+    {wikiName: 'Virus', geniusSearchName: 'Cafarnaüm'},
+    {wikiName: 'Assassin', geniusSearchName: 'Assassin (FRA)'},
+    {wikiName: 'L\'Atelier', geniusSearchName: 'L’Atelier'},
+    {wikiName: 'ATK', geniusSearchName: '7ème sens'},
+    {wikiName: 'Ministère des affaires populaires', geniusSearchName: 'Manich Mena'}
 ];
 
 const moreArtists = [
