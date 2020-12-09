@@ -51,7 +51,9 @@ export class DataCollector {
                 const artistsObject = await this._geniusClient.getArtistId(artist)
                 if (artistsObject) {
                 const artistInfos = artistsObject.resultingGeniusArtists;
-                notFoundArtists.push(artistsObject.notFound);
+                if (!notFoundArtists.includes(artistsObject.notFound)) {
+                    notFoundArtists.push(artistsObject.notFound);
+                } // nothing happens
                 if (artistInfos && artistInfos.length > 0) {
                     for (const artistInfo of artistInfos) {
                         const {artistId} = artistInfo;
@@ -60,7 +62,7 @@ export class DataCollector {
                             if (isArtistDuplicated.length === 0) {
                                 artistsIds.push(artistInfo);
                             } // else continue
-                        }
+                        } // nothing happens
                     }
                 } else {
                     console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
@@ -69,6 +71,12 @@ export class DataCollector {
                     console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
                 }
             }
+        }
+        const notFoundToWrite = JSON.stringify({notFound: notFoundArtists});
+        try {
+            fs.writeFileSync('./errors/notfound.json', notFoundToWrite);
+        } catch (e) {
+            console.log(e);
         }
         return artistsIds;
     }

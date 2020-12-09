@@ -13,25 +13,31 @@ const headers = {
 }
 
 const exceptionIDs = [
-    {incomingId: 'Simone Cliche Trudeau', geniusId: 'Loud'},
-    {incomingId: 'Sentenza', geniusId: 'Akhenaton'},
-    {incomingId: 'Akhenaton – Shurik\'n', geniusId: 'IAM'},
-    {incomingId: 'Shurik\'N Chang-Ti', geniusId: 'Shurik’n'},
-    {incomingId: 'Psmaker', geniusId: 'ISHA'},
-    {incomingId: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'},
-    {incomingId: 'Fiansoman', geniusId: 'Sofiane'},
-    {incomingId: 'Les flammes du mal', geniusId: 'Passi'},
-    {incomingId: 'Némir', geniusId: 'Nemir'},
-    {incomingId: 'Swing Siméon', geniusId: 'Swing'},
-    {incomingId: 'Prolétariat', geniusId: 'Brav'},
-    {incomingId: 'Le métier rentre', geniusId: 'Calbo'},
-    {incomingId: 'JoeyStarr', geniusId: 'Joey Starr'},
-    {incomingId: 'Musical Homicide', geniusId: 'luXe'},
-    {incomingId: 'Apprends à t’taire', geniusId: 'Casey'},
-    {incomingId: 'Enfant compliqué', geniusId: 'Larry'},
-    {incomingId: 'Deenastyle', geniusId: 'Big Red'},
-    {incomingId: 'Black Mesrimes', geniusId: 'Black M'},
-    {incomingId: 'Cigarette 2 Haine', geniusId: 'Infinit’'}
+    {geniusSearchName: 'Simone Cliche Trudeau', geniusId: 'Loud'},
+    {geniusSearchName: 'Sentenza', geniusId: 'Akhenaton'},
+    {geniusSearchName: 'Akhenaton – Shurik\'n', geniusId: 'IAM'},
+    {geniusSearchName: 'Shurik\'N Chang-Ti', geniusId: 'Shurik’n'},
+    {geniusSearchName: 'Psmaker', geniusId: 'ISHA'},
+    {geniusSearchName: 'Bigflo et Oli', geniusId: 'Bigflo & Oli'},
+    {geniusSearchName: 'Fiansoman', geniusId: 'Sofiane'},
+    {geniusSearchName: 'Les flammes du mal', geniusId: 'Passi'},
+    {geniusSearchName: 'Némir', geniusId: 'Nemir'},
+    {geniusSearchName: 'Swing Siméon', geniusId: 'Swing'},
+    {geniusSearchName: 'Prolétariat', geniusId: 'Brav'},
+    {geniusSearchName: 'Le métier rentre', geniusId: 'Calbo'},
+    {geniusSearchName: 'JoeyStarr', geniusId: 'Joey Starr'},
+    {geniusSearchName: 'Musical Homicide', geniusId: 'luXe'},
+    {geniusSearchName: 'Apprends à t’taire', geniusId: 'Casey'},
+    {geniusSearchName: 'Enfant compliqué', geniusId: 'Larry'},
+    {geniusSearchName: 'Deenastyle', geniusId: 'Big Red'},
+    {geniusSearchName: 'Black Mesrimes', geniusId: 'Black M'},
+    {geniusSearchName: 'Cigarette 2 Haine', geniusId: 'Infinit’'},
+    {geniusSearchName: 'Soldat Fou', geniusId: 'Féfé'},
+    {geniusSearchName: 'Gambino Jetski', geniusId: 'Gambi'},
+    {geniusSearchName: 'Lunikar', geniusId: 'Luni'},
+    {geniusSearchName: 'Moussa Mansaly', geniusId: 'Sam’s'},
+    {geniusSearchName: 'Missié GG', geniusId: 'Fuckly'},
+
 ];
 
 export class GeniusClient {
@@ -45,7 +51,7 @@ export class GeniusClient {
     alterArtist(artist) {
         let wikiName = artist;
         const isToAlter = this.exceptionIDs.filter(el => {
-            return el.incomingId === wikiName;
+            return el.geniusSearchName === wikiName;
         });
         if (isToAlter.length > 0) {
             wikiName = isToAlter[0].geniusId;
@@ -69,7 +75,7 @@ export class GeniusClient {
                     if (!isArtist) {
                         isArtist = wikiName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['luni', 'nubi', 'gambi', 'koma', 'sheek'];
+                    const false_exceptions = ['nubi', 'koma', 'sheek'];
                     if (false_exceptions.includes(wikiName)) {
                         isArtist = false;
                     }
