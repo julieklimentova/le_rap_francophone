@@ -61,7 +61,8 @@ const artistsToAlter = [
     {wikiName: 'Assassin', geniusSearchName: 'Assassin (FRA)'},
     {wikiName: 'L\'Atelier', geniusSearchName: 'L’Atelier'},
     {wikiName: 'ATK', geniusSearchName: '7ème sens'},
-    {wikiName: 'Ministère des affaires populaires', geniusSearchName: 'Manich Mena'}
+    {wikiName: 'Ministère des affaires populaires', geniusSearchName: 'Manich Mena'},
+    {wikiName: 'One Shot', geniusSearchName: 'One Shot (Rapper)'},
 ];
 
 const moreArtists = [
