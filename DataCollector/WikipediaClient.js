@@ -63,6 +63,8 @@ const artistsToAlter = [
     {wikiName: 'ATK', geniusSearchName: '7ème sens'},
     {wikiName: 'Ministère des affaires populaires', geniusSearchName: 'Manich Mena'},
     {wikiName: 'One Shot', geniusSearchName: 'One Shot (Rapper)'},
+    {wikiName: 'Sexion d\'assaut', geniusSearchName: 'Avant qu\'elle parte'},
+    {wikiName: 'Ness & Cité', geniusSearchName: 'Rîmes et bâtiments'}
 ];
 
 const moreArtists = [

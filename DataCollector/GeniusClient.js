@@ -40,7 +40,9 @@ const exceptionIDs = [
     {geniusSearchName: 'Engrenage', geniusId: 'Nubi'},
     {geniusSearchName: 'Cafarnaüm', geniusId: 'Virus'},
     {geniusSearchName: '7ème sens', geniusId: 'ATK'},
-    {geniusSearchName: 'Manich Mena', geniusId: 'M.A.P'}
+    {geniusSearchName: 'Manich Mena', geniusId: 'M.A.P'},
+    {geniusSearchName: 'Avant qu\'elle parte\'', geniusId: 'Sexion d\'Assaut'},
+    {geniusSearchName: 'Rîmes et bâtiments', geniusId: 'Ness & Cité'}
 ];
 
 export class GeniusClient {
@@ -110,17 +112,21 @@ export class GeniusClient {
     }
 
     async getSongs(getSongsArtistInfo) {
+        const artistShortcut = getSongsArtistInfo.artistName.slice(0, 4).toUpperCase();
         const query = `/artists/${getSongsArtistInfo.artistId}/songs?access_token=${accessToken}`;
         const songs = [];
         await axios.get(`${this._baseUrl}${query}`, {timeout: 200000})
             .then(response => {
                 if (response.data) {
+                    let numberId = 1;
                     for (const song of response.data.response.songs) {
                         const songObject = {
+                            songShortcut:`${artistShortcut}${numberId}`,
                             title: song.full_title,
                             songId: song.id,
                             url: song.url
                         };
+                        numberId++;
                         songs.push(songObject);
                     }
                 } // else nothing
@@ -185,15 +191,10 @@ export class GeniusClient {
                                     console.log(`The fetched lyrics for ${song.title} are invalid`);
                                 } else if (songInfo) {
                                     const {artistId, artistName} = textsArtistInfo;
-                                    const txtNameFull = `${song.title}`;
-                                    const txtNameShort = txtNameFull.substring(0, 50);
-                                    const txtNameRelease = `${txtNameShort}${songInfo.releaseDate}`;
-                                    const escapedSpecialCharactersTxtName = txtNameRelease.replace(/\W+/g, '_');
                                     const newSongInfo = {
                                         ...song, ...songInfo,
                                         artistId,
                                         artistName,
-                                        txtName: escapedSpecialCharactersTxtName
                                     };
                                     completeSongs.push(newSongInfo);
                                     break;

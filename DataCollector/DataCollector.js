@@ -99,7 +99,7 @@ export class DataCollector {
     writeToTxt(song) {
         if (!song.lyrics.includes('no lyrics found')) {
             try {
-                fs.writeFileSync(`./files/${song.txtName}.txt`, song.lyrics);
+                fs.writeFileSync(`./files/${song.songShortcut}.txt`, song.lyrics);
             } catch (e) {
                 console.log(e);
             }
