@@ -42,7 +42,14 @@ const exceptionIDs = [
     {geniusSearchName: '7ème sens', geniusId: 'ATK'},
     {geniusSearchName: 'Manich Mena', geniusId: 'M.A.P'},
     {geniusSearchName: 'Avant qu\'elle parte\'', geniusId: 'Sexion d\'Assaut'},
-    {geniusSearchName: 'Rîmes et bâtiments', geniusId: 'Ness & Cité'}
+    {geniusSearchName: 'Rîmes et bâtiments', geniusId: 'Ness & Cité'},
+    {geniusSearchName: 'La Tour des Miracles', geniusId: 'Axios'},
+    {geniusSearchName: 'Le Maire de la ville', geniusId: 'Driver'},
+    {geniusSearchName: 'Comme un rat dans l’coin', geniusId: 'Fabe'},
+    {geniusSearchName: 'Salim Lakhdari', geniusId: 'LIM'},
+    {geniusSearchName: 'Dybala', geniusId: 'Maes'},
+    {geniusSearchName: 'Le Vrai Michel', geniusId: 'Michel'},
+    {geniusSearchName: 'Ghislain Loussingu', geniusId: 'Mystik'}
 ];
 
 export class GeniusClient {
@@ -80,22 +87,22 @@ export class GeniusClient {
                     if (!isArtist) {
                         isArtist = searchName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['koma', 'sheek'];
+                    const false_exceptions = ['sheek', 'al', 'east', ''];
                     if (false_exceptions.includes(searchName)) {
                         isArtist = false;
                     }
                     return isArtist;
                 });
-                let wikiName = artist;
+                let geniusSearchName = artist;
                 let resultingGeniusArtists = [];
                 if (artistsSongs.length > 0) {
                     notFound = undefined;
                     for (const song of artistsSongs) {
                         const artistId = artistsSongs[0].result.primary_artist.id ? artistsSongs[0].result.primary_artist.id : '';
-                        const artistName = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
+                        const geniusId = artistsSongs[0].result.primary_artist.name ? artistsSongs[0].result.primary_artist.name : '';
                         const isArtistDuplicated = isDuplicated(artistId, resultingGeniusArtists);
                         if (isArtistDuplicated.length === 0) {
-                            resultingGeniusArtists.push({artistId, artistName, wikiName});
+                            resultingGeniusArtists.push({artistId, geniusId, geniusSearchName});
                         }
                     }
                 } else {

@@ -64,7 +64,17 @@ const artistsToAlter = [
     {wikiName: 'Ministère des affaires populaires', geniusSearchName: 'Manich Mena'},
     {wikiName: 'One Shot', geniusSearchName: 'One Shot (Rapper)'},
     {wikiName: 'Sexion d\'assaut', geniusSearchName: 'Avant qu\'elle parte'},
-    {wikiName: 'Ness & Cité', geniusSearchName: 'Rîmes et bâtiments'}
+    {wikiName: 'Ness & Cité', geniusSearchName: 'Rîmes et bâtiments'},
+    {wikiName: 'Koma', geniusSearchName: 'Koma (FRA)'},
+    {wikiName: 'Axiom', geniusSearchName: 'La Tour des Miracles'},
+    {wikiName: 'Driver', geniusSearchName: 'Le Maire de la ville'},
+    {wikiName: 'EJM', geniusSearchName: 'EJM (Rappeur)'},
+    {wikiName: 'Fabe', geniusSearchName: 'Comme un rat dans l’coin'},
+    {wikiName: 'Freeman', geniusSearchName: 'Freeman (FRA)'},
+    {wikiName: 'LIM', geniusSearchName: 'Salim Lakhdari'},
+    {wikiName: 'Maes', geniusSearchName: 'Dybala'},
+    {wikiName: 'Michel', geniusSearchName: 'Le Vrai Michel'},
+    {wikiName: 'Mystik', geniusSearchName:  'Ghislain Loussingu'}
 ];
 
 const moreArtists = [
