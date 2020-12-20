@@ -49,7 +49,11 @@ const exceptionIDs = [
     {geniusSearchName: 'Salim Lakhdari', geniusId: 'LIM'},
     {geniusSearchName: 'Dybala', geniusId: 'Maes'},
     {geniusSearchName: 'Le Vrai Michel', geniusId: 'Michel'},
-    {geniusSearchName: 'Ghislain Loussingu', geniusId: 'Mystik'}
+    {geniusSearchName: 'Ghislain Loussingu', geniusId: 'Mystik'},
+    {geniusSearchName: 'Loin de moi', geniusId: 'Naza'},
+    {geniusSearchName: 'Allô Maman', geniusId: 'SCH'},
+    {geniusSearchName: 'Six Coups MC', geniusId: 'Six'},
+    {geniusSearchName: 'Chez Wam', geniusId: 'Sultan'}
 ];
 
 export class GeniusClient {
@@ -87,7 +91,7 @@ export class GeniusClient {
                     if (!isArtist) {
                         isArtist = searchName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['sheek', 'al', 'east', ''];
+                    const false_exceptions = ['sheek', 'al', 'east', 'narcisse', ];
                     if (false_exceptions.includes(searchName)) {
                         isArtist = false;
                     }

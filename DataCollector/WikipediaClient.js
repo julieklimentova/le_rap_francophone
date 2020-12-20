@@ -74,7 +74,11 @@ const artistsToAlter = [
     {wikiName: 'LIM', geniusSearchName: 'Salim Lakhdari'},
     {wikiName: 'Maes', geniusSearchName: 'Dybala'},
     {wikiName: 'Michel', geniusSearchName: 'Le Vrai Michel'},
-    {wikiName: 'Mystik', geniusSearchName:  'Ghislain Loussingu'}
+    {wikiName: 'Mystik', geniusSearchName:  'Ghislain Loussingu'},
+    {wikiName: 'Naza', geniusSearchName: 'Loin de moi'},
+    {wikiName: 'SCH', geniusSearchName: 'Allô Maman'},
+    {wikiName: 'Six', geniusSearchName: 'Six Coups MC'},
+    {wikiName: 'Sultan', geniusSearchName: 'Chez Wam'}
 ];
 
 const moreArtists = [
