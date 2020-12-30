@@ -78,7 +78,12 @@ const artistsToAlter = [
     {wikiName: 'Naza', geniusSearchName: 'Loin de moi'},
     {wikiName: 'SCH', geniusSearchName: 'Allô Maman'},
     {wikiName: 'Six', geniusSearchName: 'Six Coups MC'},
-    {wikiName: 'Sultan', geniusSearchName: 'Chez Wam'}
+    {wikiName: 'Sultan', geniusSearchName: 'Chez Wam'},
+    {wikiName: 'Tepr', geniusSearchName: 'Tanguy Destable'},
+    {wikiName: 'Yannick', geniusSearchName: 'Ces soirées-là'},
+    {wikiName: 'Zola', geniusSearchName: 'Aurélien N\'Zuzi Zola'},
+    {wikiName: 'Akro', geniusSearchName: 'Mon Coca et mes nikes'},
+    {wikiName: 'Benny B', geniusSearchName: 'DJ d’enfer'}
 ];
 
 const moreArtists = [
@@ -102,7 +107,7 @@ const moreArtists = [
     'Darryl Zeuja',
     'Mokless',
     'Koriass',
-    'Prince Wally',
+    'Walygator',
     'Gros Mo',
     'Swing Siméon',
     'Despo Rutti',

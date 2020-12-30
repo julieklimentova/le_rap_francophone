@@ -53,7 +53,13 @@ const exceptionIDs = [
     {geniusSearchName: 'Loin de moi', geniusId: 'Naza'},
     {geniusSearchName: 'Allô Maman', geniusId: 'SCH'},
     {geniusSearchName: 'Six Coups MC', geniusId: 'Six'},
-    {geniusSearchName: 'Chez Wam', geniusId: 'Sultan'}
+    {geniusSearchName: 'Chez Wam', geniusId: 'Sultan'},
+    {geniusSearchName: 'Tanguy Destable', geniusId: 'Tepr'},
+    {geniusSearchName: 'Ces soirées-là', geniusId: 'Yannick'},
+    {geniusSearchName: 'Aurélien N\'Zuzi Zola', geniusId: 'Zola'},
+    {geniusSearchName: 'Walygator', geniusId: 'Prince Wally'},
+    {geniusSearchName: 'Mon Coca et mes nikes', geniusId: 'Akro'},
+    {geniusSearchName: 'DJ d’enfer', geniusId: 'Benny B'}
 ];
 
 export class GeniusClient {
@@ -91,7 +97,7 @@ export class GeniusClient {
                     if (!isArtist) {
                         isArtist = searchName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['sheek', 'al', 'east', 'narcisse', ];
+                    const false_exceptions = ['sheek', 'al', 'east', 'narcisse', 'lorca'];
                     if (false_exceptions.includes(searchName)) {
                         isArtist = false;
                     }
