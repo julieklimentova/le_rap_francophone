@@ -83,7 +83,10 @@ const artistsToAlter = [
     {wikiName: 'Yannick', geniusSearchName: 'Ces soirées-là'},
     {wikiName: 'Zola', geniusSearchName: 'Aurélien N\'Zuzi Zola'},
     {wikiName: 'Akro', geniusSearchName: 'Mon Coca et mes nikes'},
-    {wikiName: 'Benny B', geniusSearchName: 'DJ d’enfer'}
+    {wikiName: 'Benny B', geniusSearchName: 'DJ d’enfer'},
+    {wikiName: 'Kabal', geniusSearchName: 'Juvénicide'},
+    {wikiName: 'Shay', geniusSearchName: 'Cruella'},
+    {wikiName: 'Bams', geniusSearchName: 'Bams (FRA)'}
 ];
 
 const moreArtists = [

@@ -12,6 +12,8 @@ const headers = {
     'Authorization': `Bearer ${accessToken}`
 }
 
+const FALSE_EXCEPTIONS = ['sheek', 'al', 'east', 'narcisse', 'lorca', 'chinese man', 'deluxe'];
+
 const exceptionIDs = [
     {geniusSearchName: 'Simone Cliche Trudeau', geniusId: 'Loud'},
     {geniusSearchName: 'Sentenza', geniusId: 'Akhenaton'},
@@ -59,7 +61,9 @@ const exceptionIDs = [
     {geniusSearchName: 'Aurélien N\'Zuzi Zola', geniusId: 'Zola'},
     {geniusSearchName: 'Walygator', geniusId: 'Prince Wally'},
     {geniusSearchName: 'Mon Coca et mes nikes', geniusId: 'Akro'},
-    {geniusSearchName: 'DJ d’enfer', geniusId: 'Benny B'}
+    {geniusSearchName: 'DJ d’enfer', geniusId: 'Benny B'},
+    {geniusSearchName: 'Juvénicide', geniusId: 'Kabal'},
+    {geniusSearchName: 'Cruella', geniusId: 'Shay'},
 ];
 
 export class GeniusClient {
@@ -97,8 +101,7 @@ export class GeniusClient {
                     if (!isArtist) {
                         isArtist = searchName.includes(geniusName) ? true : false;
                     }
-                    const false_exceptions = ['sheek', 'al', 'east', 'narcisse', 'lorca'];
-                    if (false_exceptions.includes(searchName)) {
+                    if (FALSE_EXCEPTIONS.includes(searchName)) {
                         isArtist = false;
                     }
                     return isArtist;
