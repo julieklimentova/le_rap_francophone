@@ -86,7 +86,10 @@ const artistsToAlter = [
     {wikiName: 'Benny B', geniusSearchName: 'DJ d’enfer'},
     {wikiName: 'Kabal', geniusSearchName: 'Juvénicide'},
     {wikiName: 'Shay', geniusSearchName: 'Cruella'},
-    {wikiName: 'Bams', geniusSearchName: 'Bams (FRA)'}
+    {wikiName: 'Bams', geniusSearchName: 'Bams (FRA)'},
+    {wikiName: 'Meryl', geniusSearchName: 'Cindy Elismar'},
+    {wikiName: 'Sally', geniusSearchName: 'JFLA'},
+    {wikiName: 'Wallen', geniusSearchName: 'Celle qui a dit non'}
 ];
 
 const moreArtists = [

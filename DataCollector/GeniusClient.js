@@ -64,6 +64,9 @@ const exceptionIDs = [
     {geniusSearchName: 'DJ d’enfer', geniusId: 'Benny B'},
     {geniusSearchName: 'Juvénicide', geniusId: 'Kabal'},
     {geniusSearchName: 'Cruella', geniusId: 'Shay'},
+    {geniusSearchName: 'Cindy Elismar', geniusId: 'Meryl'},
+    {geniusSearchName: 'JFLA', geniusId: 'Sally'},
+    {geniusSearchName: 'Celle qui a dit non', geniusId: 'Wallen'}
 ];
 
 export class GeniusClient {
