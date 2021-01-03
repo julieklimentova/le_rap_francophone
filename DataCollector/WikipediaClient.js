@@ -39,7 +39,7 @@ const artistsToAlter = [
     {wikiName: 'Diam\'s', geniusSearchName: 'Diam’s'},
     {wikiName: '\'t Hof van Commerce', geniusSearchName: '’T Hof Van Commerce'},
     {wikiName: 'L\'Skadrille', geniusSearchName: 'L’Skadrille'},
-    {wikiName: 'sexion d\'assaut', geniusSearchName: 'Sexion d’Assaut'},
+    {wikiName: 'sexion d\'assaut', geniusSearchName: 'Avant qu\'elle parte'},
     {wikiName: 'Nèg\' Marrons', geniusSearchName: 'Neg’ Marrons'},
     {wikiName: 'Mo\'vez Lang', geniusSearchName: 'Mo’vez Lang'},
     {wikiName: 'Mafia K\'1 Fry', geniusSearchName: 'Mafia K’1 Fry'},
@@ -89,7 +89,8 @@ const artistsToAlter = [
     {wikiName: 'Bams', geniusSearchName: 'Bams (FRA)'},
     {wikiName: 'Meryl', geniusSearchName: 'Cindy Elismar'},
     {wikiName: 'Sally', geniusSearchName: 'JFLA'},
-    {wikiName: 'Wallen', geniusSearchName: 'Celle qui a dit non'}
+    {wikiName: 'Wallen', geniusSearchName: 'Celle qui a dit non'},
+    {wikiName: 'Jul', geniusSearchName: 'Julien Mari'}
 ];
 
 const moreArtists = [

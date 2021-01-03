@@ -12,7 +12,17 @@ const headers = {
     'Authorization': `Bearer ${accessToken}`
 }
 
-const FALSE_EXCEPTIONS = ['sheek', 'al', 'east', 'narcisse', 'lorca', 'chinese man', 'deluxe'];
+const FALSE_EXCEPTIONS = [
+    'sheek',
+    'al',
+    'east',
+    'narcisse',
+    'lorca',
+    'chinese man',
+    'deluxe',
+    'k-mel',
+    'gasoline'
+];
 
 const exceptionIDs = [
     {geniusSearchName: 'Simone Cliche Trudeau', geniusId: 'Loud'},
@@ -66,7 +76,8 @@ const exceptionIDs = [
     {geniusSearchName: 'Cruella', geniusId: 'Shay'},
     {geniusSearchName: 'Cindy Elismar', geniusId: 'Meryl'},
     {geniusSearchName: 'JFLA', geniusId: 'Sally'},
-    {geniusSearchName: 'Celle qui a dit non', geniusId: 'Wallen'}
+    {geniusSearchName: 'Celle qui a dit non', geniusId: 'Wallen'},
+    {geniusSearchName: 'Julien Mari', geniusId: 'Jul'}
 ];
 
 export class GeniusClient {
