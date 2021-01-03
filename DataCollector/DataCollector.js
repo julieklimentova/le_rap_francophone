@@ -74,7 +74,7 @@ export class DataCollector {
         }
         const notFoundToWrite = JSON.stringify({notFound: notFoundArtists});
         try {
-            fs.writeFileSync('./errors/notfound.json', notFoundToWrite);
+            fs.writeFileSync('./errors/notfoundArtistsIds.json', notFoundToWrite);
         } catch (e) {
             console.log(e);
         }
@@ -87,6 +87,7 @@ export class DataCollector {
         for (let i = 0; i < maxTries; i++) {
             songs = await this._geniusClient.getSongs(getSongsArtistInfo);
             if (songs.length > 0) {
+                console.log(`DataCollector: Songs urls have been successfully retrieved for artist ${getSongsArtistInfo.geniusId}.`)
                 break;
             } // else continue
         }

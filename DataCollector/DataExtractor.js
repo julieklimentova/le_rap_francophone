@@ -1,7 +1,7 @@
 import {DataCollector} from './DataCollector';
-export let FILE_WIKI_ARTISTS;
-export let FILE_GENIUS_IDS;
-export let FILE_ARTISTS_AND_SONGS;
+import {FILE_WIKI_ARTISTS} from "./main";
+import {FILE_GENIUS_IDS} from "./main";
+
 export let FILE_ALL_SONGS;
 import fs from "fs";
 export let WIKI_ARTISTS;
@@ -47,14 +47,6 @@ class DataExtractor {
         } catch (e) {
             console.log(e);
         }
-        FILE_WIKI_ARTISTS = undefined;
-        let fileWikiArtists;
-        try {
-            fileWikiArtists = fs.readFileSync('./metadata/artists.json');
-            FILE_WIKI_ARTISTS = JSON.parse(fileWikiArtists.toString());
-        } catch (e) {
-            console.log(e);
-        }
         WIKI_ARTISTS = undefined;
         WIKI_ARTISTS = wikiArtists;
         console.log('DataExtractor.exportArtists: Artists names have been received');
@@ -68,15 +60,6 @@ class DataExtractor {
         } catch (e) {
                 console.log(e);
         }
-        FILE_GENIUS_IDS = undefined;
-        let fileGeniusIds;
-        try {
-            fileGeniusIds = fs.readFileSync('./metadata/artistsIds.json')
-            FILE_GENIUS_IDS = JSON.parse(fileGeniusIds);
-        } catch (e) {
-            console.log(e);
-        }
-        GENIUS_IDS = undefined;
         GENIUS_IDS = artistsIds;
         await DATA_COLLECTOR.writeToCsv(artistsIds, 'artistsIds');
         console.log('DataExtractor.exportArtistsIDs: Artists IDs have been received');
@@ -84,10 +67,21 @@ class DataExtractor {
 
     async exportArtistsWithSongs() {
         const artistsIds = FILE_GENIUS_IDS ? FILE_GENIUS_IDS.artistsIds : GENIUS_IDS;
+        console.log('je suis la');
         const artistsWithSongs = [];
+        const notFoundSongs = [];
         for (const artistId of artistsIds) {
                 const artistWithSong = await DATA_COLLECTOR.getSongsPerArtist(artistId);
-                artistsWithSongs.push(artistWithSong);
+                if (artistWithSong.songs.length === 0) {
+                    notFoundSongs.push(artistWithSong);
+                } else {
+                    artistsWithSongs.push(artistWithSong);
+                }
+        }
+        try {
+            fs.writeFileSync('./errors/notFoundSongs.json', JSON.stringify({notFoundSongs}));
+        } catch(e) {
+            console.log(e);
         }
         const artistsWithSongsObject = JSON.stringify({artistsWithSongs: artistsWithSongs});
         try {
@@ -95,13 +89,8 @@ class DataExtractor {
         } catch(e) {
             console.log(e);
         }
-        FILE_ARTISTS_AND_SONGS = null;
-        fs.readFile('./metadata/artistsWithSongs.json', (err, data) => {
-            if (err)  console.log(err);
-            FILE_ARTISTS_AND_SONGS = JSON.parse(data.toString());
-        });
-        ARTISTS_AND_SONGS = null;
         ARTISTS_AND_SONGS = artistsWithSongs;
+        await DATA_COLLECTOR.writeToCsv(artistsWithSongs, 'artistsWithSongs');
         console.log('DataExtractor.getArtistsWithSongs: Artists with songs have been retrieved');
     }
 
@@ -110,6 +99,13 @@ class DataExtractor {
         const allSongs = [];
         for (const artistWithSong of artistsWithSongs) {
             const songs = await DATA_COLLECTOR.getSongsTexts(artistWithSong);
+            if (songs.length === 0) {
+                try {
+                    fs.writeFileSync('./errors/notfoundArtistsSongs.json', notFoundToWrite);
+                } catch (e) {
+                    console.log(e);
+                }
+            }
             songs.forEach((song) => {
                 allSongs.push(song);
                 DATA_COLLECTOR.writeToTxt(song);

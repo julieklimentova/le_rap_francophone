@@ -146,7 +146,7 @@ export class GeniusClient {
     }
 
     async getSongs(getSongsArtistInfo) {
-        const artistShortcut = getSongsArtistInfo.artistName.slice(0, 4).toUpperCase();
+        const artistShortcut = getSongsArtistInfo.geniusId.toUpperCase();
         const query = `/artists/${getSongsArtistInfo.artistId}/songs?access_token=${accessToken}`;
         const songs = [];
         await axios.get(`${this._baseUrl}${query}`, {timeout: 200000})
