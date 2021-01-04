@@ -95,17 +95,10 @@ class DataExtractor {
     }
 
     async exportAllSongs() {
-        const artistsWithSongs = FILE_ARTISTS_AND_SONGS ? FILE_ARTISTS_AND_SONGS : ARTISTS_AND_SONGS;
+        const artistsWithSongs = FILE_ARTISTS_AND_SONGS ? FILE_ARTISTS_AND_SONGS.artistsWithSongs : ARTISTS_AND_SONGS;
         const allSongs = [];
         for (const artistWithSong of artistsWithSongs) {
             const songs = await DATA_COLLECTOR.getSongsTexts(artistWithSong);
-            if (songs.length === 0) {
-                try {
-                    fs.writeFileSync('./errors/notfoundArtistsSongs.json', notFoundToWrite);
-                } catch (e) {
-                    console.log(e);
-                }
-            }
             songs.forEach((song) => {
                 allSongs.push(song);
                 DATA_COLLECTOR.writeToTxt(song);
@@ -117,12 +110,6 @@ class DataExtractor {
         } catch (e) {
             console.log(e);
         }
-        FILE_ALL_SONGS = null;
-        fs.readFile('./metadata/allSongs.json', (err, data) => {
-            if (err)  console.log(err);
-            FILE_ALL_SONGS = JSON.parse(data.toString());
-        });
-        ALL_SONGS = null;
         ALL_SONGS = allSongs;
         console.log('DataExtractor.exportAllSongs: All songs have been retrieved');
         await DATA_COLLECTOR.writeToCsv(allSongs, 'songsMetadata');
