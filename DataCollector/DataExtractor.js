@@ -1,8 +1,8 @@
 import {DataCollector} from './DataCollector';
 import {FILE_WIKI_ARTISTS} from "./main";
 import {FILE_GENIUS_IDS} from "./main";
+import {FILE_ARTISTS_AND_SONGS} from "./main";
 
-export let FILE_ALL_SONGS;
 import fs from "fs";
 export let WIKI_ARTISTS;
 export let GENIUS_IDS;

@@ -146,7 +146,7 @@ export class GeniusClient {
     }
 
     async getSongs(getSongsArtistInfo) {
-        const artistShortcut = getSongsArtistInfo.geniusId.toUpperCase().replace(' ', '_');
+        const artistShortcut = getSongsArtistInfo.geniusId.toUpperCase().replace(/\s/g, '_');
         const query = `/artists/${getSongsArtistInfo.artistId}/songs?access_token=${accessToken}`;
         const songs = [];
         await axios.get(`${this._baseUrl}${query}`, {timeout: 200000})
@@ -155,6 +155,8 @@ export class GeniusClient {
                     let numberId = 1;
                     for (const song of response.data.response.songs) {
                         const songObject = {
+                            artistName: `${getSongsArtistInfo.geniusId}`,
+                            artistId: `${getSongsArtistInfo.artistId}`,
                             songShortcut:`${artistShortcut}${numberId}`,
                             title: song.full_title,
                             songId: song.id,
@@ -201,7 +203,7 @@ export class GeniusClient {
                 if (lyrics) {
                     return this.getOutput(lyrics, dataUnits, fileName, htmlText);
                 } else {
-                    fs.writeFileSync(`./errors/${fileName}.html`, htmlText);
+                    fs.writeFileSync(`./errors/not_parsable${fileName}.html`, htmlText);
                     console.log(`Lyrics could not be parsed because there is no lyrics class`);
                     return null;
                 }
@@ -220,7 +222,7 @@ export class GeniusClient {
                         if (response.data) {
                             const maxTriesParseSong = 10;
                             for (let i = 0; i < maxTriesParseSong; i++) {
-                                const songInfo = this.parseSongHTML(response.data, song.title);
+                                const songInfo = this.parseSongHTML(response.data, song.songShortcut);
                                 if (songInfo === 'invalid') {
                                     console.log(`The fetched lyrics for ${song.title} are invalid`);
                                 } else if (songInfo) {
@@ -257,7 +259,11 @@ export class GeniusClient {
     validateLanguage(lyrics) {
         const lngDetector = new LanguageDetect();
         const detectedLanguage = lngDetector.detect(lyrics, 1);
-        return detectedLanguage[0][0] === 'french';
+        let isFrench = false;
+        if (detectedLanguage && detectedLanguage[0] && detectedLanguage[0][0] && detectedLanguage[0][0] === 'french' ) {
+            isFrench = true;
+        }
+        return isFrench;
     }
 
     getOutput(lyrics, dataUnits, fileName, htmlText) {
