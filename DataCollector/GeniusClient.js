@@ -226,11 +226,16 @@ export class GeniusClient {
                                 if (songInfo === 'invalid') {
                                     console.log(`The fetched lyrics for ${song.title} are invalid`);
                                 } else if (songInfo) {
-                                    const {artistId, artistName} = textsArtistInfo;
+                                    const {artistId, geniusId} = textsArtistInfo;
+                                    const {songShortcut, title, songId, url} = song;
                                     const newSongInfo = {
-                                        ...song, ...songInfo,
                                         artistId,
-                                        artistName,
+                                        geniusName: geniusId,
+                                        songShortcut,
+                                        title,
+                                        songId,
+                                        url,
+                                        ...songInfo,
                                     };
                                     completeSongs.push(newSongInfo);
                                     break;

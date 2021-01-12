@@ -29,7 +29,7 @@ export const FILE_ARTISTS_AND_SONGS = fileArtistsAndSongs ? JSON.parse(fileArtis
 const main = async () => {
    // await DATA_EXTRACTOR.exportArtists();
    // await DATA_EXTRACTOR.exportArtistsIDs();
-   await DATA_EXTRACTOR.exportArtistsWithSongs();
+   // await DATA_EXTRACTOR.exportArtistsWithSongs();
    await DATA_EXTRACTOR.exportAllSongs();
 }
 

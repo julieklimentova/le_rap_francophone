@@ -67,7 +67,6 @@ class DataExtractor {
 
     async exportArtistsWithSongs() {
         const artistsIds = FILE_GENIUS_IDS ? FILE_GENIUS_IDS.artistsIds : GENIUS_IDS;
-        console.log('je suis la');
         const artistsWithSongs = [];
         const notFoundSongs = [];
         for (const artistId of artistsIds) {
