@@ -160,7 +160,7 @@ stopWords <- tibble(
   lexicon = "ranks_french"
 )
 # List of songs files
-list_of_files <- list.files(path = "./DataCollector/files/",
+list_of_files <- list.files(path = "./Experiments/files/",
                             pattern = "\\.txt$",
                             full.names = TRUE)
 texts <- list_of_files %>%
