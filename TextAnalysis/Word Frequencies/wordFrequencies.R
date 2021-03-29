@@ -216,7 +216,7 @@ barchart(key ~ freq, data = head(mediaWords, 20), col = "cadetblue",
          main = "Most occurring media words", xlab = "Freq")
 
 
-# subset with media words 
+# Collocations
 lemmas <- data.frame(annotation$lemma)
 
 nounsForCollocation <- subset(annotation, upos %in% c("NOUN")) 
@@ -433,3 +433,217 @@ ggraph(wordnetworkMWFullSongs, layout = "fr") +
   theme_graph(base_family = "Arial") +
   theme(legend.position = "none") +
   labs(title = "Cooccurrences within 3 words distance", subtitle = "Nouns & Adjective MW Full Songs")
+
+
+## working with no ambiguous words subcorpus
+# new Media words frequencies
+mediaWordsPath_ns <- './nwmFrequencies/newMediaWordsFrequencies_noSoft.csv'
+mediaWords_ns <- readr::read_csv(file = mediaWordsPath_ns, locale = readr::locale(encoding = "latin1"))
+mediaWords_ns$key <- factor(mediaWords_ns$key, levels = rev(mediaWords_ns$key))
+barchart(key ~ freq, data = head(mediaWords_ns, 20), col = "cadetblue",
+         main = "Most occurring media words (no ambiguous words)", xlab = "Freq")
+
+#Subsetting corpus only with media words 
+mediaWordsForSubset_ns <- mediaWords_ns[['key']]
+mediaWordsSubset_ns <- subset(annotation, token %in% mediaWordsForSubset_ns)
+mediaWordsSongsIds_ns <- unique(mediaWordsSubset_ns$doc_id)
+mediaWordsSongsIds__ns_df <- data.frame(mediaWordsSongsIds_ns)
+
+mediaWordsSubsetFullSongs_ns <- subset(annotation, doc_id %in% mediaWordsSongsIds_ns)
+
+
+# Collocations
+lemmas_ns <- data.frame(mediaWordsSubsetFullSongs_ns$lemma)
+
+nounsForCollocation_ns <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
+collocations_ns <- keywords_collocation(x = nounsForCollocation_ns, 
+                                     term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                     ngram_max = 4)
+coocurrences_ns <- cooccurrence(x = subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN", "ADJ")), 
+                             term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
+## Co-occurrences: How frequent do words follow one another
+following_ns <- cooccurrence(x = mediaWordsSubsetFullSongs_ns$lemma, 
+                          relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"))
+## Co-occurrences: How frequent do words follow one another even if we would skip 2 words in between
+followingSkipped_ns <- cooccurrence(x = mediaWordsSubsetFullSongs_ns$lemma, 
+                                 relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), skipgram = 2)
+
+wordnetwork_ns <- head(followingSkipped_ns, 30)
+wordnetwork_ns <- graph_from_data_frame(wordnetwork_ns)
+ggraph(wordnetwork_ns, layout = "fr") +
+  geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_colour = "pink") +
+  geom_node_text(aes(label = name), col = "darkgreen", size = 4) +
+  theme_graph(base_family = "Arial") +
+  theme(legend.position = "none") +
+  labs(title = "Cooccurrences within 3 words distance (new media words - no ambiguity)", subtitle = "Nouns & Adjective")
+
+# TEXTRANK keywords
+
+stats_ns <- textrank_keywords(mediaWordsSubsetFullSongs_ns$lemma, 
+                           relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), 
+                           ngram_max = 8, sep = " ")
+statsKeywords_ns <- subset(stats_ns$keywords, ngram > 1 & freq >= 20)
+library(wordcloud)
+wordcloud(words = statsKeywords_ns$keyword, freq = statsKeywords_ns$freq)
+wordcloud(words = mediaWords_ns$key, freq = mediaWords_ns$freq)
+
+
+# RAKE 
+
+keywordsRake_ns <- keywords_rake(x = mediaWordsSubsetFullSongs_ns, 
+                              term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                              relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                              ngram_max = 4)
+results_ns <- head(subset(keywordsRake_ns, freq > 3))
+
+keywordsRake_ns_2 <- keywords_rake(x = mediaWordsSubsetFullSongs_ns, 
+                                 term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                 relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                 ngram_max = 2)
+results_ns_2 <- head(subset(keywordsRake_ns_2, freq > 3))
+
+
+# TOPIC MODELLING NOUNS
+## Define the identifier at which we will build a topic model
+mediaWordsSubsetFullSongs_ns$topic_level_id <- unique_identifier(mediaWordsSubsetFullSongs_ns, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_ns <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN"))
+dtf_ns <- document_term_frequencies(dtf_ns, document = "topic_level_id", term = "lemma")
+head(dtf_ns)
+
+## Create a document/term/matrix for building a topic model
+dtm_ns <- document_term_matrix(x = dtf_ns)
+## Remove words which do not occur that much
+dtm_clean_ns <- dtm_remove_lowfreq(dtm_ns, minfreq = 5)
+head(dtm_colsums(dtm_clean_ns))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_clean_ns <- dtm_remove_tfidf(dtm_clean_ns, top = 50)
+
+## Build topic models 
+library(topicmodels)
+models_ns <- LDA(dtm_clean_ns, k = 4, method = "Gibbs", 
+              control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_ns <- tidy(models_ns, matrix = "beta")
+
+rap_top_terms_ns <- rap_topics_ns %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_ns %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+
+# TOPIC MODELLING ADJECTIVES
+## Define the identifier at which we will build a topic model
+mediaWordsSubsetFullSongs_ns$topic_level_id <- unique_identifier(mediaWordsSubsetFullSongs_ns, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_adj_ns <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("ADJ"))
+dtf_adj_ns <- document_term_frequencies(dtf_adj_ns, document = "topic_level_id", term = "lemma")
+head(dtf_adj_ns)
+
+## Create a document/term/matrix for building a topic model
+dtm_adj_ns <- document_term_matrix(x = dtf_adj_ns)
+## Remove words which do not occur that much
+dtm_clean_adj_ns <- dtm_remove_lowfreq(dtm_adj_ns, minfreq = 5)
+head(dtm_colsums(dtm_clean_adj_ns))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_clean_adj_ns <- dtm_remove_tfidf(dtm_clean_adj_ns, top = 50)
+
+## Build topic models 
+library(topicmodels)
+models_adj_ns <- LDA(dtm_clean_adj_ns, k = 4, method = "Gibbs", 
+                  control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_adj_ns <- tidy(models_adj_ns, matrix = "beta")
+
+rap_top_terms_adj_ns <- rap_topics_adj_ns %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_adj_ns %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+# TOPIC MODELLING VERBS
+## Define the identifier at which we will build a topic model
+mediaWordsSubsetFullSongs_ns$topic_level_id <- unique_identifier(mediaWordsSubsetFullSongs_ns, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_verbs_ns <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("VERB"))
+dtf_verbs_ns <- document_term_frequencies(dtf_verbs_ns, document = "topic_level_id", term = "lemma")
+head(dtf_verbs_ns)
+
+## Create a document/term/matrix for building a topic model
+dtm_verbs_ns <- document_term_matrix(x = dtf_verbs_ns)
+## Remove words which do not occur that much
+dtm_clean_verbs_ns <- dtm_remove_lowfreq(dtm_verbs_ns, minfreq = 5)
+head(dtm_colsums(dtm_clean_verbs_ns))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_clean_verbs_ns <- dtm_remove_tfidf(dtm_clean_verbs_ns, top = 50)
+
+## Build topic models 
+library(topicmodels)
+models_verbs_ns <- LDA(dtm_clean_verbs_ns, k = 4, method = "Gibbs", 
+                    control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_verbs_ns <- tidy(models_verbs_ns, matrix = "beta")
+
+rap_top_terms_verbs_ns <- rap_topics_verbs_ns %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_verbs_ns %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+#bigrams tidy text
+library(tidytext)
+mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, songShortcut %in% mediaWordsSongsIds_ns)
+mediaWordsSubset_bigrams <- mediaWordsSubsetFullSongs_ns_SONGS %>%
+  unnest_tokens(bigram, lyrics, token = "ngrams", n = 2)
+
+mw_bigram_counts <- mediaWordsSubset_bigrams %>%
+  count(bigram, sort = TRUE)
+
+library(tidyr)
+
+bigrams_separated <- mediaWordsSubset_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtered <- bigrams_separated %>%
+  filter(!word1 %in% stopWords) %>%
+  filter(!word2 %in% stopWords)
+
+# new bigram counts:
+bigram_counts <- bigrams_filtered %>% 
+  count(word1, word2, sort = TRUE)
+
+bigrams_united <- bigrams_filtered %>%
+  unite(bigram, word1, word2, sep = " ")
+
+bigram_tf_idf <- bigrams_united %>%
+  count(songShortcut, bigram) %>%
+  bind_tf_idf(bigram, songShortcut, n) %>%
+  arrange(desc(tf_idf))
