@@ -500,8 +500,15 @@ keywordsRake_ns_2 <- keywords_rake(x = mediaWordsSubsetFullSongs_ns,
                                  term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
                                  relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
                                  ngram_max = 2)
-results_ns_2 <- head(subset(keywordsRake_ns_2, freq > 3))
+results_ns_2 <- head(subset(keywordsRake_ns_2, freq > 3 & ngram > 1))
+results_ns$keyword <- factor(results_ns$keyword, levels = rev(results_ns$keyword))
 
+barchart(keyword ~ rake, data = results_ns, col = "cadetblue",
+         main = "Rake ngram keywords", xlab = "rake")
+
+results_ns_2$keyword <- factor(results_ns_2$keyword, levels = rev(results_ns_2$keyword))
+barchart(keyword ~ rake, data = results_ns_2, col = "cadetblue",
+         main = "Rake bigram keywords", xlab = "rake")
 
 # TOPIC MODELLING NOUNS
 ## Define the identifier at which we will build a topic model
