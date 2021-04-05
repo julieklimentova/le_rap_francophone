@@ -654,3 +654,78 @@ bigram_tf_idf <- bigrams_united %>%
   count(songShortcut, bigram) %>%
   bind_tf_idf(bigram, songShortcut, n) %>%
   arrange(desc(tf_idf))
+
+
+# Subsetting years on
+
+library(data.table)
+songsDataTable = data.table(songs)
+ninetiesSubset = songsDataTable[releaseDate %like% '1990'
+                                | releaseDate %like% '1991'
+                                | releaseDate %like% '1992'
+                                | releaseDate %like% '1993'
+                                | releaseDate %like% '1994'
+                                | releaseDate %like% '1995'
+                                | releaseDate %like% '1996'
+                                | releaseDate %like% '1997'
+                                | releaseDate %like% '1998'
+                                | releaseDate %like% '1999'
+                                ]
+
+zerosSubset = songsDataTable[releaseDate %like% '2000'
+                             | releaseDate %like% '2001'
+                             | releaseDate %like% '2002'
+                             | releaseDate %like% '2003'
+                             | releaseDate %like% '2004'
+                             | releaseDate %like% '2005'
+                             | releaseDate %like% '2006'
+                             | releaseDate %like% '2007'
+                             | releaseDate %like% '2008'
+                             | releaseDate %like% '2009']
+
+tensSubset = songsDataTable[releaseDate %like% '2010'
+                            | releaseDate %like% '2011'
+                            | releaseDate %like% '2012'
+                            | releaseDate %like% '2013'
+                            | releaseDate %like% '2014'
+                            | releaseDate %like% '2015'
+                            | releaseDate %like% '2016'
+                            | releaseDate %like% '2017'
+                            | releaseDate %like% '2018'
+                            | releaseDate %like% '2019'
+                            | releaseDate %like% '2020'
+                            ]
+
+ninetiesAnnotation <- udpipe(ninetiesSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
+saveRDS(annotation, file = "ninetiesAnno.rds")
+#Subsetting corpus only with media words NINETIES
+nineties_mediaWordsSubset_ns <- subset(ninetiesAnnotation, token %in% mediaWordsForSubset_ns)
+nineties_mediaWordsSongsIds_ns <- unique(nineties_mediaWordsSubset_ns$doc_id)
+nineties_mediaWordsSongsIds__ns_df <- data.frame(nineties_mediaWordsSongsIds_ns)
+
+nineties_mediaWordsSubsetFullSongs_ns <- subset(ninetiesAnnotation, doc_id %in% nineties_mediaWordsSongsIds_ns)
+
+zerosAnnotation <- udpipe(zerosSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
+saveRDS(annotation, file = "zerosAnno.rds")
+
+#Subsetting corpus only with media words ZEROS
+zeros_mediaWordsSubset_ns <- subset(zerosAnnotation, token %in% mediaWordsForSubset_ns)
+zeros_mediaWordsSongsIds_ns <- unique(zeros_mediaWordsSubset_ns$doc_id)
+zeros_mediaWordsSongsIds__ns_df <- data.frame(zeros_mediaWordsSongsIds_ns)
+
+zeros_mediaWordsSubsetFullSongs_ns <- subset(zerosAnnotation, doc_id %in% zeros_mediaWordsSongsIds_ns)
+
+
+
+tensAnnotation <- udpipe(tensSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
+saveRDS(annotation, file = "tensAnno.rds")
+
+#Subsetting corpus only with media words TENS
+tens_mediaWordsSubset_ns <- subset(tensAnnotation, token %in% mediaWordsForSubset_ns)
+tens_mediaWordsSongsIds_ns <- unique(tens_mediaWordsSubset_ns$doc_id)
+tens_mediaWordsSongsIds__ns_df <- data.frame(tens_mediaWordsSongsIds_ns)
+
+tens_mediaWordsSubsetFullSongs_ns <- subset(tensAnnotation, doc_id %in% tens_mediaWordsSongsIds_ns)
+
+
+
