@@ -774,6 +774,14 @@ rap_top_terms_nineties %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
+# RAKE Nineties
+
+keywordsRakeNineties <- keywords_rake(x = nineties_mediaWordsSubsetFullSongs_ns, 
+                              term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                              relevant = nineties_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                              ngram_max = 4)
+resultsNineties <- head(subset(keywordsRakeNineties, freq > 3))
+
 
 
 zerosAnnotation <- udpipe(zerosSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
@@ -856,6 +864,12 @@ rap_top_terms_zeros %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
+keywordsRakeZeros <- keywords_rake(x = zeros_mediaWordsSubsetFullSongs_ns, 
+                                      term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                      relevant = zeros_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                      ngram_max = 4)
+resultsZeros <- head(subset(keywordsRakeZeros, freq > 3))
+
 tensAnnotation <- udpipe(tensSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "tensAnno.rds")
 
@@ -936,3 +950,9 @@ rap_top_terms_tens %>%
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
+
+keywordsRakeTens <- keywords_rake(x = tens_mediaWordsSubsetFullSongs_ns, 
+                                  term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                  relevant = tens_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                  ngram_max = 4)
+resultsTens <- head(subset(keywordsRakeTens, freq > 3))
