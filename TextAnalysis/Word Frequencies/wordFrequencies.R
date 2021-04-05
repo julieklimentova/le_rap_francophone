@@ -705,6 +705,77 @@ nineties_mediaWordsSongsIds__ns_df <- data.frame(nineties_mediaWordsSongsIds_ns)
 
 nineties_mediaWordsSubsetFullSongs_ns <- subset(ninetiesAnnotation, doc_id %in% nineties_mediaWordsSongsIds_ns)
 
+# Word frequencies Nineties 
+
+## Most occuring nouns Nineties
+ninetiesNouns <- subset(nineties_mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
+nineties_nouns_frequencies <- txt_freq(ninetiesNouns$token)
+nineties_nouns_frequencies$key <- factor(nineties_nouns_frequencies$key, levels = rev(nineties_nouns_frequencies$key))
+barchart(key ~ freq, data = head(nineties_nouns_frequencies, 20), col = "cadetblue", 
+         main = "Most occurring nouns in the nineties subcorpus", xlab = "Freq")
+
+## Most occuring adjectives Nineties
+nineties_adjectives <- subset(nineties_mediaWordsSubsetFullSongs_ns, upos %in% c("ADJ")) 
+nineties_adjectives_frequencies <- txt_freq(nineties_adjectives$token)
+nineties_adjectives_frequencies$key <- factor(nineties_adjectives_frequencies$key, levels = rev(nineties_adjectives_frequencies$key))
+barchart(key ~ freq, data = head(nineties_adjectives_frequencies, 20), col = "purple", 
+         main = "Most occurring adjectives in the nineties subcorpus", xlab = "Freq")
+
+## Most occuring verbs Nineties
+nineties_verbs <- subset(nineties_mediaWordsSubsetFullSongs_ns, upos %in% c("VERB")) 
+nineties_verbs_frequencies <- txt_freq(nineties_verbs$token)
+nineties_verbs_frequencies$key <- factor(nineties_verbs_frequencies$key, levels = rev(nineties_verbs_frequencies$key))
+barchart(key ~ freq, data = head(nineties_verbs_frequencies, 20), col = "gold", 
+         main = "Most occurring Verbs in the nineties subcorpus", xlab = "Freq")
+
+# Word frequencies media words Nineties
+nineties_mediaWords_ns_frequencies <- txt_freq(nineties_mediaWordsSubset_ns$token)
+nineties_mediaWords_ns_frequencies$key <- factor(nineties_mediaWords_ns_frequencies$key, levels = rev(nineties_mediaWords_ns_frequencies$key))
+barchart(key ~ freq, data = head(nineties_mediaWords_ns_frequencies, 20), col = "gold", 
+         main = "Most occurring media words in the nineties subcorpus", xlab = "Freq")
+
+
+# Topic modeling Nineties - NOUNS 
+# TOPIC MODELLING NOUNS
+## Define the identifier at which we will build a topic model
+ninetiesAnnotation$topic_level_id <- unique_identifier(ninetiesAnnotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_nineties <- subset(ninetiesAnnotation, upos %in% c("NOUN"))
+dtf_nineties <- document_term_frequencies(dtf_nineties, document = "topic_level_id", term = "lemma")
+head(dtf_nineties)
+
+## Create a document/term/matrix for building a topic model
+dtm_nineties <- document_term_matrix(x = dtf_nineties)
+## Remove words which do not occur that much
+dtm_nineties_clean <- dtm_remove_lowfreq(dtm_nineties, minfreq = 5)
+head(dtm_colsums(dtm_nineties_clean))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_nineties_clean <- dtm_remove_tfidf(dtm_nineties_clean, top = 50)
+
+## Build topic models 
+library(topicmodels)
+nineties_models <- LDA(dtm_nineties_clean, k = 4, method = "Gibbs", 
+                       control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_nineties <- tidy(nineties_models, matrix = "beta")
+
+rap_top_terms_nineties <- rap_topics_nineties %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_nineties %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+
+
 zerosAnnotation <- udpipe(zerosSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "zerosAnno.rds")
 
@@ -716,6 +787,74 @@ zeros_mediaWordsSongsIds__ns_df <- data.frame(zeros_mediaWordsSongsIds_ns)
 zeros_mediaWordsSubsetFullSongs_ns <- subset(zerosAnnotation, doc_id %in% zeros_mediaWordsSongsIds_ns)
 
 
+# Word frequencies Zeros 
+
+## Most occuring nouns Zeros
+zerosNouns <- subset(zeros_mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
+zeros_nouns_frequencies <- txt_freq(zerosNouns$token)
+zeros_nouns_frequencies$key <- factor(zeros_nouns_frequencies$key, levels = rev(zeros_nouns_frequencies$key))
+barchart(key ~ freq, data = head(zeros_nouns_frequencies, 20), col = "cadetblue", 
+         main = "Most occurring nouns in the 2000s subcorpus", xlab = "Freq")
+
+## Most occuring adjectives zeros
+zeros_adjectives <- subset(zeros_mediaWordsSubsetFullSongs_ns, upos %in% c("ADJ")) 
+zeros_adjectives_frequencies <- txt_freq(zeros_adjectives$token)
+zeros_adjectives_frequencies$key <- factor(zeros_adjectives_frequencies$key, levels = rev(zeros_adjectives_frequencies$key))
+barchart(key ~ freq, data = head(zeros_adjectives_frequencies, 20), col = "purple", 
+         main = "Most occurring adjectives in the 2000s subcorpus", xlab = "Freq")
+
+## Most occuring verbs zeros
+zeros_verbs <- subset(zeros_mediaWordsSubsetFullSongs_ns, upos %in% c("VERB")) 
+zeros_verbs_frequencies <- txt_freq(zeros_verbs$token)
+zeros_verbs_frequencies$key <- factor(zeros_verbs_frequencies$key, levels = rev(zeros_verbs_frequencies$key))
+barchart(key ~ freq, data = head(zeros_verbs_frequencies, 20), col = "gold", 
+         main = "Most occurring Verbs in the 2000s subcorpus", xlab = "Freq")
+
+# Word frequencies media words zeros
+zeros_mediaWords_ns_frequencies <- txt_freq(zeros_mediaWordsSubset_ns$token)
+zeros_mediaWords_ns_frequencies$key <- factor(zeros_mediaWords_ns_frequencies$key, levels = rev(zeros_mediaWords_ns_frequencies$key))
+barchart(key ~ freq, data = head(zeros_mediaWords_ns_frequencies, 20), col = "gold", 
+         main = "Most occurring media words in the 2000s subcorpus", xlab = "Freq")
+
+
+# Topic modeling zeros - NOUNS 
+# TOPIC MODELLING NOUNS
+## Define the identifier at which we will build a topic model
+zerosAnnotation$topic_level_id <- unique_identifier(zerosAnnotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_zeros <- subset(zerosAnnotation, upos %in% c("NOUN"))
+dtf_zeros <- document_term_frequencies(dtf_zeros, document = "topic_level_id", term = "lemma")
+head(dtf_zeros)
+
+## Create a document/term/matrix for building a topic model
+dtm_zeros <- document_term_matrix(x = dtf_zeros)
+## Remove words which do not occur that much
+dtm_zeros_clean <- dtm_remove_lowfreq(dtm_zeros, minfreq = 5)
+head(dtm_colsums(dtm_zeros_clean))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_zeros_clean <- dtm_remove_tfidf(dtm_zeros_clean, top = 50)
+
+## Build topic models 
+library(topicmodels)
+zeros_models <- LDA(dtm_zeros_clean, k = 4, method = "Gibbs", 
+                       control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_zeros <- tidy(zeros_models, matrix = "beta")
+
+rap_top_terms_zeros <- rap_topics_zeros %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_zeros %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
 
 tensAnnotation <- udpipe(tensSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "tensAnno.rds")
@@ -727,5 +866,73 @@ tens_mediaWordsSongsIds__ns_df <- data.frame(tens_mediaWordsSongsIds_ns)
 
 tens_mediaWordsSubsetFullSongs_ns <- subset(tensAnnotation, doc_id %in% tens_mediaWordsSongsIds_ns)
 
+# Word frequencies tens 
+
+## Most occuring nouns tens
+
+## Most occuring nouns tens
+tensNouns <- subset(tens_mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
+tens_nouns_frequencies <- txt_freq(tensNouns$token)
+tens_nouns_frequencies$key <- factor(tens_nouns_frequencies$key, levels = rev(tens_nouns_frequencies$key))
+barchart(key ~ freq, data = head(tens_nouns_frequencies, 20), col = "cadetblue", 
+         main = "Most occurring nouns in the 2010s subcorpus", xlab = "Freq")
+
+## Most occuring adjectives tens
+tens_adjectives <- subset(tens_mediaWordsSubsetFullSongs_ns, upos %in% c("ADJ")) 
+tens_adjectives_frequencies <- txt_freq(tens_adjectives$token)
+tens_adjectives_frequencies$key <- factor(tens_adjectives_frequencies$key, levels = rev(tens_adjectives_frequencies$key))
+barchart(key ~ freq, data = head(tens_adjectives_frequencies, 20), col = "purple", 
+         main = "Most occurring adjectives in the 2010s subcorpus", xlab = "Freq")
+
+## Most occuring verbs tens
+tens_verbs <- subset(tens_mediaWordsSubsetFullSongs_ns, upos %in% c("VERB")) 
+tens_verbs_frequencies <- txt_freq(tens_verbs$token)
+tens_verbs_frequencies$key <- factor(tens_verbs_frequencies$key, levels = rev(tens_verbs_frequencies$key))
+barchart(key ~ freq, data = head(tens_verbs_frequencies, 20), col = "gold", 
+         main = "Most occurring Verbs in the 2010s subcorpus", xlab = "Freq")
+
+# Word frequencies media words tens
+tens_mediaWords_ns_frequencies <- txt_freq(tens_mediaWordsSubset_ns$token)
+tens_mediaWords_ns_frequencies$key <- factor(tens_mediaWords_ns_frequencies$key, levels = rev(tens_mediaWords_ns_frequencies$key))
+barchart(key ~ freq, data = head(tens_mediaWords_ns_frequencies, 20), col = "gold", 
+         main = "Most occurring media words in the 2010s subcorpus", xlab = "Freq")
 
 
+# Topic modeling tens - NOUNS 
+# TOPIC MODELLING NOUNS
+## Define the identifier at which we will build a topic model
+tensAnnotation$topic_level_id <- unique_identifier(tensAnnotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf_tens <- subset(tensAnnotation, upos %in% c("NOUN"))
+dtf_tens <- document_term_frequencies(dtf_tens, document = "topic_level_id", term = "lemma")
+head(dtf_tens)
+
+## Create a document/term/matrix for building a topic model
+dtm_tens <- document_term_matrix(x = dtf_tens)
+## Remove words which do not occur that much
+dtm_tens_clean <- dtm_remove_lowfreq(dtm_tens, minfreq = 5)
+head(dtm_colsums(dtm_tens_clean))
+
+## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
+dtm_tens_clean <- dtm_remove_tfidf(dtm_tens_clean, top = 50)
+
+## Build topic models 
+library(topicmodels)
+tens_models <- LDA(dtm_tens_clean, k = 4, method = "Gibbs", 
+                    control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+library(tidytext)
+rap_topics_tens <- tidy(tens_models, matrix = "beta")
+
+rap_top_terms_tens <- rap_topics_tens %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rap_top_terms_tens %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
