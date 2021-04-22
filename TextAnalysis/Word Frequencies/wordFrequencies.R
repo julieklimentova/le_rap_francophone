@@ -162,9 +162,10 @@ stopWords <- c(
   "NA"
 )
 songsPath <- '../Experiments/metadata/songsMetadata.csv'
-songs <- readr::read_csv(file = songsPath, locale = readr::locale(encoding = "latin1"))
+songs <- readr::read_csv(file = songsPath, locale = readr::locale(encoding = "utf8"))
 # ud_model <- udpipe_download_model(language = "french-partut")
 # ud_model <- udpipe_load_model(ud_model$file_model)
+Sys.getlocale()
 names(songs)[3] <- 'doc_id'
 names(songs)[7] <- 'text'
 # clean descriptions from genius 
@@ -172,6 +173,15 @@ for (i in 1:nrow(songs)) {
   song <- songs[i, 7][[1]]
   song <- tolower(song)
   songs[i, 7][[1]] <- gsub('\\[.*\\]','', song)
+  song <- songs[i, 7][[1]]
+  song <- tolower(song)
+  songs[i, 7][[1]] <- gsub('couplet','', song)
+  song <- songs[i, 7][[1]]
+  song <- tolower(song)
+  songs[i, 7][[1]] <- gsub('refrain','', song)
+  song <- songs[i, 7][[1]]
+  song <- tolower(song)
+  songs[i, 7][[1]] <- gsub('intro','', song)
 }
 
 songsLyrics <- data.frame(doc_id = songs$doc_id, text = songs$text, stringsAsFactors = FALSE)
@@ -194,9 +204,9 @@ barchart(key ~ freq, data = head(adjectives_frequencies, 20), col = "purple",
 
 ## Most occuring verbs
 verbs <- subset(annotation, upos %in% c("VERB")) 
-verbs_frequencies <- txt_freq(verbs$token)
+verbs_frequencies <- txt_freq(verbs$lemma)
 verbs_frequencies$key <- factor(verbs_frequencies$key, levels = rev(verbs_frequencies$key))
-barchart(key ~ freq, data = head(verbs_frequencies, 20), col = "gold", 
+barchart(key ~ freq, data = head(verbs_frequencies, 10), col = "gold", 
          main = "Most occurring Verbs", xlab = "Freq")
 
 ## Most occuring words
@@ -781,7 +791,10 @@ keywordsRakeNineties <- keywords_rake(x = nineties_mediaWordsSubsetFullSongs_ns,
                               relevant = nineties_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
                               ngram_max = 4)
 resultsNineties <- head(subset(keywordsRakeNineties, freq > 3))
+resultsNineties$keyword <- factor(resultsNineties$keyword, levels = rev(resultsNineties$keyword))
 
+barchart(keyword ~ rake, data = resultsNineties, col = "cadetblue",
+         main = "Nineties Rake ngram keywords", xlab = "rake")
 
 
 zerosAnnotation <- udpipe(zerosSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
@@ -870,6 +883,10 @@ keywordsRakeZeros <- keywords_rake(x = zeros_mediaWordsSubsetFullSongs_ns,
                                       ngram_max = 4)
 resultsZeros <- head(subset(keywordsRakeZeros, freq > 3))
 
+resultsZeros$keyword <- factor(resultsZeros$keyword, levels = rev(resultsZeros$keyword))
+
+barchart(keyword ~ rake, data = resultsZeros, col = "cadetblue",
+         main = "2000s Rake ngram keywords", xlab = "rake")
 tensAnnotation <- udpipe(tensSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "tensAnno.rds")
 
@@ -956,3 +973,7 @@ keywordsRakeTens <- keywords_rake(x = tens_mediaWordsSubsetFullSongs_ns,
                                   relevant = tens_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
                                   ngram_max = 4)
 resultsTens <- head(subset(keywordsRakeTens, freq > 3))
+resultsTens$keyword <- factor(resultsTens$keyword, levels = rev(resultsTens$keyword))
+
+barchart(keyword ~ rake, data = resultsTens, col = "cadetblue",
+         main = "2010s Rake ngram keywords", xlab = "rake")
