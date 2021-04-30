@@ -190,16 +190,16 @@ saveRDS(annotation, file = "anno.rds")
 
 ## Most occuring nouns 
 nouns <- subset(annotation, upos %in% c("NOUN")) 
-nouns_frequencies <- txt_freq(nouns$token)
+nouns_frequencies <- txt_freq(nouns$lemma)
 nouns_frequencies$key <- factor(nouns_frequencies$key, levels = rev(nouns_frequencies$key))
-barchart(key ~ freq, data = head(nouns_frequencies, 20), col = "cadetblue", 
+barchart(key ~ freq, data = head(nouns_frequencies, 10), col = "gold", 
          main = "Most occurring nouns", xlab = "Freq")
 
 ## Most occuring adjectives
 adjectives <- subset(annotation, upos %in% c("ADJ")) 
-adjectives_frequencies <- txt_freq(adjectives$token)
+adjectives_frequencies <- txt_freq(adjectives$lemma)
 adjectives_frequencies$key <- factor(adjectives_frequencies$key, levels = rev(adjectives_frequencies$key))
-barchart(key ~ freq, data = head(adjectives_frequencies, 20), col = "purple", 
+barchart(key ~ freq, data = head(adjectives_frequencies, 10), col = "gold", 
          main = "Most occurring adjectives", xlab = "Freq")
 
 ## Most occuring verbs
@@ -220,7 +220,7 @@ Sys.getlocale()
 # 
 # new Media words frequencies
 mediaWordsPath <- './nwmFrequencies/newMediaWordsFrequencies.csv'
-mediaWords <- readr::read_csv(file = mediaWordsPath, locale = readr::locale(encoding = "latin1"))
+mediaWords <- readr::read_csv(file = mediaWordsPath, locale = readr::locale(encoding = "latin"))
 mediaWords$key <- factor(mediaWords$key, levels = rev(mediaWords$key))
 barchart(key ~ freq, data = head(mediaWords, 20), col = "cadetblue",
          main = "Most occurring media words", xlab = "Freq")
@@ -451,7 +451,7 @@ mediaWordsPath_ns <- './nwmFrequencies/newMediaWordsFrequencies_noSoft.csv'
 mediaWords_ns <- readr::read_csv(file = mediaWordsPath_ns, locale = readr::locale(encoding = "latin1"))
 mediaWords_ns$key <- factor(mediaWords_ns$key, levels = rev(mediaWords_ns$key))
 barchart(key ~ freq, data = head(mediaWords_ns, 20), col = "cadetblue",
-         main = "Most occurring media words (no ambiguous words)", xlab = "Freq")
+         main = "Most occurring media words (no ambiguous words)", xlab = "Freq", aspect = 0.4)
 
 #Subsetting corpus only with media words 
 mediaWordsForSubset_ns <- mediaWords_ns[['key']]
