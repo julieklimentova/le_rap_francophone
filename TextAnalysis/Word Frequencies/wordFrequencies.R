@@ -635,7 +635,30 @@ rap_top_terms_verbs_ns %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
-#bigrams tidy text
+#bigrams full corpus tidy text
+library(tidytext)
+bigrams_main_corpus <- songs %>%
+  unnest_tokens(bigram, text, token = "ngrams", n = 2)
+
+bigram_counts_main_corpus <- bigrams_main_corpus %>%
+  count(bigram, sort = TRUE)
+
+bigrams_separated_main_corpus <- bigrams_main_corpus %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtered_main_corpus <- bigrams_separated_main_corpus %>%
+  filter(!word1 %in% stopWords) %>%
+  filter(!word2 %in% stopWords)
+
+# new bigram counts:
+bigram_counts_main_corpus_filtered <- bigrams_filtered_main_corpus %>% 
+  count(word1, word2, sort = TRUE)
+
+bigrams_united_main_corpus <- bigrams_filtered_main_corpus %>%
+  unite(bigram, word1, word2, sep = " ")
+
+write.csv(bigram_counts_main_corpus_filtered,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\main corpus\\bigrams_filtered.csv", row.names = FALSE)
+
 library(tidytext)
 mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, songShortcut %in% mediaWordsSongsIds_ns)
 mediaWordsSubset_bigrams <- mediaWordsSubsetFullSongs_ns_SONGS %>%
