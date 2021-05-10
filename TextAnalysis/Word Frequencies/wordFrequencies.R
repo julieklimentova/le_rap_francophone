@@ -168,46 +168,49 @@ songs <- readr::read_csv(file = songsPath, locale = readr::locale(encoding = "ut
 Sys.getlocale()
 names(songs)[3] <- 'doc_id'
 names(songs)[7] <- 'text'
+
+# remove duplicates 
+songs <- songs[!duplicated(songs$songId), ]
 # clean descriptions from genius 
 for (i in 1:nrow(songs)) {
   song <- songs[i, 7][[1]]
   song <- tolower(song)
   songs[i, 7][[1]] <- gsub('\\[.*\\]','', song)
   song <- songs[i, 7][[1]]
-  song <- tolower(song)
   songs[i, 7][[1]] <- gsub('couplet','', song)
   song <- songs[i, 7][[1]]
-  song <- tolower(song)
   songs[i, 7][[1]] <- gsub('refrain','', song)
   song <- songs[i, 7][[1]]
-  song <- tolower(song)
   songs[i, 7][[1]] <- gsub('intro','', song)
+  song <- songs[i, 7][[1]]
+  songs[i, 7][[1]] <- gsub('outro','', song)
+  song <- songs[i, 7][[1]]
+  songs[i, 7][[1]] <- gsub('pré-refrain','', song)
 }
-
 songsLyrics <- data.frame(doc_id = songs$doc_id, text = songs$text, stringsAsFactors = FALSE)
 annotation <- udpipe(songsLyrics, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
-saveRDS(annotation, file = "anno.rds")
+saveRDS(annotation, file = "anno_unique.rds")
 
 ## Most occuring nouns 
 nouns <- subset(annotation, upos %in% c("NOUN")) 
 nouns_frequencies <- txt_freq(nouns$lemma)
 nouns_frequencies$key <- factor(nouns_frequencies$key, levels = rev(nouns_frequencies$key))
 barchart(key ~ freq, data = head(nouns_frequencies, 10), col = "gold", 
-         main = "Most occurring nouns", xlab = "Freq")
+         main = "Most frequent nouns", xlab = "Freq")
 
 ## Most occuring adjectives
 adjectives <- subset(annotation, upos %in% c("ADJ")) 
 adjectives_frequencies <- txt_freq(adjectives$lemma)
 adjectives_frequencies$key <- factor(adjectives_frequencies$key, levels = rev(adjectives_frequencies$key))
 barchart(key ~ freq, data = head(adjectives_frequencies, 10), col = "gold", 
-         main = "Most occurring adjectives", xlab = "Freq")
+         main = "Most frequent adjectives", xlab = "Freq")
 
 ## Most occuring verbs
 verbs <- subset(annotation, upos %in% c("VERB")) 
 verbs_frequencies <- txt_freq(verbs$lemma)
 verbs_frequencies$key <- factor(verbs_frequencies$key, levels = rev(verbs_frequencies$key))
 barchart(key ~ freq, data = head(verbs_frequencies, 10), col = "gold", 
-         main = "Most occurring Verbs", xlab = "Freq")
+         main = "Most frequent verbs", xlab = "Freq")
 
 ## Most occuring words
 words_frequencies <- txt_freq(annotation$token, exclude = stopWords)
@@ -220,7 +223,7 @@ Sys.getlocale()
 # 
 # new Media words frequencies
 mediaWordsPath <- './nwmFrequencies/newMediaWordsFrequencies.csv'
-mediaWords <- readr::read_csv(file = mediaWordsPath, locale = readr::locale(encoding = "latin"))
+mediaWords <- readr::read_csv(file = mediaWordsPath, locale = readr::locale(encoding = "latin1"))
 mediaWords$key <- factor(mediaWords$key, levels = rev(mediaWords$key))
 barchart(key ~ freq, data = head(mediaWords, 20), col = "cadetblue",
          main = "Most occurring media words", xlab = "Freq")
@@ -394,6 +397,7 @@ mediaWordsSongsIds <- unique(mediaWordsSubset$doc_id)
 mediaWordsSongsIds_df <- data.frame(mediaWordsSongsIds)
 
 mediaWordsSubsetFullSongs <- subset(annotation, doc_id %in% mediaWordsSongsIds)
+mediaWordsSubsetFullSongs_SONGS <- subset(songs, doc_id %in% mediaWordsSongsIds)
 
 # subset with media words 
 mediaWordsSubsetLemmas <- data.frame(mediaWordsSubset$lemma)
@@ -460,8 +464,12 @@ mediaWordsSongsIds_ns <- unique(mediaWordsSubset_ns$doc_id)
 mediaWordsSongsIds__ns_df <- data.frame(mediaWordsSongsIds_ns)
 
 mediaWordsSubsetFullSongs_ns <- subset(annotation, doc_id %in% mediaWordsSongsIds_ns)
+mediaWordsSubsetFullSongs_SONGS_ns <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 
+words_frequencies <- txt_freq(annotation$token, exclude = stopWords)
+word_frequencies_mediawords_ns <- subset(words_frequencies, key %in% mediaWords_ns$key )
 
+write.csv(word_frequencies_mediawords_ns, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\media_words_frequencies.csv")
 # Collocations
 lemmas_ns <- data.frame(mediaWordsSubsetFullSongs_ns$lemma)
 
