@@ -5,389 +5,7 @@ library(lattice)
 library(igraph)
 library(ggraph)
 library(ggplot2)
-stopWords <- c(
-  "a",
-  "à",
-  "alors",
-  "and",
-  "au",
-  "aucuns",
-  "aussi",
-  "autre",
-  "avant",
-  "avec",
-  "avoir",
-  "bon",
-  "ça",
-  "car",
-  "c'",
-  "c'est",
-  "c´est",
-  "c`est",
-  "ce",
-  "cela",
-  "ces",
-  "ceux",
-  "chaque",
-  "ci",
-  "comme",
-  "comment",
-  "couplet",
-  "dans",
-  "des",
-  "du",
-  "de",
-  "d'",
-  "dedans",
-  "dehors",
-  "depuis",
-  "devrait",
-  "doit",
-  "donc",
-  "dos",
-  "début",
-  "elle",
-  "elles",
-  "en",
-  "encore",
-  "essai",
-  "est",
-  "et",
-  "étaient",
-  "état",
-  "étions",
-  "été",
-  "être",
-  "eu",
-  "fait",
-  "faites",
-  "faut",
-  "fois",
-  "font",
-  "hors",
-  "i",
-  "intro",
-  "ici",
-  "il",
-  "ils",
-  "je",
-  "j'",
-  "j'ai",
-  "j'suis",
-  "juste",
-  "la",
-  "le",
-  "les",
-  "leur",
-  "là",
-  "ma",
-  "maintenant",
-  "mais",
-  "me",
-  "m'",
-  "mes",
-  "mien",
-  "moins",
-  "mon",
-  "moi",
-  "mot",
-  "même",
-  "ni",
-  "nommés",
-  "notre",
-  "nous",
-  "ou",
-  "où",
-  "on",
-  "outro",
-  "oh",
-  "par",
-  "parce",
-  "pas",
-  "peut",
-  "peu",
-  "plupart",
-  "plus",
-  "pour",
-  "pourquoi",
-  "quand",
-  "que",
-  "quel",
-  "quelle",
-  "quelles",
-  "quels",
-  "qui",
-  "refrain",
-  "sa",
-  "sans",
-  "ses",
-  "se",
-  "s'",
-  "seulement",
-  "si",
-  "sien",
-  "son",
-  "sont",
-  "sous",
-  "soyez",
-  "sujet",
-  "sur",
-  "ta",
-  "tandis",
-  "te",
-  "t'",
-  "t'as",
-  "toi",
-  "tellement",
-  "tels",
-  "tes",
-  "ton",
-  "tous",
-  "tout",
-  "trop",
-  "très",
-  "tu",
-  "un",
-  "une",
-  "verse",
-  "voient",
-  "vont",
-  "votre",
-  "vous",
-  "vu",
-  "y",
-  "y'a",
-  "yeah",
-  "you",
-  "NA"
-)
-songsPath <- '../Experiments/metadata/songsMetadata.csv'
-songs <- readr::read_csv(file = songsPath, locale = readr::locale(encoding = "utf8"))
-# ud_model <- udpipe_download_model(language = "french-partut")
-# ud_model <- udpipe_load_model(ud_model$file_model)
-Sys.getlocale()
-names(songs)[3] <- 'doc_id'
-names(songs)[7] <- 'text'
 
-# remove duplicates 
-songs <- songs[!duplicated(songs$songId), ]
-# clean descriptions from genius 
-for (i in 1:nrow(songs)) {
-  song <- songs[i, 7][[1]]
-  song <- tolower(song)
-  songs[i, 7][[1]] <- gsub('\\[.*\\]','', song)
-  song <- songs[i, 7][[1]]
-  songs[i, 7][[1]] <- gsub('couplet','', song)
-  song <- songs[i, 7][[1]]
-  songs[i, 7][[1]] <- gsub('refrain','', song)
-  song <- songs[i, 7][[1]]
-  songs[i, 7][[1]] <- gsub('intro','', song)
-  song <- songs[i, 7][[1]]
-  songs[i, 7][[1]] <- gsub('outro','', song)
-  song <- songs[i, 7][[1]]
-  songs[i, 7][[1]] <- gsub('pré-refrain','', song)
-}
-songsLyrics <- data.frame(doc_id = songs$doc_id, text = songs$text, stringsAsFactors = FALSE)
-annotation <- udpipe(songsLyrics, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
-saveRDS(annotation, file = "anno_unique.rds")
-
-## Most occuring nouns 
-nouns <- subset(annotation, upos %in% c("NOUN")) 
-nouns_frequencies <- txt_freq(nouns$lemma)
-nouns_frequencies$key <- factor(nouns_frequencies$key, levels = rev(nouns_frequencies$key))
-barchart(key ~ freq, data = head(nouns_frequencies, 10), col = "gold", 
-         main = "Most frequent nouns", xlab = "Freq")
-
-## Most occuring adjectives
-adjectives <- subset(annotation, upos %in% c("ADJ")) 
-adjectives_frequencies <- txt_freq(adjectives$lemma)
-adjectives_frequencies$key <- factor(adjectives_frequencies$key, levels = rev(adjectives_frequencies$key))
-barchart(key ~ freq, data = head(adjectives_frequencies, 10), col = "gold", 
-         main = "Most frequent adjectives", xlab = "Freq")
-
-## Most occuring verbs
-verbs <- subset(annotation, upos %in% c("VERB")) 
-verbs_frequencies <- txt_freq(verbs$lemma)
-verbs_frequencies$key <- factor(verbs_frequencies$key, levels = rev(verbs_frequencies$key))
-barchart(key ~ freq, data = head(verbs_frequencies, 10), col = "gold", 
-         main = "Most frequent verbs", xlab = "Freq")
-
-## Most occuring words
-words_frequencies <- txt_freq(annotation$token, exclude = stopWords)
-words_frequencies$key <- factor(words_frequencies$key, levels = rev(words_frequencies$key))
-barchart(key ~ freq, data = head(words_frequencies, 20), col = "cadetblue",
-         main = "Most occurring words", xlab = "Freq")
-
-
-Sys.getlocale()
-# 
-# new Media words frequencies
-mediaWordsPath <- './nwmFrequencies/newMediaWordsFrequencies.csv'
-mediaWords <- readr::read_csv(file = mediaWordsPath, locale = readr::locale(encoding = "latin1"))
-mediaWords$key <- factor(mediaWords$key, levels = rev(mediaWords$key))
-barchart(key ~ freq, data = head(mediaWords, 20), col = "cadetblue",
-         main = "Most occurring media words", xlab = "Freq")
-
-
-# Collocations
-lemmas <- data.frame(annotation$lemma)
-
-nounsForCollocation <- subset(annotation, upos %in% c("NOUN")) 
-collocations <- keywords_collocation(x = nounsForCollocation, 
-                              term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                              ngram_max = 4)
-coocurrences <- cooccurrence(x = subset(annotation, upos %in% c("NOUN", "ADJ")), 
-                      term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
-## Co-occurrences: How frequent do words follow one another
-following <- cooccurrence(x = annotation$lemma, 
-                      relevant = annotation$upos %in% c("NOUN", "ADJ"))
-## Co-occurrences: How frequent do words follow one another even if we would skip 2 words in between
-followingSkipped <- cooccurrence(x = annotation$lemma, 
-                      relevant = annotation$upos %in% c("NOUN", "ADJ"), skipgram = 2)
-
-wordnetwork <- head(followingSkipped, 30)
-wordnetwork <- graph_from_data_frame(wordnetwork)
-ggraph(wordnetwork, layout = "fr") +
-  geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_colour = "pink") +
-  geom_node_text(aes(label = name), col = "darkgreen", size = 4) +
-  theme_graph(base_family = "Arial") +
-  theme(legend.position = "none") +
-  labs(title = "Cooccurrences within 3 words distance", subtitle = "Nouns & Adjective")
-
-# TEXTRANK keywords
-
-stats <- textrank_keywords(annotation$lemma, 
-                           relevant = annotation$upos %in% c("NOUN", "ADJ"), 
-                           ngram_max = 8, sep = " ")
-statsKeywords <- subset(stats$keywords, ngram > 1 & freq >= 20)
-library(wordcloud)
-wordcloud(words = statsKeywords$keyword, freq = statsKeywords$freq)
-wordcloud(words = mediaWords$key, freq = mediaWords$freq)
-
-
-# RAKE 
-
-keywordsRake <- keywords_rake(x = annotation, 
-                       term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                       relevant = annotation$upos %in% c("NOUN", "ADJ"),
-                       ngram_max = 4)
-results <- head(subset(keywordsRake, freq > 3))
-
-
-# TOPIC MODELLING NOUNS
-## Define the identifier at which we will build a topic model
-annotation$topic_level_id <- unique_identifier(annotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
-## Get a data.frame with 1 row per id/lemma
-dtf <- subset(annotation, upos %in% c("NOUN"))
-dtf <- document_term_frequencies(dtf, document = "topic_level_id", term = "lemma")
-head(dtf)
-
-## Create a document/term/matrix for building a topic model
-dtm <- document_term_matrix(x = dtf)
-## Remove words which do not occur that much
-dtm_clean <- dtm_remove_lowfreq(dtm, minfreq = 5)
-head(dtm_colsums(dtm_clean))
-
-## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
-dtm_clean <- dtm_remove_tfidf(dtm_clean, top = 50)
-
-## Build topic models 
-library(topicmodels)
-models <- LDA(dtm_clean, k = 4, method = "Gibbs", 
-         control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
-
-library(tidytext)
-rap_topics <- tidy(models, matrix = "beta")
-
-rap_top_terms <- rap_topics %>%
-  group_by(topic) %>%
-  top_n(10, beta) %>%
-  ungroup() %>%
-  arrange(topic, -beta)
-
-rap_top_terms %>%
-  mutate(term = reorder_within(term, beta, topic)) %>%
-  ggplot(aes(beta, term, fill = factor(topic))) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
-
-
-# TOPIC MODELLING ADJECTIVES
-## Define the identifier at which we will build a topic model
-annotation$topic_level_id <- unique_identifier(annotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
-## Get a data.frame with 1 row per id/lemma
-dtf_adj <- subset(annotation, upos %in% c("ADJ"))
-dtf_adj <- document_term_frequencies(dtf_adj, document = "topic_level_id", term = "lemma")
-head(dtf_adj)
-
-## Create a document/term/matrix for building a topic model
-dtm_adj <- document_term_matrix(x = dtf_adj)
-## Remove words which do not occur that much
-dtm_clean_adj <- dtm_remove_lowfreq(dtm_adj, minfreq = 5)
-head(dtm_colsums(dtm_clean_adj))
-
-## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
-dtm_clean_adj <- dtm_remove_tfidf(dtm_clean_adj, top = 50)
-
-## Build topic models 
-library(topicmodels)
-models_adj <- LDA(dtm_clean_adj, k = 4, method = "Gibbs", 
-              control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
-
-library(tidytext)
-rap_topics_adj <- tidy(models_adj, matrix = "beta")
-
-rap_top_terms_adj <- rap_topics_adj %>%
-  group_by(topic) %>%
-  top_n(10, beta) %>%
-  ungroup() %>%
-  arrange(topic, -beta)
-
-rap_top_terms_adj %>%
-  mutate(term = reorder_within(term, beta, topic)) %>%
-  ggplot(aes(beta, term, fill = factor(topic))) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
-
-# TOPIC MODELLING VERBS
-## Define the identifier at which we will build a topic model
-annotation$topic_level_id <- unique_identifier(annotation, fields = c("doc_id", "paragraph_id", "sentence_id"))
-## Get a data.frame with 1 row per id/lemma
-dtf_verbs <- subset(annotation, upos %in% c("VERB"))
-dtf_verbs <- document_term_frequencies(dtf_verbs, document = "topic_level_id", term = "lemma")
-head(dtf_verbs)
-
-## Create a document/term/matrix for building a topic model
-dtm_verbs <- document_term_matrix(x = dtf_verbs)
-## Remove words which do not occur that much
-dtm_clean_verbs <- dtm_remove_lowfreq(dtm_verbs, minfreq = 5)
-head(dtm_colsums(dtm_clean_verbs))
-
-## Or keep of these nouns the top 50 based on mean term-frequency-inverse document frequency
-dtm_clean_verbs <- dtm_remove_tfidf(dtm_clean_verbs, top = 50)
-
-## Build topic models 
-library(topicmodels)
-models_verbs <- LDA(dtm_clean_verbs, k = 4, method = "Gibbs", 
-                  control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
-
-library(tidytext)
-rap_topics_verbs <- tidy(models_verbs, matrix = "beta")
-
-rap_top_terms_verbs <- rap_topics_verbs %>%
-  group_by(topic) %>%
-  top_n(10, beta) %>%
-  ungroup() %>%
-  arrange(topic, -beta)
-
-rap_top_terms_verbs %>%
-  mutate(term = reorder_within(term, beta, topic)) %>%
-  ggplot(aes(beta, term, fill = factor(topic))) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
 
 
 #Subsetting corpus only with media words 
@@ -404,16 +22,16 @@ mediaWordsSubsetLemmas <- data.frame(mediaWordsSubset$lemma)
 
 nounsForCollocationMWS <- subset(mediaWordsSubset, upos %in% c("NOUN")) 
 collocationsMWS <- keywords_collocation(x = nounsForCollocationMWS, 
-                                     term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                                     ngram_max = 4)
+                                        term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                        ngram_max = 4)
 coocurrencesMWS <- cooccurrence(x = subset(mediaWordsSubset, upos %in% c("NOUN", "ADJ")), 
-                             term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
+                                term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
 ## Co-occurrences: How frequent do words follow one another
 followingMWS <- cooccurrence(x = mediaWordsSubset$lemma, 
-                          relevant = mediaWordsSubset$upos %in% c("NOUN", "ADJ"))
+                             relevant = mediaWordsSubset$upos %in% c("NOUN", "ADJ"))
 ## Co-occurrences: How frequent do words follow one another even if we would skip 2 words in between
 followingSkippedMWS <- cooccurrence(x = mediaWordsSubset$lemma, 
-                                 relevant = mediaWordsSubset$upos %in% c("NOUN", "ADJ"), skipgram = 2)
+                                    relevant = mediaWordsSubset$upos %in% c("NOUN", "ADJ"), skipgram = 2)
 
 wordnetworkMWS <- head(followingSkippedMWS, 30)
 wordnetworkMWS <- graph_from_data_frame(wordnetworkMWS)
@@ -428,16 +46,16 @@ ggraph(wordnetworkMWS, layout = "fr") +
 mediaWordsSubsetFullSongsLemmas <- data.frame(mediaWordsSubsetFullSongs$lemma)
 nounsForCollocationMWFullSongs <- subset(mediaWordsSubsetFullSongs, upos %in% c("NOUN")) 
 collocationsMWFullSongs <- keywords_collocation(x = nounsForCollocationMWFullSongs, 
-                                        term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                                        ngram_max = 4)
+                                                term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                                ngram_max = 4)
 coocurrencesMWFullSongs <- cooccurrence(x = subset(mediaWordsSubsetFullSongs, upos %in% c("NOUN", "ADJ")), 
-                                term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
+                                        term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
 ## Co-occurrences: How frequent do words follow one another
 followingMWFullSongs <- cooccurrence(x = mediaWordsSubsetFullSongs$lemma, 
-                             relevant = mediaWordsSubsetFullSongs$upos %in% c("NOUN", "ADJ"))
+                                     relevant = mediaWordsSubsetFullSongs$upos %in% c("NOUN", "ADJ"))
 ## Co-occurrences: How frequent do words follow one another even if we would skip 2 words in between
 followingSkippedMWFullSongs <- cooccurrence(x = mediaWordsSubsetFullSongs$lemma, 
-                                    relevant = mediaWordsSubsetFullSongs$upos %in% c("NOUN", "ADJ"), skipgram = 2)
+                                            relevant = mediaWordsSubsetFullSongs$upos %in% c("NOUN", "ADJ"), skipgram = 2)
 
 wordnetworkMWFullSongs <- head(followingSkippedMWFullSongs, 30)
 wordnetworkMWFullSongs <- graph_from_data_frame(wordnetworkMWFullSongs)
@@ -454,7 +72,7 @@ ggraph(wordnetworkMWFullSongs, layout = "fr") +
 mediaWordsPath_ns <- './nwmFrequencies/newMediaWordsFrequencies_noSoft.csv'
 mediaWords_ns <- readr::read_csv(file = mediaWordsPath_ns, locale = readr::locale(encoding = "latin1"))
 mediaWords_ns$key <- factor(mediaWords_ns$key, levels = rev(mediaWords_ns$key))
-barchart(key ~ freq, data = head(mediaWords_ns, 20), col = "cadetblue",
+barchart(key ~ freq, data = head(mediaWords_ns, 10), col = "cadetblue",
          main = "Most occurring media words (no ambiguous words)", xlab = "Freq", aspect = 0.4)
 
 #Subsetting corpus only with media words 
@@ -464,29 +82,24 @@ mediaWordsSongsIds_ns <- unique(mediaWordsSubset_ns$doc_id)
 mediaWordsSongsIds__ns_df <- data.frame(mediaWordsSongsIds_ns)
 
 mediaWordsSubsetFullSongs_ns <- subset(annotation, doc_id %in% mediaWordsSongsIds_ns)
-write.csv(mediaWordsSubset_ns, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\subset.csv")
+mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 
-mediaWordsSubsetFullSongs_SONGS_ns <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 
-words_frequencies <- txt_freq(annotation$token, exclude = stopWords)
-word_frequencies_mediawords_ns <- subset(words_frequencies, key %in% mediaWords_ns$key )
-
-write.csv(word_frequencies_mediawords_ns, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\media_words_frequencies.csv")
 # Collocations
 lemmas_ns <- data.frame(mediaWordsSubsetFullSongs_ns$lemma)
 
 nounsForCollocation_ns <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
 collocations_ns <- keywords_collocation(x = nounsForCollocation_ns, 
-                                     term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                                     ngram_max = 4)
+                                        term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                        ngram_max = 4)
 coocurrences_ns <- cooccurrence(x = subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN", "ADJ")), 
-                             term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
+                                term = "lemma", group = c("doc_id", "paragraph_id", "sentence_id"))
 ## Co-occurrences: How frequent do words follow one another
 following_ns <- cooccurrence(x = mediaWordsSubsetFullSongs_ns$lemma, 
-                          relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"))
+                             relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"))
 ## Co-occurrences: How frequent do words follow one another even if we would skip 2 words in between
 followingSkipped_ns <- cooccurrence(x = mediaWordsSubsetFullSongs_ns$lemma, 
-                                 relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), skipgram = 2)
+                                    relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), skipgram = 2)
 
 wordnetwork_ns <- head(followingSkipped_ns, 30)
 wordnetwork_ns <- graph_from_data_frame(wordnetwork_ns)
@@ -500,8 +113,8 @@ ggraph(wordnetwork_ns, layout = "fr") +
 # TEXTRANK keywords
 
 stats_ns <- textrank_keywords(mediaWordsSubsetFullSongs_ns$lemma, 
-                           relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), 
-                           ngram_max = 8, sep = " ")
+                              relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"), 
+                              ngram_max = 8, sep = " ")
 statsKeywords_ns <- subset(stats_ns$keywords, ngram > 1 & freq >= 20)
 library(wordcloud)
 wordcloud(words = statsKeywords_ns$keyword, freq = statsKeywords_ns$freq)
@@ -511,15 +124,15 @@ wordcloud(words = mediaWords_ns$key, freq = mediaWords_ns$freq)
 # RAKE 
 
 keywordsRake_ns <- keywords_rake(x = mediaWordsSubsetFullSongs_ns, 
-                              term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                              relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
-                              ngram_max = 4)
+                                 term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                 relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                 ngram_max = 4)
 results_ns <- head(subset(keywordsRake_ns, freq > 3))
 
 keywordsRake_ns_2 <- keywords_rake(x = mediaWordsSubsetFullSongs_ns, 
-                                 term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                                 relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
-                                 ngram_max = 2)
+                                   term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                   relevant = mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                   ngram_max = 2)
 results_ns_2 <- head(subset(keywordsRake_ns_2, freq > 3 & ngram > 1))
 results_ns$keyword <- factor(results_ns$keyword, levels = rev(results_ns$keyword))
 
@@ -550,7 +163,7 @@ dtm_clean_ns <- dtm_remove_tfidf(dtm_clean_ns, top = 50)
 ## Build topic models 
 library(topicmodels)
 models_ns <- LDA(dtm_clean_ns, k = 4, method = "Gibbs", 
-              control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+                 control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 
 library(tidytext)
 rap_topics_ns <- tidy(models_ns, matrix = "beta")
@@ -589,7 +202,7 @@ dtm_clean_adj_ns <- dtm_remove_tfidf(dtm_clean_adj_ns, top = 50)
 ## Build topic models 
 library(topicmodels)
 models_adj_ns <- LDA(dtm_clean_adj_ns, k = 4, method = "Gibbs", 
-                  control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+                     control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 
 library(tidytext)
 rap_topics_adj_ns <- tidy(models_adj_ns, matrix = "beta")
@@ -627,7 +240,7 @@ dtm_clean_verbs_ns <- dtm_remove_tfidf(dtm_clean_verbs_ns, top = 50)
 ## Build topic models 
 library(topicmodels)
 models_verbs_ns <- LDA(dtm_clean_verbs_ns, k = 4, method = "Gibbs", 
-                    control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+                       control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 
 library(tidytext)
 rap_topics_verbs_ns <- tidy(models_verbs_ns, matrix = "beta")
@@ -645,34 +258,10 @@ rap_top_terms_verbs_ns %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
-#bigrams full corpus tidy text
 library(tidytext)
-bigrams_main_corpus <- songs %>%
+mediaWordsSubsetFullSongs_SONGS_ns <- subset(songs, songShortcut %in% mediaWordsSongsIds_ns)
+mediaWordsSubset_bigrams <- mediaWordsSubsetFullSongs_SONGS_ns %>%
   unnest_tokens(bigram, text, token = "ngrams", n = 2)
-
-bigram_counts_main_corpus <- bigrams_main_corpus %>%
-  count(bigram, sort = TRUE)
-
-bigrams_separated_main_corpus <- bigrams_main_corpus %>%
-  separate(bigram, c("word1", "word2"), sep = " ")
-
-bigrams_filtered_main_corpus <- bigrams_separated_main_corpus %>%
-  filter(!word1 %in% stopWords) %>%
-  filter(!word2 %in% stopWords)
-
-# new bigram counts:
-bigram_counts_main_corpus_filtered <- bigrams_filtered_main_corpus %>% 
-  count(word1, word2, sort = TRUE)
-
-bigrams_united_main_corpus <- bigrams_filtered_main_corpus %>%
-  unite(bigram, word1, word2, sep = " ")
-
-write.csv(bigram_counts_main_corpus_filtered,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\main corpus\\bigrams_filtered.csv", row.names = FALSE)
-
-library(tidytext)
-mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, songShortcut %in% mediaWordsSongsIds_ns)
-mediaWordsSubset_bigrams <- mediaWordsSubsetFullSongs_ns_SONGS %>%
-  unnest_tokens(bigram, lyrics, token = "ngrams", n = 2)
 
 mw_bigram_counts <- mediaWordsSubset_bigrams %>%
   count(bigram, sort = TRUE)
@@ -698,6 +287,8 @@ bigram_tf_idf <- bigrams_united %>%
   bind_tf_idf(bigram, songShortcut, n) %>%
   arrange(desc(tf_idf))
 
+write.csv(bigram_counts,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\bigrams_counts.csv", row.names = FALSE)
+
 
 # Subsetting years on
 
@@ -713,7 +304,7 @@ ninetiesSubset = songsDataTable[releaseDate %like% '1990'
                                 | releaseDate %like% '1997'
                                 | releaseDate %like% '1998'
                                 | releaseDate %like% '1999'
-                                ]
+]
 
 zerosSubset = songsDataTable[releaseDate %like% '2000'
                              | releaseDate %like% '2001'
@@ -737,7 +328,7 @@ tensSubset = songsDataTable[releaseDate %like% '2010'
                             | releaseDate %like% '2018'
                             | releaseDate %like% '2019'
                             | releaseDate %like% '2020'
-                            ]
+]
 
 ninetiesAnnotation <- udpipe(ninetiesSubset, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "ninetiesAnno.rds")
@@ -820,9 +411,9 @@ rap_top_terms_nineties %>%
 # RAKE Nineties
 
 keywordsRakeNineties <- keywords_rake(x = nineties_mediaWordsSubsetFullSongs_ns, 
-                              term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                              relevant = nineties_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
-                              ngram_max = 4)
+                                      term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                      relevant = nineties_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                      ngram_max = 4)
 resultsNineties <- head(subset(keywordsRakeNineties, freq > 3))
 resultsNineties$keyword <- factor(resultsNineties$keyword, levels = rev(resultsNineties$keyword))
 
@@ -892,7 +483,7 @@ dtm_zeros_clean <- dtm_remove_tfidf(dtm_zeros_clean, top = 50)
 ## Build topic models 
 library(topicmodels)
 zeros_models <- LDA(dtm_zeros_clean, k = 4, method = "Gibbs", 
-                       control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+                    control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 
 library(tidytext)
 rap_topics_zeros <- tidy(zeros_models, matrix = "beta")
@@ -911,9 +502,9 @@ rap_top_terms_zeros %>%
   scale_y_reordered()
 
 keywordsRakeZeros <- keywords_rake(x = zeros_mediaWordsSubsetFullSongs_ns, 
-                                      term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
-                                      relevant = zeros_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
-                                      ngram_max = 4)
+                                   term = "token", group = c("doc_id", "paragraph_id", "sentence_id"),
+                                   relevant = zeros_mediaWordsSubsetFullSongs_ns$upos %in% c("NOUN", "ADJ"),
+                                   ngram_max = 4)
 resultsZeros <- head(subset(keywordsRakeZeros, freq > 3))
 
 resultsZeros$keyword <- factor(resultsZeros$keyword, levels = rev(resultsZeros$keyword))
@@ -983,7 +574,7 @@ dtm_tens_clean <- dtm_remove_tfidf(dtm_tens_clean, top = 50)
 ## Build topic models 
 library(topicmodels)
 tens_models <- LDA(dtm_tens_clean, k = 4, method = "Gibbs", 
-                    control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+                   control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 
 library(tidytext)
 rap_topics_tens <- tidy(tens_models, matrix = "beta")
