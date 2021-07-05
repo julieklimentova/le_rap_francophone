@@ -190,7 +190,7 @@ for (i in 1:nrow(songs)) {
 songsLyrics <- data.frame(doc_id = songs$doc_id, text = songs$text, stringsAsFactors = FALSE)
 annotation <- udpipe(songsLyrics, './french-gsd-ud-2.5-191206.udpipe', parallel.cores = 2)
 saveRDS(annotation, file = "anno_unique.rds")
-
+Sys.getlocale()
 ## Most occuring nouns 
 nouns <- subset(annotation, upos %in% c("NOUN")) 
 nouns_frequencies <- txt_freq(nouns$lemma)

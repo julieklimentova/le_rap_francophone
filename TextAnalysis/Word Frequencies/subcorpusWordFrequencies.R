@@ -84,6 +84,31 @@ mediaWordsSongsIds__ns_df <- data.frame(mediaWordsSongsIds_ns)
 mediaWordsSubsetFullSongs_ns <- subset(annotation, doc_id %in% mediaWordsSongsIds_ns)
 mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 
+Sys.setlocale(category = "LC_ALL", locale = "English_United States.1252")
+Sys.setlocale(category = "LC_ALL", locale = "UTF-8")
+Sys.setenv(LANGUAGE="fr")
+Sys.getlocale()
+#Word frequencies
+## Most occuring nouns 
+nounsNs <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("NOUN")) 
+nouns_frequenciesNs <- txt_freq(nounsNs$lemma)
+nouns_frequenciesNs$key <- factor(nouns_frequenciesNs$key, levels = rev(nouns_frequenciesNs$key))
+barchart(key ~ freq, data = head(nouns_frequenciesNs, 10), col = "orange", 
+         main = "Most frequent nouns in subcorpus", xlab = "Freq")
+
+## Most occuring adjectives
+adjectivesNs <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("ADJ")) 
+adjectives_frequenciesNs <- txt_freq(adjectivesNs$lemma)
+adjectives_frequenciesNs$key <- factor(adjectives_frequenciesNs$key, levels = rev(adjectives_frequenciesNs$key))
+barchart(key ~ freq, data = head(adjectives_frequenciesNs, 10), col = "orange", 
+         main = "Most frequent adjectives in subcorpus", xlab = "Freq")
+
+## Most occuring verbs
+verbsNs <- subset(mediaWordsSubsetFullSongs_ns, upos %in% c("VERB")) 
+verbs_frequenciesNs <- txt_freq(verbsNs$lemma)
+verbs_frequenciesNs$key <- factor(verbs_frequenciesNs$key, levels = rev(verbs_frequenciesNs$key))
+barchart(key ~ freq, data = head(verbs_frequenciesNs, 10), col = "orange", 
+         main = "Most frequent verbs in subcorpus", xlab = "Freq")
 
 # Collocations
 lemmas_ns <- data.frame(mediaWordsSubsetFullSongs_ns$lemma)
@@ -121,6 +146,7 @@ wordcloud(words = statsKeywords_ns$keyword, freq = statsKeywords_ns$freq)
 wordcloud(words = mediaWords_ns$key, freq = mediaWords_ns$freq)
 
 
+library(udpipe)
 # RAKE 
 
 keywordsRake_ns <- keywords_rake(x = mediaWordsSubsetFullSongs_ns, 
@@ -268,26 +294,26 @@ mw_bigram_counts <- mediaWordsSubset_bigrams %>%
 
 library(tidyr)
 
-bigrams_separated <- mediaWordsSubset_bigrams %>%
+mw_bigrams_separated <- mediaWordsSubset_bigrams %>%
   separate(bigram, c("word1", "word2"), sep = " ")
 
-bigrams_filtered <- bigrams_separated %>%
+mw_bigrams_filtered <- mw_bigrams_separated %>%
   filter(!word1 %in% stopWords) %>%
   filter(!word2 %in% stopWords)
 
 # new bigram counts:
-bigram_counts <- bigrams_filtered %>% 
+mw_bigram_counts <- mw_bigrams_filtered %>% 
   count(word1, word2, sort = TRUE)
 
-bigrams_united <- bigrams_filtered %>%
+mw_bigrams_united <- mw_bigrams_filtered %>%
   unite(bigram, word1, word2, sep = " ")
 
-bigram_tf_idf <- bigrams_united %>%
+mw_bigram_tf_idf <- mw_bigrams_united %>%
   count(songShortcut, bigram) %>%
   bind_tf_idf(bigram, songShortcut, n) %>%
   arrange(desc(tf_idf))
 
-write.csv(bigram_counts,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\bigrams_counts.csv", row.names = FALSE)
+write.csv(mw_bigram_counts,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\bigrams_counts.csv", row.names = FALSE)
 
 
 # Subsetting years on
