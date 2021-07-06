@@ -6,6 +6,13 @@ library(igraph)
 library(ggraph)
 library(ggplot2)
 stopWords <- c(
+  ",",
+  ":",
+  "'",
+  ";",
+  "?",
+  "!",
+  ".",
   "a",
   "à",
   "alors",

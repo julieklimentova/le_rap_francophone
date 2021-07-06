@@ -1,8 +1,10 @@
 library(tm)
+# on the media words subset/can be exchanged for songs if wanting to model the main corpus 
+songsVector <- mediaWordsSubsetFullSongs_SONGS_ns$text
 
-songsVector <- songs$text
 doc.list <- strsplit(songsVector, "[[:space:]]+")
 doc.list[] <- lapply(doc.list, function(x) x[!x %in% ""])
+doc.list[] <- lapply(doc.list, function(x) x[!x %in% stopWords])
 
 
 # compute the table of terms:
