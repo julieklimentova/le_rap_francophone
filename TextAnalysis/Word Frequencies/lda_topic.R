@@ -2,6 +2,13 @@ library(tm)
 # on the media words subset/can be exchanged for songs if wanting to model the main corpus 
 songsVector <- mediaWordsSubsetFullSongs_SONGS_ns$text
 
+reviews <- gsub("'", "", reviews)  # remove apostrophes
+reviews <- gsub("[[:punct:]]", " ", reviews)  # replace punctuation with space
+reviews <- gsub("[[:cntrl:]]", " ", reviews)  # replace control characters with space
+reviews <- gsub("^[[:space:]]+", "", reviews) # remove whitespace at beginning of documents
+reviews <- gsub("[[:space:]]+$", "", reviews) # remove whitespace at end of documents
+reviews <- tolower(reviews)  # force to lowercase
+
 doc.list <- strsplit(songsVector, "[[:space:]]+")
 doc.list[] <- lapply(doc.list, function(x) x[!x %in% ""])
 doc.list[] <- lapply(doc.list, function(x) x[!x %in% stopWords])
