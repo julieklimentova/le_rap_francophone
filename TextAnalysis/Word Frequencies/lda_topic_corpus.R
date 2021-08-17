@@ -1,15 +1,15 @@
 library(tm)
 # on the media words subset/can be exchanged for songs if wanting to model the main corpus 
-songsVector <- mediaWordsSubsetFullSongs_SONGS_ns$text
+songsVectorFullCorpus <- songs$text
 
-songsVector <- gsub("[[:punct:]]", " ", songsVector)  # replace punctuation with space
-songsVector <- gsub("[[:punct:]]", " ", songsVector)  # replace punctuation with space
-songsVector <- gsub("[[:cntrl:]]", " ", songsVector)  # replace control characters with space
-songsVector <- gsub("^[[:space:]]+", "", songsVector) # remove whitespace at beginning of documents
-songsVector <- gsub("[[:space:]]+$", "", songsVector) # remove whitespace at end of documents
-songsVector <- tolower(songsVector)  # force to lowercase
+songsVectorFullCorpus <- gsub("[[:punct:]]", " ", songsVectorFullCorpus)  # replace punctuation with space
+songsVectorFullCorpus <- gsub("[[:punct:]]", " ", songsVectorFullCorpus)  # replace punctuation with space
+songsVectorFullCorpus <- gsub("[[:cntrl:]]", " ", songsVectorFullCorpus)  # replace control characters with space
+songsVectorFullCorpus <- gsub("^[[:space:]]+", "", songsVectorFullCorpus) # remove whitespace at beginning of documents
+songsVectorFullCorpus <- gsub("[[:space:]]+$", "", songsVectorFullCorpus) # remove whitespace at end of documents
+songsVectorFullCorpus <- tolower(songsVectorFullCorpus)  # force to lowercase
 
-doc.list <- strsplit(songsVector, "[[:space:]]+")
+doc.list <- strsplit(songsVectorFullCorpus, "[[:space:]]+")
 doc.list[] <- lapply(doc.list, function(x) x[!x %in% ""])
 doc.list[] <- lapply(doc.list, function(x) x[!x %in% stopWords])
 
@@ -42,7 +42,7 @@ N <- sum(doc.length)  # total number of tokens in the data
 term.frequency <- as.integer(term.table)  # frequencies of terms in the corpus
 
 # MCMC and model tuning parameters:
-K <- 15
+K <- 25
 G <- 5000
 alpha <- 0.02
 eta <- 0.02
