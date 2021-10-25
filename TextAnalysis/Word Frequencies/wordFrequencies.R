@@ -485,7 +485,6 @@ write.csv(mediaWordsSubset_ns, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Wor
 mediaWordsSubsetFullSongs_SONGS_ns <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 
 words_frequencies <- txt_freq(annotation$token, exclude = stopWords)
-word_frequencies_mediawords_ns <- subset(words_frequencies, key %in% mediaWords_ns$key )
 
 write.csv(word_frequencies_mediawords_ns, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\media_words_frequencies.csv")
 # Collocations
@@ -1026,3 +1025,5 @@ resultsTens$keyword <- factor(resultsTens$keyword, levels = rev(resultsTens$keyw
 
 barchart(keyword ~ rake, data = resultsTens, col = "cadetblue",
          main = "2010s Rake ngram keywords", xlab = "rake")
+#write subcorpus to csv
+write.csv(mediaWordsSubsetFullSongs_SONGS_ns, "/Users/julieklimentova/Repos/le_rap_francophone/TextAnalysis/Experiments/metadata/subcorpus_metadata.csv")

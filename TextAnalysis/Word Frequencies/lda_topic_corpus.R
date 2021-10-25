@@ -1,4 +1,7 @@
 library(tm)
+
+
+
 # on the media words subset/can be exchanged for songs if wanting to model the main corpus 
 songsVectorFullCorpus <- songs$text
 
