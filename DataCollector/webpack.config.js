@@ -1,10 +1,11 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: {app: './DataCollector.js'},
+    entry: {app: './main.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'DataCollector.js'
+        filename: 'main.js'
     },
     target: 'async-node',
     module: {
@@ -19,10 +20,12 @@ module.exports = {
                         plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties']
                     }
                 }
+            },
+            {
+                test: /\.node$/,
+                use: 'node-loader'
             }
         ]
     },
-    externals: {
-        'isomorphic-fetch': 'fetch'
-    }
+    externals: [nodeExternals()],
 };

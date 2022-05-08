@@ -3,43 +3,21 @@ import {GeniusClient} from './GeniusClient';
 import * as Helpers from './Helpers';
 import fs from 'fs';
 import ObjectsToCsv from 'objects-to-csv';
-
-const wikiOptions = {
-    apiUrl: 'https://fr.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=',
-    categories: [
-        'Cat%C3%A9gorie:Rappeur_fran%C3%A7ais',
-        'Cat%C3%A9gorie%3ARappeur_belge',
-        'Cat%C3%A9gorie%3AGroupe_de_hip-hop_fran%C3%A7ais',
-        'Cat%C3%A9gorie%3AGroupe_de_hip-hop_belge',
-        'Cat%C3%A9gorie%3ARappeuse_belge',
-        'Cat%C3%A9gorie%3ARappeuse_fran%C3%A7aise'
-    ],
-}
-
-const wordsToClean = [
-    '(rappeur)',
-    '(rappeuse)',
-    '(musicien)',
-    '(rap)',
-    '(chanteuse)',
-    '(chanteur)',
-    '(groupe)',
-    '(collectif)',
-    '(groupe de rap)',
-    '(artiste)',
-    '(rappeur français)',
-    '(groupe belge)'
-];
-
 const geniusBaseUrl = 'https://api.genius.com';
 
-class DataCollector {
+export class DataCollector {
     constructor(wikiOptions, wordsToClean) {
         this._wikiPediaClient = new WikipediaClient();
         this._geniusClient = new GeniusClient(geniusBaseUrl);
         this._wikiOptions = wikiOptions;
         this._wordsToClean = wordsToClean;
         fs.mkdir('./files', (e) => {
+            console.log(e);
+        })
+        fs.mkdir('./errors', (e) => {
+            console.log(e);
+        })
+        fs.mkdir('./metadata', (e) => {
             console.log(e);
         })
     }
@@ -51,31 +29,68 @@ class DataCollector {
             const result = await this._wikiPediaClient.getArtists(apiUrl, category);
             const categoryMembers = result.query.categorymembers;
             for (const entry of categoryMembers) {
-                artists.push(entry.title);
+                const artistTrimmed = Helpers.cleanStrings(this._wordsToClean, entry.title);
+                const artist = this._wikiPediaClient.alterArtist(artistTrimmed);
+                artists.push(artist);
+            }
+            for (const item of this._wikiPediaClient.artistsToAdd) {
+                const artistTrimmed = Helpers.cleanStrings(this._wordsToClean, item);
+                const artist = this._wikiPediaClient.alterArtist(artistTrimmed);
+                artists.push(artist);
             }
         }
-        const artistsTrimmed = Helpers.cleanStrings(this._wordsToClean, artists);
-        return Helpers.removeDuplicates(artistsTrimmed);
+        return Helpers.removeDuplicates(artists);
     }
 
     async getAllArtistsIds(artists) {
         const artistsIds = [];
+        const notFoundArtists = [];
         for (const artist of artists) {
-            const artistInfo = await this._geniusClient.getArtistId(artist);
-            if (artistInfo) {
-                const {artistId} = artistInfo;
-                if (artistId && artistId !== '') {
-                    artistsIds.push(artistInfo);
+            const maxTries = 3;
+            for (let i = 0; i < maxTries; i++) {
+                const artistsObject = await this._geniusClient.getArtistId(artist)
+                if (artistsObject) {
+                const artistInfos = artistsObject.resultingGeniusArtists;
+                if (!notFoundArtists.includes(artistsObject.notFound)) {
+                    notFoundArtists.push(artistsObject.notFound);
+                } // nothing happens
+                if (artistInfos && artistInfos.length > 0) {
+                    for (const artistInfo of artistInfos) {
+                        const {artistId} = artistInfo;
+                        if (artistId && artistId !== '') {
+                            const isArtistDuplicated = Helpers.isDuplicated(artistId, artistsIds);
+                            if (isArtistDuplicated.length === 0) {
+                                artistsIds.push(artistInfo);
+                            } // else continue
+                        } // nothing happens
+                    }
+                } else {
+                    console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
                 }
             } else {
-                console.log(`DataCollector: ERROR: Artist Id was not found for artist ${artist}`);
+                    console.log(`DataCollector.getAllArtistsIds: ERROR: Artist Id was not found for artist ${artist}`);
+                }
             }
+        }
+        const notFoundToWrite = JSON.stringify({notFound: notFoundArtists});
+        try {
+            fs.writeFileSync('./errors/notfoundArtistsIds.json', notFoundToWrite);
+        } catch (e) {
+            console.log(e);
         }
         return artistsIds;
     }
 
     async getSongsPerArtist(getSongsArtistInfo) {
-        const songs = await this._geniusClient.getSongs(getSongsArtistInfo);
+        let songs = [];
+        const maxTries = 5;
+        for (let i = 0; i < maxTries; i++) {
+            songs = await this._geniusClient.getSongs(getSongsArtistInfo);
+            if (songs.length > 0) {
+                console.log(`DataCollector: Songs urls have been successfully retrieved for artist ${getSongsArtistInfo.geniusId}.`)
+                break;
+            } // else continue
+        }
         return {...getSongsArtistInfo, songs};
     }
 
@@ -85,49 +100,18 @@ class DataCollector {
     writeToTxt(song) {
         if (!song.lyrics.includes('no lyrics found')) {
             try {
-                fs.writeFileSync(`./files/${song.txtName}.txt`, song.lyrics);
+                fs.writeFileSync(`./files/${song.songShortcut}.txt`, song.lyrics);
             } catch (e) {
                 console.log(e);
             }
         }
     }
-    async writeToCsv(objects) {
+    async writeToCsv(objects, filename) {
         const csv = new ObjectsToCsv(objects);
-        await csv.toDisk('./songsMetadata.csv', {append: true});
+        await csv.toDisk(`./metadata/${filename}.csv`, {append: true, bom: true});
     }
 }
 
-const dataCollector = new DataCollector(wikiOptions, wordsToClean);
 
-const main = async () => {
-    const artistsNames = await dataCollector.getAllArtists();
-    console.log('MAIN: Artists names have been received');
-    const artistsInfos = await dataCollector.getAllArtistsIds(artistsNames);
-    console.log('MAIN: Artists infos have been received');
-    const artistsWithSongs = [];
-    for (const artistInfo of artistsInfos) {
-            const artistWithSong = await dataCollector.getSongsPerArtist(artistInfo);
-            artistsWithSongs.push(artistWithSong);
-    }
-    console.log('MAIN: Artists with songs have been retrieved' + JSON.stringify(artistsWithSongs));
-    const allSongs = []
-    for (const artistWithSong of artistsWithSongs) {
-        const songs = await dataCollector.getSongsTexts(artistWithSong);
-        songs.forEach((song) => {
-            allSongs.push(song);
-            dataCollector.writeToTxt(song);
-        });
-    }
-    console.log('MAIN: All songs have been retrieved' + JSON.stringify(allSongs));
-    try {
-        fs.writeFileSync('./allSongs.json', JSON.stringify(allSongs));
-    } catch (e) {
-        console.log(e);
-    }
-    await dataCollector.writeToCsv(allSongs);
-}
 
-main()
-    .then(() => console.log('All done, captain!'))
-        .catch((e) => console.log(e));
 

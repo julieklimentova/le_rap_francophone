@@ -1,0 +1,4013 @@
+<html>
+  <head>
+    <title>poswordlist</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  </head>
+  <body>
+    <table>
+      <thead><tr>         <th>Item</th>
+<th>Frequency</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"être"</td>
+<td>127742200</td>
+        </tr>
+        <tr>
+          <td>"avoir"</td>
+<td>77036301</td>
+        </tr>
+        <tr>
+          <td>"pouvoir"</td>
+<td>23451230</td>
+        </tr>
+        <tr>
+          <td>"faire"</td>
+<td>22641673</td>
+        </tr>
+        <tr>
+          <td>"devoir"</td>
+<td>7690740</td>
+        </tr>
+        <tr>
+          <td>"voir"</td>
+<td>7089696</td>
+        </tr>
+        <tr>
+          <td>"prendre"</td>
+<td>7036318</td>
+        </tr>
+        <tr>
+          <td>"aller"</td>
+<td>7022419</td>
+        </tr>
+        <tr>
+          <td>"dire"</td>
+<td>6912023</td>
+        </tr>
+        <tr>
+          <td>"mettre"</td>
+<td>6117338</td>
+        </tr>
+        <tr>
+          <td>"permettre"</td>
+<td>5869790</td>
+        </tr>
+        <tr>
+          <td>"donner"</td>
+<td>5448613</td>
+        </tr>
+        <tr>
+          <td>"trouver"</td>
+<td>4798472</td>
+        </tr>
+        <tr>
+          <td>"savoir"</td>
+<td>4660480</td>
+        </tr>
+        <tr>
+          <td>"consulter"</td>
+<td>4458970</td>
+        </tr>
+        <tr>
+          <td>"suivre"</td>
+<td>4221307</td>
+        </tr>
+        <tr>
+          <td>"passer"</td>
+<td>4160629</td>
+        </tr>
+        <tr>
+          <td>"venir"</td>
+<td>4057620</td>
+        </tr>
+        <tr>
+          <td>"vouloir"</td>
+<td>4033614</td>
+        </tr>
+        <tr>
+          <td>"utiliser"</td>
+<td>3895720</td>
+        </tr>
+        <tr>
+          <td>"proposer"</td>
+<td>3532077</td>
+        </tr>
+        <tr>
+          <td>"faillir"</td>
+<td>3245286</td>
+        </tr>
+        <tr>
+          <td>"devenir"</td>
+<td>3123364</td>
+        </tr>
+        <tr>
+          <td>"connaître"</td>
+<td>3087857</td>
+        </tr>
+        <tr>
+          <td>"rester"</td>
+<td>2907555</td>
+        </tr>
+        <tr>
+          <td>"partir"</td>
+<td>2906279</td>
+        </tr>
+        <tr>
+          <td>"comprendre"</td>
+<td>2852719</td>
+        </tr>
+        <tr>
+          <td>"aider"</td>
+<td>2627958</td>
+        </tr>
+        <tr>
+          <td>"modifier"</td>
+<td>2608159</td>
+        </tr>
+        <tr>
+          <td>"présenter"</td>
+<td>2603180</td>
+        </tr>
+        <tr>
+          <td>"créer"</td>
+<td>2555289</td>
+        </tr>
+        <tr>
+          <td>"rendre"</td>
+<td>2526978</td>
+        </tr>
+        <tr>
+          <td>"penser"</td>
+<td>2456080</td>
+        </tr>
+        <tr>
+          <td>"parler"</td>
+<td>2386446</td>
+        </tr>
+        <tr>
+          <td>"lire"</td>
+<td>2363212</td>
+        </tr>
+        <tr>
+          <td>"demander"</td>
+<td>2338094</td>
+        </tr>
+        <tr>
+          <td>"réaliser"</td>
+<td>2312141</td>
+        </tr>
+        <tr>
+          <td>"agir"</td>
+<td>2245597</td>
+        </tr>
+        <tr>
+          <td>"laisser"</td>
+<td>2176356</td>
+        </tr>
+        <tr>
+          <td>"tenir"</td>
+<td>2160203</td>
+        </tr>
+        <tr>
+          <td>"porter"</td>
+<td>2094187</td>
+        </tr>
+        <tr>
+          <td>"vivre"</td>
+<td>2069915</td>
+        </tr>
+        <tr>
+          <td>"découvrir"</td>
+<td>2030571</td>
+        </tr>
+        <tr>
+          <td>"partager"</td>
+<td>1974712</td>
+        </tr>
+        <tr>
+          <td>"situer"</td>
+<td>1966222</td>
+        </tr>
+        <tr>
+          <td>"offrir"</td>
+<td>1956197</td>
+        </tr>
+        <tr>
+          <td>"arriver"</td>
+<td>1953276</td>
+        </tr>
+        <tr>
+          <td>"retrouver"</td>
+<td>1882820</td>
+        </tr>
+        <tr>
+          <td>"aimer"</td>
+<td>1871115</td>
+        </tr>
+        <tr>
+          <td>"jouer"</td>
+<td>1866414</td>
+        </tr>
+        <tr>
+          <td>"sembler"</td>
+<td>1852796</td>
+        </tr>
+        <tr>
+          <td>"commencer"</td>
+<td>1828137</td>
+        </tr>
+        <tr>
+          <td>"appeler"</td>
+<td>1795542</td>
+        </tr>
+        <tr>
+          <td>"visiter"</td>
+<td>1751416</td>
+        </tr>
+        <tr>
+          <td>"comporter"</td>
+<td>1749356</td>
+        </tr>
+        <tr>
+          <td>"sortir"</td>
+<td>1738455</td>
+        </tr>
+        <tr>
+          <td>"attendre"</td>
+<td>1708919</td>
+        </tr>
+        <tr>
+          <td>"écrire"</td>
+<td>1678209</td>
+        </tr>
+        <tr>
+          <td>"saisir"</td>
+<td>1676137</td>
+        </tr>
+        <tr>
+          <td>"recevoir"</td>
+<td>1659061</td>
+        </tr>
+        <tr>
+          <td>"exister"</td>
+<td>1648683</td>
+        </tr>
+        <tr>
+          <td>"améliorer"</td>
+<td>1627075</td>
+        </tr>
+        <tr>
+          <td>"obtenir"</td>
+<td>1607776</td>
+        </tr>
+        <tr>
+          <td>"choisir"</td>
+<td>1582552</td>
+        </tr>
+        <tr>
+          <td>"ajouter"</td>
+<td>1580882</td>
+        </tr>
+        <tr>
+          <td>"travailler"</td>
+<td>1572691</td>
+        </tr>
+        <tr>
+          <td>"enrichir"</td>
+<td>1554288</td>
+        </tr>
+        <tr>
+          <td>"ouvrir"</td>
+<td>1542318</td>
+        </tr>
+        <tr>
+          <td>"assurer"</td>
+<td>1531728</td>
+        </tr>
+        <tr>
+          <td>"montrer"</td>
+<td>1529387</td>
+        </tr>
+        <tr>
+          <td>"souhaiter"</td>
+<td>1520216</td>
+        </tr>
+        <tr>
+          <td>"croire"</td>
+<td>1519915</td>
+        </tr>
+        <tr>
+          <td>"publier"</td>
+<td>1519129</td>
+        </tr>
+        <tr>
+          <td>"accomplir"</td>
+<td>1518299</td>
+        </tr>
+        <tr>
+          <td>"naître"</td>
+<td>1491637</td>
+        </tr>
+        <tr>
+          <td>"suggérer"</td>
+<td>1477094</td>
+        </tr>
+        <tr>
+          <td>"répondre"</td>
+<td>1470321</td>
+        </tr>
+        <tr>
+          <td>"développer"</td>
+<td>1442338</td>
+        </tr>
+        <tr>
+          <td>"organiser"</td>
+<td>1429661</td>
+        </tr>
+        <tr>
+          <td>"produire"</td>
+<td>1407974</td>
+        </tr>
+        <tr>
+          <td>"représenter"</td>
+<td>1399365</td>
+        </tr>
+        <tr>
+          <td>"servir"</td>
+<td>1397550</td>
+        </tr>
+        <tr>
+          <td>"poser"</td>
+<td>1391269</td>
+        </tr>
+        <tr>
+          <td>"constituer"</td>
+<td>1359353</td>
+        </tr>
+        <tr>
+          <td>"sauvegarder"</td>
+<td>1356130</td>
+        </tr>
+        <tr>
+          <td>"concerner"</td>
+<td>1351427</td>
+        </tr>
+        <tr>
+          <td>"compter"</td>
+<td>1346907</td>
+        </tr>
+        <tr>
+          <td>"prévoir"</td>
+<td>1318026</td>
+        </tr>
+        <tr>
+          <td>"expliquer"</td>
+<td>1304239</td>
+        </tr>
+        <tr>
+          <td>"revenir"</td>
+<td>1293097</td>
+        </tr>
+        <tr>
+          <td>"perdre"</td>
+<td>1281702</td>
+        </tr>
+        <tr>
+          <td>"entendre"</td>
+<td>1276531</td>
+        </tr>
+        <tr>
+          <td>"considérer"</td>
+<td>1264750</td>
+        </tr>
+        <tr>
+          <td>"effectuer"</td>
+<td>1247913</td>
+        </tr>
+        <tr>
+          <td>"chercher"</td>
+<td>1237170</td>
+        </tr>
+        <tr>
+          <td>"changer"</td>
+<td>1186648</td>
+        </tr>
+        <tr>
+          <td>"décider"</td>
+<td>1183647</td>
+        </tr>
+        <tr>
+          <td>"apporter"</td>
+<td>1178821</td>
+        </tr>
+        <tr>
+          <td>"lancer"</td>
+<td>1175070</td>
+        </tr>
+        <tr>
+          <td>"participer"</td>
+<td>1168926</td>
+        </tr>
+        <tr>
+          <td>"continuer"</td>
+<td>1161790</td>
+        </tr>
+        <tr>
+          <td>"charger"</td>
+<td>1140199</td>
+        </tr>
+        <tr>
+          <td>"falloir"</td>
+<td>1133936</td>
+        </tr>
+        <tr>
+          <td>"indiquer"</td>
+<td>1123956</td>
+        </tr>
+        <tr>
+          <td>"disposer"</td>
+<td>1113689</td>
+        </tr>
+        <tr>
+          <td>"annoncer"</td>
+<td>1109872</td>
+        </tr>
+        <tr>
+          <td>"lier"</td>
+<td>1108821</td>
+        </tr>
+        <tr>
+          <td>"construire"</td>
+<td>1096723</td>
+        </tr>
+        <tr>
+          <td>"installer"</td>
+<td>1092209</td>
+        </tr>
+        <tr>
+          <td>"atteindre"</td>
+<td>1091862</td>
+        </tr>
+        <tr>
+          <td>"reprendre"</td>
+<td>1090286</td>
+        </tr>
+        <tr>
+          <td>"arrêter"</td>
+<td>1060753</td>
+        </tr>
+        <tr>
+          <td>"accompagner"</td>
+<td>1055830</td>
+        </tr>
+        <tr>
+          <td>"mener"</td>
+<td>1047974</td>
+        </tr>
+        <tr>
+          <td>"adapter"</td>
+<td>1046731</td>
+        </tr>
+        <tr>
+          <td>"former"</td>
+<td>1045775</td>
+        </tr>
+        <tr>
+          <td>"priver"</td>
+<td>1045501</td>
+        </tr>
+        <tr>
+          <td>"composer"</td>
+<td>1039891</td>
+        </tr>
+        <tr>
+          <td>"rencontrer"</td>
+<td>1025042</td>
+        </tr>
+        <tr>
+          <td>"reconnaître"</td>
+<td>1020360</td>
+        </tr>
+        <tr>
+          <td>"rappeler"</td>
+<td>1011788</td>
+        </tr>
+        <tr>
+          <td>"apprendre"</td>
+<td>1011467</td>
+        </tr>
+        <tr>
+          <td>"élever"</td>
+<td>1008442</td>
+        </tr>
+        <tr>
+          <td>"contenir"</td>
+<td>977863</td>
+        </tr>
+        <tr>
+          <td>"envoyer"</td>
+<td>975422</td>
+        </tr>
+        <tr>
+          <td>"apparaître"</td>
+<td>971885</td>
+        </tr>
+        <tr>
+          <td>"mourir"</td>
+<td>971718</td>
+        </tr>
+        <tr>
+          <td>"étayer"</td>
+<td>959926</td>
+        </tr>
+        <tr>
+          <td>"finir"</td>
+<td>957358</td>
+        </tr>
+        <tr>
+          <td>"éviter"</td>
+<td>953350</td>
+        </tr>
+        <tr>
+          <td>"essayer"</td>
+<td>950675</td>
+        </tr>
+        <tr>
+          <td>"entrer"</td>
+<td>943634</td>
+        </tr>
+        <tr>
+          <td>"réduire"</td>
+<td>939007</td>
+        </tr>
+        <tr>
+          <td>"engager"</td>
+<td>913030</td>
+        </tr>
+        <tr>
+          <td>"intégrer"</td>
+<td>909685</td>
+        </tr>
+        <tr>
+          <td>"acheter"</td>
+<td>905080</td>
+        </tr>
+        <tr>
+          <td>"regarder"</td>
+<td>904577</td>
+        </tr>
+        <tr>
+          <td>"détailler"</td>
+<td>897572</td>
+        </tr>
+        <tr>
+          <td>"fournir"</td>
+<td>896709</td>
+        </tr>
+        <tr>
+          <td>"profiter"</td>
+<td>884014</td>
+        </tr>
+        <tr>
+          <td>"gagner"</td>
+<td>882687</td>
+        </tr>
+        <tr>
+          <td>"définir"</td>
+<td>877185</td>
+        </tr>
+        <tr>
+          <td>"établir"</td>
+<td>876622</td>
+        </tr>
+        <tr>
+          <td>"placer"</td>
+<td>872321</td>
+        </tr>
+        <tr>
+          <td>"inscrire"</td>
+<td>871955</td>
+        </tr>
+        <tr>
+          <td>"associer"</td>
+<td>871839</td>
+        </tr>
+        <tr>
+          <td>"oublier"</td>
+<td>866729</td>
+        </tr>
+        <tr>
+          <td>"nommer"</td>
+<td>864566</td>
+        </tr>
+        <tr>
+          <td>"posséder"</td>
+<td>863536</td>
+        </tr>
+        <tr>
+          <td>"soutenir"</td>
+<td>838876</td>
+        </tr>
+        <tr>
+          <td>"occuper"</td>
+<td>831316</td>
+        </tr>
+        <tr>
+          <td>"appliquer"</td>
+<td>830566</td>
+        </tr>
+        <tr>
+          <td>"bénéficier"</td>
+<td>827065</td>
+        </tr>
+        <tr>
+          <td>"monter"</td>
+<td>819896</td>
+        </tr>
+        <tr>
+          <td>"sentir"</td>
+<td>815206</td>
+        </tr>
+        <tr>
+          <td>"toucher"</td>
+<td>814218</td>
+        </tr>
+        <tr>
+          <td>"issir"</td>
+<td>810918</td>
+        </tr>
+        <tr>
+          <td>"vendre"</td>
+<td>808982</td>
+        </tr>
+        <tr>
+          <td>"viser"</td>
+<td>800393</td>
+        </tr>
+        <tr>
+          <td>"payer"</td>
+<td>800340</td>
+        </tr>
+        <tr>
+          <td>"tomber"</td>
+<td>798259</td>
+        </tr>
+        <tr>
+          <td>"paraître"</td>
+<td>797681</td>
+        </tr>
+        <tr>
+          <td>"accueillir"</td>
+<td>794330</td>
+        </tr>
+        <tr>
+          <td>"limiter"</td>
+<td>792824</td>
+        </tr>
+        <tr>
+          <td>"traiter"</td>
+<td>791160</td>
+        </tr>
+        <tr>
+          <td>"tourner"</td>
+<td>789189</td>
+        </tr>
+        <tr>
+          <td>"imposer"</td>
+<td>789076</td>
+        </tr>
+        <tr>
+          <td>"conduire"</td>
+<td>787613</td>
+        </tr>
+        <tr>
+          <td>"préparer"</td>
+<td>785685</td>
+        </tr>
+        <tr>
+          <td>"déclarer"</td>
+<td>783276</td>
+        </tr>
+        <tr>
+          <td>"protéger"</td>
+<td>782930</td>
+        </tr>
+        <tr>
+          <td>"garder"</td>
+<td>779956</td>
+        </tr>
+        <tr>
+          <td>"accepter"</td>
+<td>775084</td>
+        </tr>
+        <tr>
+          <td>"réussir"</td>
+<td>770930</td>
+        </tr>
+        <tr>
+          <td>"sommer"</td>
+<td>768577</td>
+        </tr>
+        <tr>
+          <td>"tenter"</td>
+<td>765361</td>
+        </tr>
+        <tr>
+          <td>"remettre"</td>
+<td>755487</td>
+        </tr>
+        <tr>
+          <td>"augmenter"</td>
+<td>742063</td>
+        </tr>
+        <tr>
+          <td>"rejoindre"</td>
+<td>736395</td>
+        </tr>
+        <tr>
+          <td>"inviter"</td>
+<td>734769</td>
+        </tr>
+        <tr>
+          <td>"tirer"</td>
+<td>733724</td>
+        </tr>
+        <tr>
+          <td>"conserver"</td>
+<td>729158</td>
+        </tr>
+        <tr>
+          <td>"fonder"</td>
+<td>727172</td>
+        </tr>
+        <tr>
+          <td>"manquer"</td>
+<td>726527</td>
+        </tr>
+        <tr>
+          <td>"consacrer"</td>
+<td>721942</td>
+        </tr>
+        <tr>
+          <td>"terminer"</td>
+<td>718260</td>
+        </tr>
+        <tr>
+          <td>"poursuivre"</td>
+<td>715128</td>
+        </tr>
+        <tr>
+          <td>"remplacer"</td>
+<td>700393</td>
+        </tr>
+        <tr>
+          <td>"noter"</td>
+<td>699158</td>
+        </tr>
+        <tr>
+          <td>"suffire"</td>
+<td>697368</td>
+        </tr>
+        <tr>
+          <td>"quitter"</td>
+<td>697221</td>
+        </tr>
+        <tr>
+          <td>"marquer"</td>
+<td>693866</td>
+        </tr>
+        <tr>
+          <td>"correspondre"</td>
+<td>688633</td>
+        </tr>
+        <tr>
+          <td>"préciser"</td>
+<td>679468</td>
+        </tr>
+        <tr>
+          <td>"relever"</td>
+<td>672035</td>
+        </tr>
+        <tr>
+          <td>"exprimer"</td>
+<td>670474</td>
+        </tr>
+        <tr>
+          <td>"estimer"</td>
+<td>670200</td>
+        </tr>
+        <tr>
+          <td>"gérer"</td>
+<td>667450</td>
+        </tr>
+        <tr>
+          <td>"intéresser"</td>
+<td>666480</td>
+        </tr>
+        <tr>
+          <td>"concevoir"</td>
+<td>666386</td>
+        </tr>
+        <tr>
+          <td>"fixer"</td>
+<td>665641</td>
+        </tr>
+        <tr>
+          <td>"identifier"</td>
+<td>665288</td>
+        </tr>
+        <tr>
+          <td>"espérer"</td>
+<td>658418</td>
+        </tr>
+        <tr>
+          <td>"marier"</td>
+<td>653534</td>
+        </tr>
+        <tr>
+          <td>"signer"</td>
+<td>653468</td>
+        </tr>
+        <tr>
+          <td>"préférer"</td>
+<td>652780</td>
+        </tr>
+        <tr>
+          <td>"importer"</td>
+<td>648943</td>
+        </tr>
+        <tr>
+          <td>"destiner"</td>
+<td>642673</td>
+        </tr>
+        <tr>
+          <td>"fonctionner"</td>
+<td>642613</td>
+        </tr>
+        <tr>
+          <td>"valoir"</td>
+<td>634702</td>
+        </tr>
+        <tr>
+          <td>"diriger"</td>
+<td>626218</td>
+        </tr>
+        <tr>
+          <td>"étudier"</td>
+<td>618879</td>
+        </tr>
+        <tr>
+          <td>"avancer"</td>
+<td>618631</td>
+        </tr>
+        <tr>
+          <td>"respecter"</td>
+<td>612574</td>
+        </tr>
+        <tr>
+          <td>"adopter"</td>
+<td>609907</td>
+        </tr>
+        <tr>
+          <td>"discuter"</td>
+<td>608151</td>
+        </tr>
+        <tr>
+          <td>"refuser"</td>
+<td>604813</td>
+        </tr>
+        <tr>
+          <td>"confirmer"</td>
+<td>600650</td>
+        </tr>
+        <tr>
+          <td>"spécialiser"</td>
+<td>593963</td>
+        </tr>
+        <tr>
+          <td>"constater"</td>
+<td>592592</td>
+        </tr>
+        <tr>
+          <td>"révéler"</td>
+<td>591584</td>
+        </tr>
+        <tr>
+          <td>"affirmer"</td>
+<td>586952</td>
+        </tr>
+        <tr>
+          <td>"évoquer"</td>
+<td>585610</td>
+        </tr>
+        <tr>
+          <td>"réunir"</td>
+<td>582271</td>
+        </tr>
+        <tr>
+          <td>"décrire"</td>
+<td>580527</td>
+        </tr>
+        <tr>
+          <td>"adresser"</td>
+<td>579583</td>
+        </tr>
+        <tr>
+          <td>"empêcher"</td>
+<td>578743</td>
+        </tr>
+        <tr>
+          <td>"désigner"</td>
+<td>577395</td>
+        </tr>
+        <tr>
+          <td>"couvrir"</td>
+<td>572165</td>
+        </tr>
+        <tr>
+          <td>"observer"</td>
+<td>569297</td>
+        </tr>
+        <tr>
+          <td>"tuer"</td>
+<td>568277</td>
+        </tr>
+        <tr>
+          <td>"garantir"</td>
+<td>566253</td>
+        </tr>
+        <tr>
+          <td>"citer"</td>
+<td>566071</td>
+        </tr>
+        <tr>
+          <td>"ouvrer"</td>
+<td>565194</td>
+        </tr>
+        <tr>
+          <td>"intervenir"</td>
+<td>564595</td>
+        </tr>
+        <tr>
+          <td>"transformer"</td>
+<td>558805</td>
+        </tr>
+        <tr>
+          <td>"conseiller"</td>
+<td>558382</td>
+        </tr>
+        <tr>
+          <td>"enregistrer"</td>
+<td>554969</td>
+        </tr>
+        <tr>
+          <td>"contribuer"</td>
+<td>553831</td>
+        </tr>
+        <tr>
+          <td>"évoluer"</td>
+<td>553362</td>
+        </tr>
+        <tr>
+          <td>"inclure"</td>
+<td>551583</td>
+        </tr>
+        <tr>
+          <td>"appuyer"</td>
+<td>551414</td>
+        </tr>
+        <tr>
+          <td>"déterminer"</td>
+<td>551375</td>
+        </tr>
+        <tr>
+          <td>"apprécier"</td>
+<td>548241</td>
+        </tr>
+        <tr>
+          <td>"soumettre"</td>
+<td>546016</td>
+        </tr>
+        <tr>
+          <td>"réserver"</td>
+<td>545113</td>
+        </tr>
+        <tr>
+          <td>"appartenir"</td>
+<td>544485</td>
+        </tr>
+        <tr>
+          <td>"est-à-dire"</td>
+<td>543522</td>
+        </tr>
+        <tr>
+          <td>"acquérir"</td>
+<td>542451</td>
+        </tr>
+        <tr>
+          <td>"convenir"</td>
+<td>541474</td>
+        </tr>
+        <tr>
+          <td>"renforcer"</td>
+<td>540107</td>
+        </tr>
+        <tr>
+          <td>"manger"</td>
+<td>537255</td>
+        </tr>
+        <tr>
+          <td>"parvenir"</td>
+<td>536171</td>
+        </tr>
+        <tr>
+          <td>"afficher"</td>
+<td>530334</td>
+        </tr>
+        <tr>
+          <td>"baser"</td>
+<td>530175</td>
+        </tr>
+        <tr>
+          <td>"fermer"</td>
+<td>528944</td>
+        </tr>
+        <tr>
+          <td>"cacher"</td>
+<td>524675</td>
+        </tr>
+        <tr>
+          <td>"imaginer"</td>
+<td>524496</td>
+        </tr>
+        <tr>
+          <td>"pousser"</td>
+<td>524447</td>
+        </tr>
+        <tr>
+          <td>"varier"</td>
+<td>522518</td>
+        </tr>
+        <tr>
+          <td>"maintenir"</td>
+<td>521751</td>
+        </tr>
+        <tr>
+          <td>"opposer"</td>
+<td>519345</td>
+        </tr>
+        <tr>
+          <td>"rechercher"</td>
+<td>519029</td>
+        </tr>
+        <tr>
+          <td>"accorder"</td>
+<td>515281</td>
+        </tr>
+        <tr>
+          <td>"livrer"</td>
+<td>514816</td>
+        </tr>
+        <tr>
+          <td>"dérouler"</td>
+<td>513219</td>
+        </tr>
+        <tr>
+          <td>"remporter"</td>
+<td>512888</td>
+        </tr>
+        <tr>
+          <td>"remplir"</td>
+<td>512032</td>
+        </tr>
+        <tr>
+          <td>"vérifier"</td>
+<td>509192</td>
+        </tr>
+        <tr>
+          <td>"retenir"</td>
+<td>509067</td>
+        </tr>
+        <tr>
+          <td>"équiper"</td>
+<td>508595</td>
+        </tr>
+        <tr>
+          <td>"cliquer"</td>
+<td>508265</td>
+        </tr>
+        <tr>
+          <td>"souligner"</td>
+<td>506533</td>
+        </tr>
+        <tr>
+          <td>"déposer"</td>
+<td>503475</td>
+        </tr>
+        <tr>
+          <td>"pratiquer"</td>
+<td>502895</td>
+        </tr>
+        <tr>
+          <td>"supprimer"</td>
+<td>500360</td>
+        </tr>
+        <tr>
+          <td>"dédier"</td>
+<td>498402</td>
+        </tr>
+        <tr>
+          <td>"marcher"</td>
+<td>498039</td>
+        </tr>
+        <tr>
+          <td>"favoriser"</td>
+<td>497959</td>
+        </tr>
+        <tr>
+          <td>"exercer"</td>
+<td>497165</td>
+        </tr>
+        <tr>
+          <td>"disparaître"</td>
+<td>497118</td>
+        </tr>
+        <tr>
+          <td>"juger"</td>
+<td>493299</td>
+        </tr>
+        <tr>
+          <td>"cesser"</td>
+<td>492201</td>
+        </tr>
+        <tr>
+          <td>"tandis"</td>
+<td>491877</td>
+        </tr>
+        <tr>
+          <td>"battre"</td>
+<td>489299</td>
+        </tr>
+        <tr>
+          <td>"inspirer"</td>
+<td>489140</td>
+        </tr>
+        <tr>
+          <td>"signifier"</td>
+<td>488742</td>
+        </tr>
+        <tr>
+          <td>"entraîner"</td>
+<td>487886</td>
+        </tr>
+        <tr>
+          <td>"raconter"</td>
+<td>486167</td>
+        </tr>
+        <tr>
+          <td>"diffuser"</td>
+<td>485039</td>
+        </tr>
+        <tr>
+          <td>"impliquer"</td>
+<td>484815</td>
+        </tr>
+        <tr>
+          <td>"exposer"</td>
+<td>483399</td>
+        </tr>
+        <tr>
+          <td>"défendre"</td>
+<td>482768</td>
+        </tr>
+        <tr>
+          <td>"compléter"</td>
+<td>481676</td>
+        </tr>
+        <tr>
+          <td>"hésiter"</td>
+<td>480393</td>
+        </tr>
+        <tr>
+          <td>"dépasser"</td>
+<td>480357</td>
+        </tr>
+        <tr>
+          <td>"intituler"</td>
+<td>479732</td>
+        </tr>
+        <tr>
+          <td>"interdire"</td>
+<td>479109</td>
+        </tr>
+        <tr>
+          <td>"traduire"</td>
+<td>476456</td>
+        </tr>
+        <tr>
+          <td>"consister"</td>
+<td>471846</td>
+        </tr>
+        <tr>
+          <td>"retirer"</td>
+<td>466437</td>
+        </tr>
+        <tr>
+          <td>"élire"</td>
+<td>464665</td>
+        </tr>
+        <tr>
+          <td>"autoriser"</td>
+<td>464559</td>
+        </tr>
+        <tr>
+          <td>"étendre"</td>
+<td>463527</td>
+        </tr>
+        <tr>
+          <td>"provoquer"</td>
+<td>461920</td>
+        </tr>
+        <tr>
+          <td>"amener"</td>
+<td>459717</td>
+        </tr>
+        <tr>
+          <td>"aborder"</td>
+<td>455900</td>
+        </tr>
+        <tr>
+          <td>"rentrer"</td>
+<td>455197</td>
+        </tr>
+        <tr>
+          <td>"contacter"</td>
+<td>452041</td>
+        </tr>
+        <tr>
+          <td>"animer"</td>
+<td>451078</td>
+        </tr>
+        <tr>
+          <td>"quant"</td>
+<td>446629</td>
+        </tr>
+        <tr>
+          <td>"couper"</td>
+<td>445294</td>
+        </tr>
+        <tr>
+          <td>"classer"</td>
+<td>444901</td>
+        </tr>
+        <tr>
+          <td>"écouter"</td>
+<td>444279</td>
+        </tr>
+        <tr>
+          <td>"obliger"</td>
+<td>443717</td>
+        </tr>
+        <tr>
+          <td>"séparer"</td>
+<td>443657</td>
+        </tr>
+        <tr>
+          <td>"retourner"</td>
+<td>443464</td>
+        </tr>
+        <tr>
+          <td>"tester"</td>
+<td>439952</td>
+        </tr>
+        <tr>
+          <td>"recommander"</td>
+<td>437796</td>
+        </tr>
+        <tr>
+          <td>"qualifier"</td>
+<td>437106</td>
+        </tr>
+        <tr>
+          <td>"subir"</td>
+<td>435245</td>
+        </tr>
+        <tr>
+          <td>"sélectionner"</td>
+<td>434576</td>
+        </tr>
+        <tr>
+          <td>"traverser"</td>
+<td>433038</td>
+        </tr>
+        <tr>
+          <td>"reposer"</td>
+<td>431348</td>
+        </tr>
+        <tr>
+          <td>"employer"</td>
+<td>429823</td>
+        </tr>
+        <tr>
+          <td>"dater"</td>
+<td>427656</td>
+        </tr>
+        <tr>
+          <td>"mentionner"</td>
+<td>421267</td>
+        </tr>
+        <tr>
+          <td>"assister"</td>
+<td>420841</td>
+        </tr>
+        <tr>
+          <td>"faciliter"</td>
+<td>419148</td>
+        </tr>
+        <tr>
+          <td>"dépendre"</td>
+<td>415223</td>
+        </tr>
+        <tr>
+          <td>"contrôler"</td>
+<td>411968</td>
+        </tr>
+        <tr>
+          <td>"informer"</td>
+<td>411031</td>
+        </tr>
+        <tr>
+          <td>"remarquer"</td>
+<td>409536</td>
+        </tr>
+        <tr>
+          <td>"transmettre"</td>
+<td>407367</td>
+        </tr>
+        <tr>
+          <td>"confier"</td>
+<td>401098</td>
+        </tr>
+        <tr>
+          <td>"détruire"</td>
+<td>398676</td>
+        </tr>
+        <tr>
+          <td>"unir"</td>
+<td>397456</td>
+        </tr>
+        <tr>
+          <td>"accéder"</td>
+<td>396082</td>
+        </tr>
+        <tr>
+          <td>"envisager"</td>
+<td>395444</td>
+        </tr>
+        <tr>
+          <td>"nécessiter"</td>
+<td>395026</td>
+        </tr>
+        <tr>
+          <td>"risquer"</td>
+<td>394011</td>
+        </tr>
+        <tr>
+          <td>"commander"</td>
+<td>393623</td>
+        </tr>
+        <tr>
+          <td>"attaquer"</td>
+<td>391229</td>
+        </tr>
+        <tr>
+          <td>"voter"</td>
+<td>391085</td>
+        </tr>
+        <tr>
+          <td>"justifier"</td>
+<td>390758</td>
+        </tr>
+        <tr>
+          <td>"abandonner"</td>
+<td>390431</td>
+        </tr>
+        <tr>
+          <td>"distinguer"</td>
+<td>389876</td>
+        </tr>
+        <tr>
+          <td>"connecter"</td>
+<td>389872</td>
+        </tr>
+        <tr>
+          <td>"regrouper"</td>
+<td>389470</td>
+        </tr>
+        <tr>
+          <td>"ca"</td>
+<td>388082</td>
+        </tr>
+        <tr>
+          <td>"fabriquer"</td>
+<td>386818</td>
+        </tr>
+        <tr>
+          <td>"verser"</td>
+<td>384599</td>
+        </tr>
+        <tr>
+          <td>"déplacer"</td>
+<td>384514</td>
+        </tr>
+        <tr>
+          <td>"adorer"</td>
+<td>383907</td>
+        </tr>
+        <tr>
+          <td>"rapporter"</td>
+<td>383782</td>
+        </tr>
+        <tr>
+          <td>"comparer"</td>
+<td>383350</td>
+        </tr>
+        <tr>
+          <td>"attirer"</td>
+<td>382699</td>
+        </tr>
+        <tr>
+          <td>"remonter"</td>
+<td>381410</td>
+        </tr>
+        <tr>
+          <td>"jeter"</td>
+<td>378624</td>
+        </tr>
+        <tr>
+          <td>"demeurer"</td>
+<td>377732</td>
+        </tr>
+        <tr>
+          <td>"doter"</td>
+<td>371755</td>
+        </tr>
+        <tr>
+          <td>"lever"</td>
+<td>371072</td>
+        </tr>
+        <tr>
+          <td>"provenir"</td>
+<td>366949</td>
+        </tr>
+        <tr>
+          <td>"conclure"</td>
+<td>363903</td>
+        </tr>
+        <tr>
+          <td>"attribuer"</td>
+<td>362162</td>
+        </tr>
+        <tr>
+          <td>"récupérer"</td>
+<td>361640</td>
+        </tr>
+        <tr>
+          <td>"dessiner"</td>
+<td>361383</td>
+        </tr>
+        <tr>
+          <td>"évaluer"</td>
+<td>360469</td>
+        </tr>
+        <tr>
+          <td>"débuter"</td>
+<td>360167</td>
+        </tr>
+        <tr>
+          <td>"communiquer"</td>
+<td>359403</td>
+        </tr>
+        <tr>
+          <td>"interroger"</td>
+<td>359177</td>
+        </tr>
+        <tr>
+          <td>"figurer"</td>
+<td>357561</td>
+        </tr>
+        <tr>
+          <td>"télécharger"</td>
+<td>354493</td>
+        </tr>
+        <tr>
+          <td>"etc."</td>
+<td>353388</td>
+        </tr>
+        <tr>
+          <td>"souffrir"</td>
+<td>353366</td>
+        </tr>
+        <tr>
+          <td>"mesurer"</td>
+<td>351834</td>
+        </tr>
+        <tr>
+          <td>"satisfaire"</td>
+<td>351776</td>
+        </tr>
+        <tr>
+          <td>"condamner"</td>
+<td>348300</td>
+        </tr>
+        <tr>
+          <td>"introduire"</td>
+<td>344354</td>
+        </tr>
+        <tr>
+          <td>"supposer"</td>
+<td>343991</td>
+        </tr>
+        <tr>
+          <td>"sauver"</td>
+<td>343981</td>
+        </tr>
+        <tr>
+          <td>"investir"</td>
+<td>343380</td>
+        </tr>
+        <tr>
+          <td>"analyser"</td>
+<td>341963</td>
+        </tr>
+        <tr>
+          <td>"prononcer"</td>
+<td>341366</td>
+        </tr>
+        <tr>
+          <td>"tendre"</td>
+<td>341133</td>
+        </tr>
+        <tr>
+          <td>"user"</td>
+<td>338978</td>
+        </tr>
+        <tr>
+          <td>"relier"</td>
+<td>338823</td>
+        </tr>
+        <tr>
+          <td>"attacher"</td>
+<td>338428</td>
+        </tr>
+        <tr>
+          <td>"entourer"</td>
+<td>337039</td>
+        </tr>
+        <tr>
+          <td>"illustrer"</td>
+<td>336397</td>
+        </tr>
+        <tr>
+          <td>"indexer"</td>
+<td>335975</td>
+        </tr>
+        <tr>
+          <td>"corriger"</td>
+<td>335661</td>
+        </tr>
+        <tr>
+          <td>"enlever"</td>
+<td>334267</td>
+        </tr>
+        <tr>
+          <td>"démontrer"</td>
+<td>331483</td>
+        </tr>
+        <tr>
+          <td>"privilégier"</td>
+<td>331008</td>
+        </tr>
+        <tr>
+          <td>"rassembler"</td>
+<td>328907</td>
+        </tr>
+        <tr>
+          <td>"habiter"</td>
+<td>325436</td>
+        </tr>
+        <tr>
+          <td>"rédiger"</td>
+<td>325147</td>
+        </tr>
+        <tr>
+          <td>"entreprendre"</td>
+<td>324679</td>
+        </tr>
+        <tr>
+          <td>"financer"</td>
+<td>324676</td>
+        </tr>
+        <tr>
+          <td>"convaincre"</td>
+<td>321809</td>
+        </tr>
+        <tr>
+          <td>"échapper"</td>
+<td>321135</td>
+        </tr>
+        <tr>
+          <td>"signaler"</td>
+<td>320595</td>
+        </tr>
+        <tr>
+          <td>"procéder"</td>
+<td>320518</td>
+        </tr>
+        <tr>
+          <td>"prouver"</td>
+<td>319520</td>
+        </tr>
+        <tr>
+          <td>"courir"</td>
+<td>315863</td>
+        </tr>
+        <tr>
+          <td>"revoir"</td>
+<td>315755</td>
+        </tr>
+        <tr>
+          <td>"affecter"</td>
+<td>314674</td>
+        </tr>
+        <tr>
+          <td>"exiger"</td>
+<td>311695</td>
+        </tr>
+        <tr>
+          <td>"enseigner"</td>
+<td>310413</td>
+        </tr>
+        <tr>
+          <td>"plaire"</td>
+<td>307863</td>
+        </tr>
+        <tr>
+          <td>"ressembler"</td>
+<td>307612</td>
+        </tr>
+        <tr>
+          <td>"diminuer"</td>
+<td>307576</td>
+        </tr>
+        <tr>
+          <td>"résoudre"</td>
+<td>307489</td>
+        </tr>
+        <tr>
+          <td>"percevoir"</td>
+<td>305158</td>
+        </tr>
+        <tr>
+          <td>"ressentir"</td>
+<td>303145</td>
+        </tr>
+        <tr>
+          <td>"libérer"</td>
+<td>302196</td>
+        </tr>
+        <tr>
+          <td>"chanter"</td>
+<td>302097</td>
+        </tr>
+        <tr>
+          <td>"régler"</td>
+<td>299331</td>
+        </tr>
+        <tr>
+          <td>"admettre"</td>
+<td>295035</td>
+        </tr>
+        <tr>
+          <td>"personnaliser"</td>
+<td>291064</td>
+        </tr>
+        <tr>
+          <td>"manifester"</td>
+<td>290653</td>
+        </tr>
+        <tr>
+          <td>"qu"</td>
+<td>289324</td>
+        </tr>
+        <tr>
+          <td>"rouler"</td>
+<td>288955</td>
+        </tr>
+        <tr>
+          <td>"boire"</td>
+<td>288908</td>
+        </tr>
+        <tr>
+          <td>"frapper"</td>
+<td>288619</td>
+        </tr>
+        <tr>
+          <td>"surprendre"</td>
+<td>288017</td>
+        </tr>
+        <tr>
+          <td>"prétendre"</td>
+<td>286961</td>
+        </tr>
+        <tr>
+          <td>"caractériser"</td>
+<td>286220</td>
+        </tr>
+        <tr>
+          <td>"souvenir"</td>
+<td>286199</td>
+        </tr>
+        <tr>
+          <td>"orienter"</td>
+<td>284599</td>
+        </tr>
+        <tr>
+          <td>"supporter"</td>
+<td>284204</td>
+        </tr>
+        <tr>
+          <td>"descendre"</td>
+<td>283978</td>
+        </tr>
+        <tr>
+          <td>"dénoncer"</td>
+<td>283747</td>
+        </tr>
+        <tr>
+          <td>"réfléchir"</td>
+<td>282174</td>
+        </tr>
+        <tr>
+          <td>"ignorer"</td>
+<td>282070</td>
+        </tr>
+        <tr>
+          <td>"témoigner"</td>
+<td>281615</td>
+        </tr>
+        <tr>
+          <td>"voler"</td>
+<td>281517</td>
+        </tr>
+        <tr>
+          <td>"asseoir"</td>
+<td>281468</td>
+        </tr>
+        <tr>
+          <td>"promouvoir"</td>
+<td>281034</td>
+        </tr>
+        <tr>
+          <td>"nourrir"</td>
+<td>280604</td>
+        </tr>
+        <tr>
+          <td>"générer"</td>
+<td>280511</td>
+        </tr>
+        <tr>
+          <td>"entretenir"</td>
+<td>280084</td>
+        </tr>
+        <tr>
+          <td>"mériter"</td>
+<td>279910</td>
+        </tr>
+        <tr>
+          <td>"renvoyer"</td>
+<td>279368</td>
+        </tr>
+        <tr>
+          <td>"élaborer"</td>
+<td>278280</td>
+        </tr>
+        <tr>
+          <td>"encourager"</td>
+<td>277959</td>
+        </tr>
+        <tr>
+          <td>"durer"</td>
+<td>277891</td>
+        </tr>
+        <tr>
+          <td>"consommer"</td>
+<td>276570</td>
+        </tr>
+        <tr>
+          <td>"remercier"</td>
+<td>276311</td>
+        </tr>
+        <tr>
+          <td>"concentrer"</td>
+<td>274631</td>
+        </tr>
+        <tr>
+          <td>"désirer"</td>
+<td>274560</td>
+        </tr>
+        <tr>
+          <td>"exploiter"</td>
+<td>274079</td>
+        </tr>
+        <tr>
+          <td>"parcourir"</td>
+<td>271535</td>
+        </tr>
+        <tr>
+          <td>"restaurer"</td>
+<td>271011</td>
+        </tr>
+        <tr>
+          <td>"promettre"</td>
+<td>268688</td>
+        </tr>
+        <tr>
+          <td>"dévoiler"</td>
+<td>268148</td>
+        </tr>
+        <tr>
+          <td>"préserver"</td>
+<td>264744</td>
+        </tr>
+        <tr>
+          <td>"croiser"</td>
+<td>263630</td>
+        </tr>
+        <tr>
+          <td>"avérer"</td>
+<td>263254</td>
+        </tr>
+        <tr>
+          <td>"d"</td>
+<td>263199</td>
+        </tr>
+        <tr>
+          <td>"rêver"</td>
+<td>261946</td>
+        </tr>
+        <tr>
+          <td>"imprimer"</td>
+<td>261855</td>
+        </tr>
+        <tr>
+          <td>"causer"</td>
+<td>261035</td>
+        </tr>
+        <tr>
+          <td>"émettre"</td>
+<td>259961</td>
+        </tr>
+        <tr>
+          <td>"forcer"</td>
+<td>259907</td>
+        </tr>
+        <tr>
+          <td>"rejeter"</td>
+<td>259875</td>
+        </tr>
+        <tr>
+          <td>"poster"</td>
+<td>259203</td>
+        </tr>
+        <tr>
+          <td>"prévenir"</td>
+<td>258998</td>
+        </tr>
+        <tr>
+          <td>"répéter"</td>
+<td>258222</td>
+        </tr>
+        <tr>
+          <td>"joindre"</td>
+<td>257523</td>
+        </tr>
+        <tr>
+          <td>"avouer"</td>
+<td>255820</td>
+        </tr>
+        <tr>
+          <td>"éloigner"</td>
+<td>255472</td>
+        </tr>
+        <tr>
+          <td>"interpréter"</td>
+<td>255420</td>
+        </tr>
+        <tr>
+          <td>"résulter"</td>
+<td>253143</td>
+        </tr>
+        <tr>
+          <td>"valider"</td>
+<td>250824</td>
+        </tr>
+        <tr>
+          <td>"répartir"</td>
+<td>250568</td>
+        </tr>
+        <tr>
+          <td>"guider"</td>
+<td>249811</td>
+        </tr>
+        <tr>
+          <td>"dominer"</td>
+<td>249621</td>
+        </tr>
+        <tr>
+          <td>"extraire"</td>
+<td>248963</td>
+        </tr>
+        <tr>
+          <td>"emporter"</td>
+<td>248863</td>
+        </tr>
+        <tr>
+          <td>"échanger"</td>
+<td>246906</td>
+        </tr>
+        <tr>
+          <td>"lutter"</td>
+<td>246188</td>
+        </tr>
+        <tr>
+          <td>"accuser"</td>
+<td>245327</td>
+        </tr>
+        <tr>
+          <td>"rapprocher"</td>
+<td>245092</td>
+        </tr>
+        <tr>
+          <td>"commettre"</td>
+<td>244984</td>
+        </tr>
+        <tr>
+          <td>"isoler"</td>
+<td>243682</td>
+        </tr>
+        <tr>
+          <td>"exécuter"</td>
+<td>243550</td>
+        </tr>
+        <tr>
+          <td>"oser"</td>
+<td>243360</td>
+        </tr>
+        <tr>
+          <td>"diviser"</td>
+<td>243350</td>
+        </tr>
+        <tr>
+          <td>"opérer"</td>
+<td>241851</td>
+        </tr>
+        <tr>
+          <td>"maîtriser"</td>
+<td>241800</td>
+        </tr>
+        <tr>
+          <td>"coter"</td>
+<td>241173</td>
+        </tr>
+        <tr>
+          <td>"aboutir"</td>
+<td>241049</td>
+        </tr>
+        <tr>
+          <td>"allier"</td>
+<td>240606</td>
+        </tr>
+        <tr>
+          <td>"explorer"</td>
+<td>240093</td>
+        </tr>
+        <tr>
+          <td>"résister"</td>
+<td>238644</td>
+        </tr>
+        <tr>
+          <td>"bloquer"</td>
+<td>238557</td>
+        </tr>
+        <tr>
+          <td>"prêter"</td>
+<td>238338</td>
+        </tr>
+        <tr>
+          <td>"éliminer"</td>
+<td>238271</td>
+        </tr>
+        <tr>
+          <td>"mobiliser"</td>
+<td>238228</td>
+        </tr>
+        <tr>
+          <td>"requérir"</td>
+<td>235555</td>
+        </tr>
+        <tr>
+          <td>"menacer"</td>
+<td>235255</td>
+        </tr>
+        <tr>
+          <td>"confronter"</td>
+<td>232302</td>
+        </tr>
+        <tr>
+          <td>"détenir"</td>
+<td>232251</td>
+        </tr>
+        <tr>
+          <td>"délivrer"</td>
+<td>232097</td>
+        </tr>
+        <tr>
+          <td>"sacrer"</td>
+<td>231145</td>
+        </tr>
+        <tr>
+          <td>"achever"</td>
+<td>230627</td>
+        </tr>
+        <tr>
+          <td>"apercevoir"</td>
+<td>230318</td>
+        </tr>
+        <tr>
+          <td>"douter"</td>
+<td>229284</td>
+        </tr>
+        <tr>
+          <td>"examiner"</td>
+<td>229008</td>
+        </tr>
+        <tr>
+          <td>"calculer"</td>
+<td>227561</td>
+        </tr>
+        <tr>
+          <td>"accroître"</td>
+<td>227322</td>
+        </tr>
+        <tr>
+          <td>"distribuer"</td>
+<td>227187</td>
+        </tr>
+        <tr>
+          <td>"craindre"</td>
+<td>226528</td>
+        </tr>
+        <tr>
+          <td>"susciter"</td>
+<td>226228</td>
+        </tr>
+        <tr>
+          <td>"plonger"</td>
+<td>226200</td>
+        </tr>
+        <tr>
+          <td>"rire"</td>
+<td>225090</td>
+        </tr>
+        <tr>
+          <td>"multiplier"</td>
+<td>225053</td>
+        </tr>
+        <tr>
+          <td>"recueillir"</td>
+<td>224197</td>
+        </tr>
+        <tr>
+          <td>"compliquer"</td>
+<td>223785</td>
+        </tr>
+        <tr>
+          <td>"louer"</td>
+<td>222436</td>
+        </tr>
+        <tr>
+          <td>"approcher"</td>
+<td>221369</td>
+        </tr>
+        <tr>
+          <td>"dégager"</td>
+<td>221244</td>
+        </tr>
+        <tr>
+          <td>"affronter"</td>
+<td>219772</td>
+        </tr>
+        <tr>
+          <td>"approprier"</td>
+<td>217794</td>
+        </tr>
+        <tr>
+          <td>"prolonger"</td>
+<td>217253</td>
+        </tr>
+        <tr>
+          <td>"soigner"</td>
+<td>216962</td>
+        </tr>
+        <tr>
+          <td>"dormir"</td>
+<td>216254</td>
+        </tr>
+        <tr>
+          <td>"mélanger"</td>
+<td>215979</td>
+        </tr>
+        <tr>
+          <td>"exclure"</td>
+<td>215134</td>
+        </tr>
+        <tr>
+          <td>"casser"</td>
+<td>214809</td>
+        </tr>
+        <tr>
+          <td>"précéder"</td>
+<td>214774</td>
+        </tr>
+        <tr>
+          <td>"éditer"</td>
+<td>214684</td>
+        </tr>
+        <tr>
+          <td>"ramener"</td>
+<td>214214</td>
+        </tr>
+        <tr>
+          <td>"confondre"</td>
+<td>214029</td>
+        </tr>
+        <tr>
+          <td>"sécuriser"</td>
+<td>213980</td>
+        </tr>
+        <tr>
+          <td>"éclairer"</td>
+<td>213856</td>
+        </tr>
+        <tr>
+          <td>"baisser"</td>
+<td>213610</td>
+        </tr>
+        <tr>
+          <td>"inventer"</td>
+<td>212529</td>
+        </tr>
+        <tr>
+          <td>"optimiser"</td>
+<td>212375</td>
+        </tr>
+        <tr>
+          <td>"combattre"</td>
+<td>211970</td>
+        </tr>
+        <tr>
+          <td>"coûter"</td>
+<td>211228</td>
+        </tr>
+        <tr>
+          <td>"blesser"</td>
+<td>210706</td>
+        </tr>
+        <tr>
+          <td>"veiller"</td>
+<td>210384</td>
+        </tr>
+        <tr>
+          <td>"coller"</td>
+<td>210010</td>
+        </tr>
+        <tr>
+          <td>"cuire"</td>
+<td>209931</td>
+        </tr>
+        <tr>
+          <td>"amuser"</td>
+<td>209668</td>
+        </tr>
+        <tr>
+          <td>"armer"</td>
+<td>208579</td>
+        </tr>
+        <tr>
+          <td>"transporter"</td>
+<td>207481</td>
+        </tr>
+        <tr>
+          <td>"renouveler"</td>
+<td>206900</td>
+        </tr>
+        <tr>
+          <td>"dresser"</td>
+<td>206643</td>
+        </tr>
+        <tr>
+          <td>"peser"</td>
+<td>206637</td>
+        </tr>
+        <tr>
+          <td>"réclamer"</td>
+<td>206599</td>
+        </tr>
+        <tr>
+          <td>"réagir"</td>
+<td>206356</td>
+        </tr>
+        <tr>
+          <td>"alimenter"</td>
+<td>205655</td>
+        </tr>
+        <tr>
+          <td>"transférer"</td>
+<td>205394</td>
+        </tr>
+        <tr>
+          <td>"activer"</td>
+<td>204769</td>
+        </tr>
+        <tr>
+          <td>"progresser"</td>
+<td>204474</td>
+        </tr>
+        <tr>
+          <td>"décéder"</td>
+<td>204103</td>
+        </tr>
+        <tr>
+          <td>"tromper"</td>
+<td>204038</td>
+        </tr>
+        <tr>
+          <td>"peindre"</td>
+<td>203816</td>
+        </tr>
+        <tr>
+          <td>"insister"</td>
+<td>203361</td>
+        </tr>
+        <tr>
+          <td>"déployer"</td>
+<td>201984</td>
+        </tr>
+        <tr>
+          <td>"démarrer"</td>
+<td>201855</td>
+        </tr>
+        <tr>
+          <td>"parer"</td>
+<td>201046</td>
+        </tr>
+        <tr>
+          <td>"renaître"</td>
+<td>200919</td>
+        </tr>
+        <tr>
+          <td>"refaire"</td>
+<td>200885</td>
+        </tr>
+        <tr>
+          <td>"emprunter"</td>
+<td>197652</td>
+        </tr>
+        <tr>
+          <td>"contraindre"</td>
+<td>196879</td>
+        </tr>
+        <tr>
+          <td>"célébrer"</td>
+<td>194911</td>
+        </tr>
+        <tr>
+          <td>"glisser"</td>
+<td>194196</td>
+        </tr>
+        <tr>
+          <td>"répertorier"</td>
+<td>193485</td>
+        </tr>
+        <tr>
+          <td>"combiner"</td>
+<td>193341</td>
+        </tr>
+        <tr>
+          <td>"succéder"</td>
+<td>192460</td>
+        </tr>
+        <tr>
+          <td>"reproduire"</td>
+<td>190696</td>
+        </tr>
+        <tr>
+          <td>"recruter"</td>
+<td>190588</td>
+        </tr>
+        <tr>
+          <td>"contenter"</td>
+<td>190240</td>
+        </tr>
+        <tr>
+          <td>"abriter"</td>
+<td>189952</td>
+        </tr>
+        <tr>
+          <td>"résumer"</td>
+<td>189385</td>
+        </tr>
+        <tr>
+          <td>"ordonner"</td>
+<td>188754</td>
+        </tr>
+        <tr>
+          <td>"s"</td>
+<td>187645</td>
+        </tr>
+        <tr>
+          <td>"cultiver"</td>
+<td>187291</td>
+        </tr>
+        <tr>
+          <td>"répandre"</td>
+<td>186545</td>
+        </tr>
+        <tr>
+          <td>"assumer"</td>
+<td>186083</td>
+        </tr>
+        <tr>
+          <td>"rajouter"</td>
+<td>185815</td>
+        </tr>
+        <tr>
+          <td>"céder"</td>
+<td>184996</td>
+        </tr>
+        <tr>
+          <td>"regretter"</td>
+<td>184360</td>
+        </tr>
+        <tr>
+          <td>"aménager"</td>
+<td>183704</td>
+        </tr>
+        <tr>
+          <td>"opter"</td>
+<td>183395</td>
+        </tr>
+        <tr>
+          <td>"emmener"</td>
+<td>183089</td>
+        </tr>
+        <tr>
+          <td>"coucher"</td>
+<td>182597</td>
+        </tr>
+        <tr>
+          <td>"bâtir"</td>
+<td>182474</td>
+        </tr>
+        <tr>
+          <td>"procurer"</td>
+<td>182110</td>
+        </tr>
+        <tr>
+          <td>"grandir"</td>
+<td>181154</td>
+        </tr>
+        <tr>
+          <td>"résider"</td>
+<td>180699</td>
+        </tr>
+        <tr>
+          <td>"initier"</td>
+<td>180489</td>
+        </tr>
+        <tr>
+          <td>"passionner"</td>
+<td>179763</td>
+        </tr>
+        <tr>
+          <td>"séduire"</td>
+<td>179589</td>
+        </tr>
+        <tr>
+          <td>"mêler"</td>
+<td>179261</td>
+        </tr>
+        <tr>
+          <td>"étonner"</td>
+<td>178632</td>
+        </tr>
+        <tr>
+          <td>"presser"</td>
+<td>178392</td>
+        </tr>
+        <tr>
+          <td>"solliciter"</td>
+<td>178350</td>
+        </tr>
+        <tr>
+          <td>"boiter"</td>
+<td>177996</td>
+        </tr>
+        <tr>
+          <td>"incarner"</td>
+<td>177686</td>
+        </tr>
+        <tr>
+          <td>"nettoyer"</td>
+<td>177563</td>
+        </tr>
+        <tr>
+          <td>"muser"</td>
+<td>176637</td>
+        </tr>
+        <tr>
+          <td>"rattacher"</td>
+<td>175914</td>
+        </tr>
+        <tr>
+          <td>"insérer"</td>
+<td>175579</td>
+        </tr>
+        <tr>
+          <td>"rassurer"</td>
+<td>175089</td>
+        </tr>
+        <tr>
+          <td>"disputer"</td>
+<td>174572</td>
+        </tr>
+        <tr>
+          <td>"bouger"</td>
+<td>173902</td>
+        </tr>
+        <tr>
+          <td>"inciter"</td>
+<td>173468</td>
+        </tr>
+        <tr>
+          <td>"annuler"</td>
+<td>172098</td>
+        </tr>
+        <tr>
+          <td>"planter"</td>
+<td>171791</td>
+        </tr>
+        <tr>
+          <td>"soulever"</td>
+<td>171365</td>
+        </tr>
+        <tr>
+          <td>"prier"</td>
+<td>171262</td>
+        </tr>
+        <tr>
+          <td>"repartir"</td>
+<td>171087</td>
+        </tr>
+        <tr>
+          <td>"taper"</td>
+<td>170987</td>
+        </tr>
+        <tr>
+          <td>"députer"</td>
+<td>170692</td>
+        </tr>
+        <tr>
+          <td>"inquiéter"</td>
+<td>170547</td>
+        </tr>
+        <tr>
+          <td>"commenter"</td>
+<td>170154</td>
+        </tr>
+        <tr>
+          <td>"accélérer"</td>
+<td>170076</td>
+        </tr>
+        <tr>
+          <td>"fuir"</td>
+<td>169841</td>
+        </tr>
+        <tr>
+          <td>"surveiller"</td>
+<td>169649</td>
+        </tr>
+        <tr>
+          <td>"élargir"</td>
+<td>169579</td>
+        </tr>
+        <tr>
+          <td>"survenir"</td>
+<td>168955</td>
+        </tr>
+        <tr>
+          <td>"simplifier"</td>
+<td>168717</td>
+        </tr>
+        <tr>
+          <td>"motiver"</td>
+<td>168514</td>
+        </tr>
+        <tr>
+          <td>"renseigner"</td>
+<td>167001</td>
+        </tr>
+        <tr>
+          <td>"franchir"</td>
+<td>166769</td>
+        </tr>
+        <tr>
+          <td>"doubler"</td>
+<td>166206</td>
+        </tr>
+        <tr>
+          <td>"suspendre"</td>
+<td>166205</td>
+        </tr>
+        <tr>
+          <td>"expérimenter"</td>
+<td>165071</td>
+        </tr>
+        <tr>
+          <td>"voyager"</td>
+<td>164981</td>
+        </tr>
+        <tr>
+          <td>"encadrer"</td>
+<td>164936</td>
+        </tr>
+        <tr>
+          <td>"cibler"</td>
+<td>164436</td>
+        </tr>
+        <tr>
+          <td>"colorer"</td>
+<td>164095</td>
+        </tr>
+        <tr>
+          <td>"chauffer"</td>
+<td>164020</td>
+        </tr>
+        <tr>
+          <td>"approuver"</td>
+<td>163547</td>
+        </tr>
+        <tr>
+          <td>"programmer"</td>
+<td>163535</td>
+        </tr>
+        <tr>
+          <td>"approfondir"</td>
+<td>163453</td>
+        </tr>
+        <tr>
+          <td>"repérer"</td>
+<td>162905</td>
+        </tr>
+        <tr>
+          <td>"cest"</td>
+<td>162675</td>
+        </tr>
+        <tr>
+          <td>"implanter"</td>
+<td>162492</td>
+        </tr>
+        <tr>
+          <td>"briser"</td>
+<td>161544</td>
+        </tr>
+        <tr>
+          <td>"voiler"</td>
+<td>161534</td>
+        </tr>
+        <tr>
+          <td>"laver"</td>
+<td>161164</td>
+        </tr>
+        <tr>
+          <td>"carrer"</td>
+<td>161089</td>
+        </tr>
+        <tr>
+          <td>"couler"</td>
+<td>160588</td>
+        </tr>
+        <tr>
+          <td>"sauter"</td>
+<td>159825</td>
+        </tr>
+        <tr>
+          <td>"survivre"</td>
+<td>159630</td>
+        </tr>
+        <tr>
+          <td>"ravir"</td>
+<td>159220</td>
+        </tr>
+        <tr>
+          <td>"écarter"</td>
+<td>159148</td>
+        </tr>
+        <tr>
+          <td>"engendrer"</td>
+<td>157108</td>
+        </tr>
+        <tr>
+          <td>"dorer"</td>
+<td>156897</td>
+        </tr>
+        <tr>
+          <td>"formuler"</td>
+<td>156820</td>
+        </tr>
+        <tr>
+          <td>"brûler"</td>
+<td>156596</td>
+        </tr>
+        <tr>
+          <td>"renoncer"</td>
+<td>155525</td>
+        </tr>
+        <tr>
+          <td>"critiquer"</td>
+<td>155354</td>
+        </tr>
+        <tr>
+          <td>"décevoir"</td>
+<td>155213</td>
+        </tr>
+        <tr>
+          <td>"valoriser"</td>
+<td>155196</td>
+        </tr>
+        <tr>
+          <td>"serrer"</td>
+<td>154972</td>
+        </tr>
+        <tr>
+          <td>"saluer"</td>
+<td>154633</td>
+        </tr>
+        <tr>
+          <td>"réveiller"</td>
+<td>153948</td>
+        </tr>
+        <tr>
+          <td>"clore"</td>
+<td>153709</td>
+        </tr>
+        <tr>
+          <td>"détecter"</td>
+<td>153621</td>
+        </tr>
+        <tr>
+          <td>"déclencher"</td>
+<td>153463</td>
+        </tr>
+        <tr>
+          <td>"embarquer"</td>
+<td>153306</td>
+        </tr>
+        <tr>
+          <td>"décorer"</td>
+<td>153152</td>
+        </tr>
+        <tr>
+          <td>"coordonner"</td>
+<td>153065</td>
+        </tr>
+        <tr>
+          <td>"ranger"</td>
+<td>152121</td>
+        </tr>
+        <tr>
+          <td>"anticiper"</td>
+<td>151871</td>
+        </tr>
+        <tr>
+          <td>"circuler"</td>
+<td>151696</td>
+        </tr>
+        <tr>
+          <td>"pénétrer"</td>
+<td>151481</td>
+        </tr>
+        <tr>
+          <td>"contester"</td>
+<td>150758</td>
+        </tr>
+        <tr>
+          <td>"négocier"</td>
+<td>150601</td>
+        </tr>
+        <tr>
+          <td>"éprouver"</td>
+<td>150506</td>
+        </tr>
+        <tr>
+          <td>"désoler"</td>
+<td>149474</td>
+        </tr>
+        <tr>
+          <td>"handicaper"</td>
+<td>148699</td>
+        </tr>
+        <tr>
+          <td>"décliner"</td>
+<td>148204</td>
+        </tr>
+        <tr>
+          <td>"détacher"</td>
+<td>147355</td>
+        </tr>
+        <tr>
+          <td>"foutre"</td>
+<td>147200</td>
+        </tr>
+        <tr>
+          <td>"entamer"</td>
+<td>146640</td>
+        </tr>
+        <tr>
+          <td>"fréquenter"</td>
+<td>146253</td>
+        </tr>
+        <tr>
+          <td>"réputer"</td>
+<td>146043</td>
+        </tr>
+        <tr>
+          <td>"stocker"</td>
+<td>145604</td>
+        </tr>
+        <tr>
+          <td>"récompenser"</td>
+<td>144553</td>
+        </tr>
+        <tr>
+          <td>"accrocher"</td>
+<td>143850</td>
+        </tr>
+        <tr>
+          <td>"jouir"</td>
+<td>143783</td>
+        </tr>
+        <tr>
+          <td>"structurer"</td>
+<td>142894</td>
+        </tr>
+        <tr>
+          <td>"influencer"</td>
+<td>142044</td>
+        </tr>
+        <tr>
+          <td>"effacer"</td>
+<td>141793</td>
+        </tr>
+        <tr>
+          <td>"rembourser"</td>
+<td>141655</td>
+        </tr>
+        <tr>
+          <td>"pleurer"</td>
+<td>140961</td>
+        </tr>
+        <tr>
+          <td>"positionner"</td>
+<td>140807</td>
+        </tr>
+        <tr>
+          <td>"convertir"</td>
+<td>140743</td>
+        </tr>
+        <tr>
+          <td>"inaugurer"</td>
+<td>139450</td>
+        </tr>
+        <tr>
+          <td>"plaindre"</td>
+<td>138964</td>
+        </tr>
+        <tr>
+          <td>"pencher"</td>
+<td>138213</td>
+        </tr>
+        <tr>
+          <td>"éteindre"</td>
+<td>137967</td>
+        </tr>
+        <tr>
+          <td>"pourvoir"</td>
+<td>137942</td>
+        </tr>
+        <tr>
+          <td>"présider"</td>
+<td>137667</td>
+        </tr>
+        <tr>
+          <td>"crier"</td>
+<td>137484</td>
+        </tr>
+        <tr>
+          <td>"typer"</td>
+<td>137281</td>
+        </tr>
+        <tr>
+          <td>"projeter"</td>
+<td>137161</td>
+        </tr>
+        <tr>
+          <td>"régner"</td>
+<td>137142</td>
+        </tr>
+        <tr>
+          <td>"revendiquer"</td>
+<td>136740</td>
+        </tr>
+        <tr>
+          <td>"équilibrer"</td>
+<td>136116</td>
+        </tr>
+        <tr>
+          <td>"admirer"</td>
+<td>136068</td>
+        </tr>
+        <tr>
+          <td>"recouvrir"</td>
+<td>135668</td>
+        </tr>
+        <tr>
+          <td>"repousser"</td>
+<td>135270</td>
+        </tr>
+        <tr>
+          <td>"déléguer"</td>
+<td>135172</td>
+        </tr>
+        <tr>
+          <td>"filmer"</td>
+<td>134916</td>
+        </tr>
+        <tr>
+          <td>"fr"</td>
+<td>133621</td>
+        </tr>
+        <tr>
+          <td>"ressortir"</td>
+<td>133191</td>
+        </tr>
+        <tr>
+          <td>"téléviser"</td>
+<td>132799</td>
+        </tr>
+        <tr>
+          <td>"collecter"</td>
+<td>131612</td>
+        </tr>
+        <tr>
+          <td>"danser"</td>
+<td>131396</td>
+        </tr>
+        <tr>
+          <td>"piloter"</td>
+<td>131232</td>
+        </tr>
+        <tr>
+          <td>"creuser"</td>
+<td>131188</td>
+        </tr>
+        <tr>
+          <td>"reprocher"</td>
+<td>131102</td>
+        </tr>
+        <tr>
+          <td>"éclater"</td>
+<td>130928</td>
+        </tr>
+        <tr>
+          <td>"régir"</td>
+<td>130711</td>
+        </tr>
+        <tr>
+          <td>"t"</td>
+<td>130126</td>
+        </tr>
+        <tr>
+          <td>"desservir"</td>
+<td>129698</td>
+        </tr>
+        <tr>
+          <td>"fêter"</td>
+<td>129113</td>
+        </tr>
+        <tr>
+          <td>"refléter"</td>
+<td>128907</td>
+        </tr>
+        <tr>
+          <td>"commercialiser"</td>
+<td>127645</td>
+        </tr>
+        <tr>
+          <td>"collaborer"</td>
+<td>127514</td>
+        </tr>
+        <tr>
+          <td>"salarier"</td>
+<td>127445</td>
+        </tr>
+        <tr>
+          <td>"invoquer"</td>
+<td>127013</td>
+        </tr>
+        <tr>
+          <td>"réparer"</td>
+<td>126802</td>
+        </tr>
+        <tr>
+          <td>"attester"</td>
+<td>126531</td>
+        </tr>
+        <tr>
+          <td>"allumer"</td>
+<td>126107</td>
+        </tr>
+        <tr>
+          <td>"jurer"</td>
+<td>125905</td>
+        </tr>
+        <tr>
+          <td>"rater"</td>
+<td>125411</td>
+        </tr>
+        <tr>
+          <td>"habiller"</td>
+<td>124843</td>
+        </tr>
+        <tr>
+          <td>"racheter"</td>
+<td>124570</td>
+        </tr>
+        <tr>
+          <td>"chasser"</td>
+<td>124561</td>
+        </tr>
+        <tr>
+          <td>"dériver"</td>
+<td>124389</td>
+        </tr>
+        <tr>
+          <td>"instaurer"</td>
+<td>123877</td>
+        </tr>
+        <tr>
+          <td>"rétablir"</td>
+<td>123727</td>
+        </tr>
+        <tr>
+          <td>"fondre"</td>
+<td>123585</td>
+        </tr>
+        <tr>
+          <td>"épouser"</td>
+<td>123537</td>
+        </tr>
+        <tr>
+          <td>"certifier"</td>
+<td>123518</td>
+        </tr>
+        <tr>
+          <td>"rompre"</td>
+<td>123232</td>
+        </tr>
+        <tr>
+          <td>"restreindre"</td>
+<td>123067</td>
+        </tr>
+        <tr>
+          <td>"induire"</td>
+<td>122748</td>
+        </tr>
+        <tr>
+          <td>"rénover"</td>
+<td>122230</td>
+        </tr>
+        <tr>
+          <td>"baptiser"</td>
+<td>122053</td>
+        </tr>
+        <tr>
+          <td>"écraser"</td>
+<td>121088</td>
+        </tr>
+        <tr>
+          <td>"tracer"</td>
+<td>120950</td>
+        </tr>
+        <tr>
+          <td>"abattre"</td>
+<td>120613</td>
+        </tr>
+        <tr>
+          <td>"échouer"</td>
+<td>120456</td>
+        </tr>
+        <tr>
+          <td>"emparer"</td>
+<td>119098</td>
+        </tr>
+        <tr>
+          <td>"lâcher"</td>
+<td>118625</td>
+        </tr>
+        <tr>
+          <td>"saler"</td>
+<td>118331</td>
+        </tr>
+        <tr>
+          <td>"conférer"</td>
+<td>118149</td>
+        </tr>
+        <tr>
+          <td>"pointer"</td>
+<td>117717</td>
+        </tr>
+        <tr>
+          <td>"nier"</td>
+<td>117605</td>
+        </tr>
+        <tr>
+          <td>"diplômer"</td>
+<td>117302</td>
+        </tr>
+        <tr>
+          <td>"localiser"</td>
+<td>117153</td>
+        </tr>
+        <tr>
+          <td>"adjoindre"</td>
+<td>116682</td>
+        </tr>
+        <tr>
+          <td>"copier"</td>
+<td>116421</td>
+        </tr>
+        <tr>
+          <td>"envahir"</td>
+<td>116265</td>
+        </tr>
+        <tr>
+          <td>"détourner"</td>
+<td>116150</td>
+        </tr>
+        <tr>
+          <td>"recenser"</td>
+<td>116043</td>
+        </tr>
+        <tr>
+          <td>"fumer"</td>
+<td>115916</td>
+        </tr>
+        <tr>
+          <td>"adhérer"</td>
+<td>115905</td>
+        </tr>
+        <tr>
+          <td>"compenser"</td>
+<td>115549</td>
+        </tr>
+        <tr>
+          <td>"centrer"</td>
+<td>115095</td>
+        </tr>
+        <tr>
+          <td>"surmonter"</td>
+<td>114876</td>
+        </tr>
+        <tr>
+          <td>"conquérir"</td>
+<td>114769</td>
+        </tr>
+        <tr>
+          <td>"allonger"</td>
+<td>114666</td>
+        </tr>
+        <tr>
+          <td>"découper"</td>
+<td>114169</td>
+        </tr>
+        <tr>
+          <td>"vaincre"</td>
+<td>114131</td>
+        </tr>
+        <tr>
+          <td>"connait"</td>
+<td>114076</td>
+        </tr>
+        <tr>
+          <td>"débattre"</td>
+<td>114062</td>
+        </tr>
+        <tr>
+          <td>"capturer"</td>
+<td>113993</td>
+        </tr>
+        <tr>
+          <td>"exploser"</td>
+<td>113712</td>
+        </tr>
+        <tr>
+          <td>"embrasser"</td>
+<td>113602</td>
+        </tr>
+        <tr>
+          <td>"référer"</td>
+<td>113517</td>
+        </tr>
+        <tr>
+          <td>"munir"</td>
+<td>113327</td>
+        </tr>
+        <tr>
+          <td>"absorber"</td>
+<td>113262</td>
+        </tr>
+        <tr>
+          <td>"enfermer"</td>
+<td>113248</td>
+        </tr>
+        <tr>
+          <td>"combler"</td>
+<td>112957</td>
+        </tr>
+        <tr>
+          <td>"relancer"</td>
+<td>112403</td>
+        </tr>
+        <tr>
+          <td>"habituer"</td>
+<td>112295</td>
+        </tr>
+        <tr>
+          <td>"différer"</td>
+<td>111881</td>
+        </tr>
+        <tr>
+          <td>"avertir"</td>
+<td>111819</td>
+        </tr>
+        <tr>
+          <td>"reculer"</td>
+<td>111318</td>
+        </tr>
+        <tr>
+          <td>"souscrire"</td>
+<td>111041</td>
+        </tr>
+        <tr>
+          <td>"foncer"</td>
+<td>110766</td>
+        </tr>
+        <tr>
+          <td>"sonner"</td>
+<td>110340</td>
+        </tr>
+        <tr>
+          <td>"arracher"</td>
+<td>110016</td>
+        </tr>
+        <tr>
+          <td>"débarquer"</td>
+<td>109563</td>
+        </tr>
+        <tr>
+          <td>"lister"</td>
+<td>109196</td>
+        </tr>
+        <tr>
+          <td>"déguster"</td>
+<td>109074</td>
+        </tr>
+        <tr>
+          <td>"émerger"</td>
+<td>108881</td>
+        </tr>
+        <tr>
+          <td>"recouvrer"</td>
+<td>108763</td>
+        </tr>
+        <tr>
+          <td>"récolter"</td>
+<td>108741</td>
+        </tr>
+        <tr>
+          <td>"généraliser"</td>
+<td>108440</td>
+        </tr>
+        <tr>
+          <td>"lover"</td>
+<td>108118</td>
+        </tr>
+        <tr>
+          <td>"honorer"</td>
+<td>108021</td>
+        </tr>
+        <tr>
+          <td>"orner"</td>
+<td>107989</td>
+        </tr>
+        <tr>
+          <td>"reconstruire"</td>
+<td>107477</td>
+        </tr>
+        <tr>
+          <td>"graver"</td>
+<td>107453</td>
+        </tr>
+        <tr>
+          <td>"diversifier"</td>
+<td>107283</td>
+        </tr>
+        <tr>
+          <td>"dispenser"</td>
+<td>106279</td>
+        </tr>
+        <tr>
+          <td>"manipuler"</td>
+<td>106038</td>
+        </tr>
+        <tr>
+          <td>"dépenser"</td>
+<td>106031</td>
+        </tr>
+        <tr>
+          <td>"croître"</td>
+<td>105705</td>
+        </tr>
+        <tr>
+          <td>"stimuler"</td>
+<td>105542</td>
+        </tr>
+        <tr>
+          <td>"interrompre"</td>
+<td>105388</td>
+        </tr>
+        <tr>
+          <td>"fleurir"</td>
+<td>104806</td>
+        </tr>
+        <tr>
+          <td>"enchaîner"</td>
+<td>104418</td>
+        </tr>
+        <tr>
+          <td>"brancher"</td>
+<td>104313</td>
+        </tr>
+        <tr>
+          <td>"débarrasser"</td>
+<td>104037</td>
+        </tr>
+        <tr>
+          <td>"accumuler"</td>
+<td>103811</td>
+        </tr>
+        <tr>
+          <td>"assimiler"</td>
+<td>103778</td>
+        </tr>
+        <tr>
+          <td>"appréhender"</td>
+<td>103611</td>
+        </tr>
+        <tr>
+          <td>"renommer"</td>
+<td>103387</td>
+        </tr>
+        <tr>
+          <td>"masquer"</td>
+<td>103375</td>
+        </tr>
+        <tr>
+          <td>"enfoncer"</td>
+<td>103355</td>
+        </tr>
+        <tr>
+          <td>"filer"</td>
+<td>103337</td>
+        </tr>
+        <tr>
+          <td>"assassiner"</td>
+<td>102845</td>
+        </tr>
+        <tr>
+          <td>"prescrire"</td>
+<td>102679</td>
+        </tr>
+        <tr>
+          <td>"fusionner"</td>
+<td>102552</td>
+        </tr>
+        <tr>
+          <td>"décrocher"</td>
+<td>102372</td>
+        </tr>
+        <tr>
+          <td>"différencier"</td>
+<td>102066</td>
+        </tr>
+        <tr>
+          <td>"découler"</td>
+<td>101988</td>
+        </tr>
+        <tr>
+          <td>"réjouir"</td>
+<td>101660</td>
+        </tr>
+        <tr>
+          <td>"héberger"</td>
+<td>101575</td>
+        </tr>
+        <tr>
+          <td>"enterrer"</td>
+<td>100424</td>
+        </tr>
+        <tr>
+          <td>"articuler"</td>
+<td>100399</td>
+        </tr>
+        <tr>
+          <td>"féliciter"</td>
+<td>100199</td>
+        </tr>
+        <tr>
+          <td>"préconiser"</td>
+<td>100112</td>
+        </tr>
+        <tr>
+          <td>"gêner"</td>
+<td>99795</td>
+        </tr>
+        <tr>
+          <td>"border"</td>
+<td>99624</td>
+        </tr>
+        <tr>
+          <td>"tailler"</td>
+<td>99427</td>
+        </tr>
+        <tr>
+          <td>"écouler"</td>
+<td>99241</td>
+        </tr>
+        <tr>
+          <td>"fatiguer"</td>
+<td>98917</td>
+        </tr>
+        <tr>
+          <td>"reporter"</td>
+<td>98668</td>
+        </tr>
+        <tr>
+          <td>"agréer"</td>
+<td>97800</td>
+        </tr>
+        <tr>
+          <td>"défaire"</td>
+<td>97526</td>
+        </tr>
+        <tr>
+          <td>"tarder"</td>
+<td>97032</td>
+        </tr>
+        <tr>
+          <td>"redonner"</td>
+<td>96946</td>
+        </tr>
+        <tr>
+          <td>"inverser"</td>
+<td>96800</td>
+        </tr>
+        <tr>
+          <td>"proclamer"</td>
+<td>96350</td>
+        </tr>
+        <tr>
+          <td>"respirer"</td>
+<td>96319</td>
+        </tr>
+        <tr>
+          <td>"nest"</td>
+<td>96111</td>
+        </tr>
+        <tr>
+          <td>"percer"</td>
+<td>95720</td>
+        </tr>
+        <tr>
+          <td>"sucer"</td>
+<td>95715</td>
+        </tr>
+        <tr>
+          <td>"déduire"</td>
+<td>95483</td>
+        </tr>
+        <tr>
+          <td>"ériger"</td>
+<td>95461</td>
+        </tr>
+        <tr>
+          <td>"sécher"</td>
+<td>94987</td>
+        </tr>
+        <tr>
+          <td>"agrandir"</td>
+<td>94976</td>
+        </tr>
+        <tr>
+          <td>"perturber"</td>
+<td>94655</td>
+        </tr>
+        <tr>
+          <td>"ajuster"</td>
+<td>94513</td>
+        </tr>
+        <tr>
+          <td>"sourire"</td>
+<td>94456</td>
+        </tr>
+        <tr>
+          <td>"persuader"</td>
+<td>94338</td>
+        </tr>
+        <tr>
+          <td>"goûter"</td>
+<td>94116</td>
+        </tr>
+        <tr>
+          <td>"grouper"</td>
+<td>94102</td>
+        </tr>
+        <tr>
+          <td>"sensibiliser"</td>
+<td>94100</td>
+        </tr>
+        <tr>
+          <td>"vider"</td>
+<td>93990</td>
+        </tr>
+        <tr>
+          <td>"modérer"</td>
+<td>93818</td>
+        </tr>
+        <tr>
+          <td>"négliger"</td>
+<td>93238</td>
+        </tr>
+        <tr>
+          <td>"surnommer"</td>
+<td>93124</td>
+        </tr>
+        <tr>
+          <td>"loger"</td>
+<td>93059</td>
+        </tr>
+        <tr>
+          <td>"axer"</td>
+<td>93013</td>
+        </tr>
+        <tr>
+          <td>"peupler"</td>
+<td>92776</td>
+        </tr>
+        <tr>
+          <td>"renverser"</td>
+<td>92641</td>
+        </tr>
+        <tr>
+          <td>"dégrader"</td>
+<td>92565</td>
+        </tr>
+        <tr>
+          <td>"visualiser"</td>
+<td>92442</td>
+        </tr>
+        <tr>
+          <td>"sucrer"</td>
+<td>91675</td>
+        </tr>
+        <tr>
+          <td>"guérir"</td>
+<td>91569</td>
+        </tr>
+        <tr>
+          <td>"accentuer"</td>
+<td>91436</td>
+        </tr>
+        <tr>
+          <td>"soulager"</td>
+<td>91302</td>
+        </tr>
+        <tr>
+          <td>"revêtir"</td>
+<td>91237</td>
+        </tr>
+        <tr>
+          <td>"trancher"</td>
+<td>91211</td>
+        </tr>
+        <tr>
+          <td>"incorporer"</td>
+<td>90918</td>
+        </tr>
+        <tr>
+          <td>"réfugier"</td>
+<td>90547</td>
+        </tr>
+        <tr>
+          <td>"référencer"</td>
+<td>90532</td>
+        </tr>
+        <tr>
+          <td>"instituer"</td>
+<td>90037</td>
+        </tr>
+        <tr>
+          <td>"aligner"</td>
+<td>89795</td>
+        </tr>
+        <tr>
+          <td>"caler"</td>
+<td>89384</td>
+        </tr>
+        <tr>
+          <td>"recourir"</td>
+<td>89123</td>
+        </tr>
+        <tr>
+          <td>"recommencer"</td>
+<td>89086</td>
+        </tr>
+        <tr>
+          <td>"subsister"</td>
+<td>89046</td>
+        </tr>
+        <tr>
+          <td>"énoncer"</td>
+<td>88777</td>
+        </tr>
+        <tr>
+          <td>"incliner"</td>
+<td>88370</td>
+        </tr>
+        <tr>
+          <td>"relire"</td>
+<td>87697</td>
+        </tr>
+        <tr>
+          <td>"interpeller"</td>
+<td>87414</td>
+        </tr>
+        <tr>
+          <td>"hériter"</td>
+<td>87311</td>
+        </tr>
+        <tr>
+          <td>"détendre"</td>
+<td>87212</td>
+        </tr>
+        <tr>
+          <td>"convoquer"</td>
+<td>87080</td>
+        </tr>
+        <tr>
+          <td>"préoccuper"</td>
+<td>86927</td>
+        </tr>
+        <tr>
+          <td>"souffler"</td>
+<td>86547</td>
+        </tr>
+        <tr>
+          <td>"douer"</td>
+<td>86432</td>
+        </tr>
+        <tr>
+          <td>"retracer"</td>
+<td>86392</td>
+        </tr>
+        <tr>
+          <td>"efforcer"</td>
+<td>86154</td>
+        </tr>
+        <tr>
+          <td>"y'a"</td>
+<td>86095</td>
+        </tr>
+        <tr>
+          <td>"mentir"</td>
+<td>86074</td>
+        </tr>
+        <tr>
+          <td>"arranger"</td>
+<td>86022</td>
+        </tr>
+        <tr>
+          <td>"cumuler"</td>
+<td>85987</td>
+        </tr>
+        <tr>
+          <td>"étaler"</td>
+<td>85880</td>
+        </tr>
+        <tr>
+          <td>"exciter"</td>
+<td>85780</td>
+        </tr>
+        <tr>
+          <td>"violer"</td>
+<td>85676</td>
+        </tr>
+        <tr>
+          <td>"déranger"</td>
+<td>85405</td>
+        </tr>
+        <tr>
+          <td>"épuiser"</td>
+<td>85261</td>
+        </tr>
+        <tr>
+          <td>"gouverner"</td>
+<td>84959</td>
+        </tr>
+        <tr>
+          <td>"substituer"</td>
+<td>84831</td>
+        </tr>
+        <tr>
+          <td>"primer"</td>
+<td>84619</td>
+        </tr>
+        <tr>
+          <td>"évacuer"</td>
+<td>84454</td>
+        </tr>
+        <tr>
+          <td>"deviner"</td>
+<td>84438</td>
+        </tr>
+        <tr>
+          <td>"briller"</td>
+<td>84161</td>
+        </tr>
+        <tr>
+          <td>"excuser"</td>
+<td>84120</td>
+        </tr>
+        <tr>
+          <td>"etre"</td>
+<td>84048</td>
+        </tr>
+        <tr>
+          <td>"administrer"</td>
+<td>84048</td>
+        </tr>
+        <tr>
+          <td>"fiche"</td>
+<td>83181</td>
+        </tr>
+        <tr>
+          <td>"épargner"</td>
+<td>83011</td>
+        </tr>
+        <tr>
+          <td>"ralentir"</td>
+<td>82933</td>
+        </tr>
+        <tr>
+          <td>"semer"</td>
+<td>82590</td>
+        </tr>
+        <tr>
+          <td>"plier"</td>
+<td>82255</td>
+        </tr>
+        <tr>
+          <td>"déboucher"</td>
+<td>82236</td>
+        </tr>
+        <tr>
+          <td>"endommager"</td>
+<td>82197</td>
+        </tr>
+        <tr>
+          <td>"décerner"</td>
+<td>81827</td>
+        </tr>
+        <tr>
+          <td>"enceindre"</td>
+<td>81765</td>
+        </tr>
+        <tr>
+          <td>"agiter"</td>
+<td>81720</td>
+        </tr>
+        <tr>
+          <td>"trés"</td>
+<td>81497</td>
+        </tr>
+        <tr>
+          <td>"endormir"</td>
+<td>81398</td>
+        </tr>
+        <tr>
+          <td>"promener"</td>
+<td>81258</td>
+        </tr>
+        <tr>
+          <td>"choquer"</td>
+<td>80998</td>
+        </tr>
+        <tr>
+          <td>"naviguer"</td>
+<td>80905</td>
+        </tr>
+        <tr>
+          <td>"nuire"</td>
+<td>80671</td>
+        </tr>
+        <tr>
+          <td>"obéir"</td>
+<td>80598</td>
+        </tr>
+        <tr>
+          <td>"etait"</td>
+<td>80294</td>
+        </tr>
+        <tr>
+          <td>"restituer"</td>
+<td>79791</td>
+        </tr>
+        <tr>
+          <td>"capter"</td>
+<td>79753</td>
+        </tr>
+        <tr>
+          <td>"recycler"</td>
+<td>79456</td>
+        </tr>
+        <tr>
+          <td>"dissoudre"</td>
+<td>79260</td>
+        </tr>
+        <tr>
+          <td>"relayer"</td>
+<td>79095</td>
+        </tr>
+        <tr>
+          <td>"heurter"</td>
+<td>78882</td>
+        </tr>
+        <tr>
+          <td>"consentir"</td>
+<td>78695</td>
+        </tr>
+        <tr>
+          <td>"sacrifier"</td>
+<td>78447</td>
+        </tr>
+        <tr>
+          <td>"dissimuler"</td>
+<td>78361</td>
+        </tr>
+        <tr>
+          <td>"rattraper"</td>
+<td>78037</td>
+        </tr>
+        <tr>
+          <td>"cuisiner"</td>
+<td>77984</td>
+        </tr>
+        <tr>
+          <td>"aggraver"</td>
+<td>77748</td>
+        </tr>
+        <tr>
+          <td>"bouleverser"</td>
+<td>77502</td>
+        </tr>
+        <tr>
+          <td>"piquer"</td>
+<td>77492</td>
+        </tr>
+        <tr>
+          <td>"aspirer"</td>
+<td>77438</td>
+        </tr>
+        <tr>
+          <td>"dénommer"</td>
+<td>77385</td>
+        </tr>
+        <tr>
+          <td>"relater"</td>
+<td>77242</td>
+        </tr>
+        <tr>
+          <td>"arborer"</td>
+<td>77002</td>
+        </tr>
+        <tr>
+          <td>"assembler"</td>
+<td>76993</td>
+        </tr>
+        <tr>
+          <td>"taire"</td>
+<td>76837</td>
+        </tr>
+        <tr>
+          <td>"grimper"</td>
+<td>76768</td>
+        </tr>
+        <tr>
+          <td>"assortir"</td>
+<td>76707</td>
+        </tr>
+        <tr>
+          <td>"punir"</td>
+<td>76699</td>
+        </tr>
+        <tr>
+          <td>"pardonner"</td>
+<td>76560</td>
+        </tr>
+        <tr>
+          <td>"consolider"</td>
+<td>76553</td>
+        </tr>
+        <tr>
+          <td>"impressionner"</td>
+<td>76552</td>
+        </tr>
+        <tr>
+          <td>"conditionner"</td>
+<td>76481</td>
+        </tr>
+        <tr>
+          <td>"prélever"</td>
+<td>76113</td>
+        </tr>
+        <tr>
+          <td>"conformer"</td>
+<td>75955</td>
+        </tr>
+        <tr>
+          <td>"réviser"</td>
+<td>75668</td>
+        </tr>
+        <tr>
+          <td>"exporter"</td>
+<td>75193</td>
+        </tr>
+        <tr>
+          <td>"soupçonner"</td>
+<td>75164</td>
+        </tr>
+        <tr>
+          <td>"apparenter"</td>
+<td>74992</td>
+        </tr>
+        <tr>
+          <td>"illimiter"</td>
+<td>74605</td>
+        </tr>
+        <tr>
+          <td>"attraper"</td>
+<td>74461</td>
+        </tr>
+        <tr>
+          <td>"siéger"</td>
+<td>74379</td>
+        </tr>
+        <tr>
+          <td>"songer"</td>
+<td>74371</td>
+        </tr>
+        <tr>
+          <td>"sanctionner"</td>
+<td>74303</td>
+        </tr>
+        <tr>
+          <td>"craquer"</td>
+<td>74126</td>
+        </tr>
+        <tr>
+          <td>"rémunérer"</td>
+<td>74078</td>
+        </tr>
+        <tr>
+          <td>"apprêter"</td>
+<td>73927</td>
+        </tr>
+        <tr>
+          <td>"précipiter"</td>
+<td>73906</td>
+        </tr>
+        <tr>
+          <td>"déplorer"</td>
+<td>73749</td>
+        </tr>
+        <tr>
+          <td>"désactiver"</td>
+<td>73637</td>
+        </tr>
+        <tr>
+          <td>"détester"</td>
+<td>73336</td>
+        </tr>
+        <tr>
+          <td>"disperser"</td>
+<td>73188</td>
+        </tr>
+        <tr>
+          <td>"forger"</td>
+<td>73106</td>
+        </tr>
+        <tr>
+          <td>"ya"</td>
+<td>73039</td>
+        </tr>
+        <tr>
+          <td>"configurer"</td>
+<td>72980</td>
+        </tr>
+        <tr>
+          <td>"défiler"</td>
+<td>72819</td>
+        </tr>
+        <tr>
+          <td>"puiser"</td>
+<td>72519</td>
+        </tr>
+        <tr>
+          <td>"réformer"</td>
+<td>72348</td>
+        </tr>
+        <tr>
+          <td>"affaiblir"</td>
+<td>72335</td>
+        </tr>
+        <tr>
+          <td>"assigner"</td>
+<td>72229</td>
+        </tr>
+        <tr>
+          <td>"reconstituer"</td>
+<td>71757</td>
+        </tr>
+        <tr>
+          <td>"symboliser"</td>
+<td>71743</td>
+        </tr>
+        <tr>
+          <td>"miser"</td>
+<td>71719</td>
+        </tr>
+        <tr>
+          <td>"économiser"</td>
+<td>71594</td>
+        </tr>
+        <tr>
+          <td>"infliger"</td>
+<td>71566</td>
+        </tr>
+        <tr>
+          <td>"apaiser"</td>
+<td>71317</td>
+        </tr>
+        <tr>
+          <td>"surgir"</td>
+<td>71296</td>
+        </tr>
+        <tr>
+          <td>"ancrer"</td>
+<td>71263</td>
+        </tr>
+      </tbody>
+</table></body></html>
