@@ -685,9 +685,9 @@ bigrams_united_main_corpus <- bigrams_filtered_main_corpus %>%
 write.csv(bigram_counts_main_corpus_filtered,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\main corpus\\bigrams_filtered.csv", row.names = FALSE)
 
 library(tidytext)
-mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, songShortcut %in% mediaWordsSongsIds_ns)
+mediaWordsSubsetFullSongs_ns_SONGS <- subset(songs, doc_id %in% mediaWordsSongsIds_ns)
 mediaWordsSubset_bigrams <- mediaWordsSubsetFullSongs_ns_SONGS %>%
-  unnest_tokens(bigram, lyrics, token = "ngrams", n = 2)
+  unnest_tokens(bigram, text, token = "ngrams", n = 2)
 
 mw_bigram_counts <- mediaWordsSubset_bigrams %>%
   count(bigram, sort = TRUE)
@@ -707,6 +707,9 @@ bigram_counts <- bigrams_filtered %>%
 
 bigrams_united <- bigrams_filtered %>%
   unite(bigram, word1, word2, sep = " ")
+
+write.csv(bigram_counts,"C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\bigrams_filtered_subcorpus.csv", row.names = FALSE)
+
 
 bigram_tf_idf <- bigrams_united %>%
   count(songShortcut, bigram) %>%

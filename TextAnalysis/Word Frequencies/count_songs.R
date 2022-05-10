@@ -13,3 +13,6 @@ for (i in 1:nrow(uniqueMwSongs)) {
 }
 
 write.csv(uniqueMwSongs, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\mediasongscount2.csv")
+
+
+write.csv(biterms_subcorpus, "C:\\Repos\\le_rap_francophone\\TextAnalysis\\Word Frequencies\\csvs\\media words subcorpus\\biterms_subcorpus.csv")
